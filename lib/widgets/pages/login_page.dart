@@ -64,6 +64,7 @@ class MyLogin extends StatelessWidget {
                 ),
               ),
               Container(
+                key: UniqueKey(),
                 height: 80,
                 padding: EdgeInsets.all(15),
                 child: TextFormField(
@@ -75,6 +76,7 @@ class MyLogin extends StatelessWidget {
                 ),
               ),
               Container(
+                key: UniqueKey(),
                 height: 80,
                 padding: EdgeInsets.all(15),
                 child: TextFormField(
@@ -86,11 +88,26 @@ class MyLogin extends StatelessWidget {
                 ),
               ),
               Container(
+                key: UniqueKey(),
+                height: 80,
+                width: 850,
+                padding: EdgeInsets.all(15),
                 child: ElevatedButton(
                   onPressed: () => Get.toNamed('/learning_page2'),
-                  child: const Text('Далее'),
+                  child: Text('toComeIn'.tr),
                 ),
-              )
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: TextButton(
+                      onPressed: () => Get.toNamed('/learning_page2'),
+                      child: Text('registration'.tr),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ],

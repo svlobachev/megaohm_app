@@ -11,7 +11,10 @@ class NavDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const UserAccountsDrawerHeader drawerHeader = UserAccountsDrawerHeader(
+     UserAccountsDrawerHeader drawerHeader = UserAccountsDrawerHeader(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.secondary,
+        ),
       accountName: Text('Uncle Bob'),
       accountEmail: Text('uncle_bob@gmail.com'),
       currentAccountPicture: CircleAvatar(
@@ -19,6 +22,7 @@ class NavDrawer extends StatelessWidget {
       ),
     );
     return Drawer(
+
       child: ListView(
         children: [
           drawerHeader,
