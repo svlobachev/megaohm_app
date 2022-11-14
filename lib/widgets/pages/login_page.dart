@@ -106,7 +106,11 @@ class MyLogin extends StatelessWidget {
                       child: Text('registration'.tr),
                     ),
                   ),
+
                 ],
+              ),
+              SizedBox(
+                height: 80,
               ),
             ],
           ),
