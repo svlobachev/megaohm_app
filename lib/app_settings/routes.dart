@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:megaohm_app/widgets/pages/login_page.dart';
 import 'package:megaohm_app/widgets/pages/main_page.dart';
 
 
@@ -9,7 +10,7 @@ import 'package:megaohm_app/widgets/pages/main_page.dart';
 String myInitialRoute = '/';
 
 List<GetPage> myGetPages = [
-  // GetPage(name: '/', page: () =>  MyLogin()),
+  GetPage(name: '/', page: () =>  MyLogin()),
   // GetPage(name: '/', page: () =>  registrationCompleteWay.registrationWay()),
   GetPage(name: '/mainPage', page: () =>  MainPage()),
   // GetPage(name: '/pinPut', page: () =>  PinPutView()),
