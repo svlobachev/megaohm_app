@@ -2,9 +2,10 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:get/get.dart';
+
 import 'localization.dart';
 import 'routes.dart';
 import 'theme_scheme.dart';
@@ -45,9 +46,9 @@ class MyApp extends StatelessWidget {
               defaultScale: true,
               breakpoints: [
                 const ResponsiveBreakpoint.autoScale(350, name: MOBILE),
-                // const ResponsiveBreakpoint.autoScale(480, name: MOBILE),
+                const ResponsiveBreakpoint.autoScale(480, name: MOBILE),
                 const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-                // const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+                const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
                 const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
                 const ResponsiveBreakpoint.autoScale(2460, name: '4K'),
               ],
