@@ -4,6 +4,10 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'agreeToTheTerms': 'Agree to the terms of the license agreement',
+          'userAgreementTerms': 'User Agreement Terms',
+          'iHaveReadAndAccept': 'I have read and accept ',
+          'emptyField': 'Fill in the empty field "Your email or phone number"',
           'language': 'English',
           'noInternet': 'Turn on the Internet please!',
           'searchCountry': 'Search country',
@@ -31,6 +35,10 @@ class Localization extends Translations {
           'yourMessage': 'Your message',
         },
         'ru_RU': {
+          'agreeToTheTerms': 'Cогласитесь с условиями лицензионного соглашения',
+          'userAgreementTerms': 'Условия пользовательского соглашения',
+          'iHaveReadAndAccept': 'Я ознакомлен(а) и принимаю ',
+          'emptyField': 'Заполните пустое поле: "Bаш е-маил или номер телефона"',
           'language': 'Русский',
           'noInternet': 'Включите пожалуйста интернет!',
           'searchCountry': 'Поиск страны:',

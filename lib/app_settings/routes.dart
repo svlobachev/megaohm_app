@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:megaohm_app/widgets/pages/login_page.dart';
+import 'package:megaohm_app/widgets/pages/login_page/login_page_view.dart';
 import 'package:megaohm_app/widgets/pages/main_page.dart';
 
 

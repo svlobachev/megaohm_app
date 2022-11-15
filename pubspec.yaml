@@ -13,7 +13,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-#  pinput: ^2.2.11
 #  intl_phone_field: ^3.1.0
   google_fonts: ^3.0.1
   uuid: ^3.0.7
@@ -25,6 +24,7 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   flutter_native_splash: ^2.2.14
+  pinput: ^2.2.16
 
 
 dev_dependencies:
