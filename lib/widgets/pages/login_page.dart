@@ -1,10 +1,9 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../navigation/navDrawer.dart';
+import '../navigation/systemBar.dart';
 
 class MyLogin extends StatelessWidget {
   MyLogin({Key? key}) : super(key: key);
@@ -18,103 +17,91 @@ class MyLogin extends StatelessWidget {
     // } else if (Platform.isIOS) {
     //   // код, предназначенный для iOS
     // }
-
+    double vertical = 10;
+    double horizontal =  20;
+    double height = 70;
     return Scaffold(
-      appBar: AppBar(
-        // backgroundColor: Theme.of(context).colorScheme.primary,
-        backgroundColor:
-            Platform.isIOS ? Theme.of(context).colorScheme.secondary : null,
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Theme.of(context).colorScheme.tertiary,
-          statusBarIconBrightness:
-              Get.isDarkMode ? Brightness.dark : Brightness.light,
-          // For Android (dark icons)
-          statusBarBrightness: Get.isDarkMode
-              ? Brightness.dark
-              : Brightness.light, // For iOS (dark icons)
-        ),
-      ),
-      drawer: NavDrawer(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Wrap(
-            children: [
-              Container(
-                child: Row(
+      appBar: const SysBar(),
+      drawer: const NavDrawer(),
+      body: Center(
+        child: Wrap(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'enter'.tr,
-                          textDirection: TextDirection.ltr,
-                          // style:
-                          //   Theme.of(context).textTheme.headline3,
-                          style: TextStyle(
-                            color: Get.isDarkMode ? Colors.white : Colors.black,
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      'enter'.tr,
+                      style: TextStyle(
+                        color: Get.isDarkMode ? Colors.white : Colors.black,
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
-              ),
-              Container(
-                key: UniqueKey(),
-                height: 80,
-                padding: EdgeInsets.all(15),
-                child: TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'EmailOrPhoneNumber'.tr,
-                    border: OutlineInputBorder(),
-                  ),
+              ],
+            ),
+            Container(
+              key: UniqueKey(),
+              height: height,
+              padding:  EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
+              child: TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'EmailOrPhoneNumber'.tr,
+                  border: OutlineInputBorder(),
                 ),
               ),
-              Container(
-                key: UniqueKey(),
-                height: 80,
-                padding: EdgeInsets.all(15),
-                child: TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'password'.tr,
-                    border: OutlineInputBorder(),
-                  ),
+            ),
+            Container(
+              key: UniqueKey(),
+              height: height,
+              padding:  EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
+              child: TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'password'.tr,
+                  border: OutlineInputBorder(),
                 ),
               ),
-              Container(
-                key: UniqueKey(),
-                height: 80,
-                width: 850,
-                padding: EdgeInsets.all(15),
-                child: ElevatedButton(
-                  onPressed: () => Get.toNamed('/learning_page2'),
-                  child: Text('toComeIn'.tr),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: TextButton(
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Container(
+                    key: UniqueKey(),
+                    height: height,
+                    padding:  EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
+                    child: ElevatedButton(
                       onPressed: () => Get.toNamed('/learning_page2'),
-                      child: Text('registration'.tr),
+                      child: Text('toComeIn'.tr),
                     ),
                   ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding:  EdgeInsets.symmetric(vertical: 0, horizontal: horizontal),
+                  child: TextButton(
+                    onPressed: () => Get.toNamed('/learning_page2'),
+                    child: Text('registration'.tr),
+                  ),
+                ),
 
-                ],
-              ),
-              SizedBox(
-                height: 80,
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+            SizedBox(
+              height: 180,
+            ),
+          ],
+        ),
       ),
     );
   }
