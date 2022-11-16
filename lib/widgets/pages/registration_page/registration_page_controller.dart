@@ -35,7 +35,9 @@ class RegistrationPageController {
     if (_nameFieldIsFilled.isNotEmpty) {
       final bool result =
           RegExp(r"^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$").hasMatch(_nameFieldIsFilled.trim());
-      print("_nameFieldIsFilledValidation --> $result");
+      // if (kDebugMode) {
+      //   print("_nameFieldIsFilledValidation --> $result");
+      // }
       if(!result) {
         mySnackBarGet.mySnackBar(
           'validName',
@@ -50,9 +52,11 @@ class RegistrationPageController {
     }
     if (_emailFieldIsFilled.isNotEmpty) {
       final bool result = RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(_emailFieldIsFilled.trim());
-      print("_emailFieldIsFilledValidation --> $result");
+      // if (kDebugMode) {
+      //   print("_emailFieldIsFilledValidation --> $result");
+      // }
       if(!result) {
         mySnackBarGet.mySnackBar(
           'validEmail',
@@ -69,7 +73,9 @@ class RegistrationPageController {
       final bool result = RegExp(
           r"^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$")
           .hasMatch(_phoneFieldIsFilled.trim());
-      print("_phoneFieldIsFilled --> $result");
+      // if (kDebugMode) {
+      //   print("_phoneFieldIsFilled --> $result");
+      // }
       if(!result) {
         mySnackBarGet.mySnackBar(
           'validPhone',
@@ -88,22 +94,17 @@ class RegistrationPageController {
 
   set phoneFieldIsFilled(String value) {
     _phoneFieldIsFilled = value;
-    print("_phoneFieldIsFilled --> $_phoneFieldIsFilled");
   }
 
   set emailFieldIsFilled(String value) {
     _emailFieldIsFilled = value;
-    print(_emailFieldIsFilled);
-    print("_emailFieldIsFilled --> $_emailFieldIsFilled");
   }
 
   set nameFieldIsFilled(String value) {
     _nameFieldIsFilled = value;
-    print("_nameFieldIsFilled --> $_nameFieldIsFilled");
   }
 
   set isChecked(bool value) {
     _isChecked = value;
-    print("_isChecked --> $_isChecked");
   }
 }

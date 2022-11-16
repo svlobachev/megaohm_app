@@ -11,7 +11,7 @@ import '../widgets/pages/registration_page/registration_page_view.dart';
 String myInitialRoute = '/';
 
 List<GetPage> myGetPages = [
-  GetPage(name: '/', page: () =>  MyRegistration()),
+  GetPage(name: '/', page: () =>  const MyRegistration()),
   // GetPage(name: '/', page: () =>  registrationCompleteWay.registrationWay()),
   GetPage(name: '/mainPage', page: () =>  MainPage()),
   // GetPage(name: '/pinPut', page: () =>  PinPutView()),

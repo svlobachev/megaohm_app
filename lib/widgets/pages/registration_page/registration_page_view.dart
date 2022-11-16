@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_settings/parts/internet_check.dart';
@@ -41,7 +40,7 @@ class MyRegistrationState extends State<MyRegistration> {
         shadows: [
           Shadow(
             color: Theme.of(context).colorScheme.tertiary,
-            offset: Offset(0, -1),
+            offset: const Offset(0, -1),
           )
         ],
         color: Colors.transparent,
@@ -65,7 +64,7 @@ class MyRegistrationState extends State<MyRegistration> {
                     children: [
                       Text(
                         'registration'.tr,
-                        style: TextStyle(
+                        style: const TextStyle(
                           // color: Get.isDarkMode ? Colors.white : Colors.black,
                           fontSize: 32,
                           fontWeight: FontWeight.w500,
@@ -122,7 +121,7 @@ class MyRegistrationState extends State<MyRegistration> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
