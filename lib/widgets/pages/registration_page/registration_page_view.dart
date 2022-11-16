@@ -7,14 +7,14 @@ import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'registration_page_controller.dart';
 
-class MyRegistration extends StatefulWidget {
-  const MyRegistration({Key? key}) : super(key: key);
+class RegistrationPageView extends StatefulWidget {
+  const RegistrationPageView({Key? key}) : super(key: key);
 
   @override
-  State<MyRegistration> createState() => MyRegistrationState();
+  State<RegistrationPageView> createState() => RegistrationPageViewState();
 }
 
-class MyRegistrationState extends State<MyRegistration> {
+class RegistrationPageViewState extends State<RegistrationPageView> {
   final _formKey = GlobalKey<FormState>();
   InternetCheck internetCheck = Get.find();
   RegistrationPageController loginPageController = Get.find();
