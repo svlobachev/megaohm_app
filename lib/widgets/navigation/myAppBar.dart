@@ -8,7 +8,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return GFAppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       title: Text('AppBarTitle'.tr),
       // title: Text('AppBarTitle'),
       actions: <Widget>[
@@ -17,7 +17,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             padding: const EdgeInsets.all(8.0),
             child: GFIconBadge(
               child: GFIconButton(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.secondary,
                 onPressed: () {},
                 icon: Icon(Icons.add_alert),
                 shape: GFIconButtonShape.circle,

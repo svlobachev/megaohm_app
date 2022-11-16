@@ -122,7 +122,6 @@ ThemeData MyFlexThemeDataDark = FlexThemeData.dark(
   colorScheme: myFlexSchemeDark,
 
   blendLevel: 15,
-  appBarStyle: FlexAppBarStyle.background,
   appBarOpacity: 0.90,
   tabBarStyle: FlexTabBarStyle.forBackground,
   tooltipsMatchBackground: true,

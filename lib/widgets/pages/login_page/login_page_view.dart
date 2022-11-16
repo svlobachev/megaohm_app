@@ -2,11 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_settings/parts/internet_check.dart';
+import 'package:megaohm_app/widgets/navigation/navDrawer.dart';
+import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
-import 'package:megaohm_app/widgets/pinput/view/pinput_view.dart';
 
-import '../../navigation/navDrawer.dart';
-import '../../navigation/systemBar.dart';
 import 'login_page_controller.dart';
 
 class MyLogin extends StatefulWidget {
@@ -21,45 +20,34 @@ class MyLoginState extends State<MyLogin> {
   InternetCheck internetCheck = Get.find();
   LoginPageController loginPageController = Get.find();
   MySnackBarGet mySnackBarGet = Get.find();
-  String _fieldValue = '';
-  FocusNode focusNodeField = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-    focusNodeField.addListener(_focusNodeFieldState);
-  }
-  bool _focusNodeFieldState() {
-    loginPageController.focusNodeField = focusNodeField.hasFocus;
-    loginPageController.showsSnackBar();
-    bool result = focusNodeField.hasFocus;
-    if (kDebugMode) print("Focus of email & phone field: $result");
-    return result;
-  }
 
   @override
   Widget build(BuildContext context) {
     // final SessionController _session = Get.find();
     // _session.sessionControl()
 
-    // var isChecked = false.obs;
-    // final _onVisible = true.obs;
-    double vertical = 10;
-    double horizontal = 20;
-    double height = 70;
+    var isChecked = false.obs;
+    double vertical = 5;
+    double horizontal = 17;
+    double height = 54;
 
-    // const TextStyle textStyle = TextStyle(color: Color(0xDE000000));
-    // const TextStyle linkStyle = TextStyle(
-    //     shadows: [
-    //       Shadow(
-    //         color: Color(0xFF007881),
-    //         offset: Offset(0, -1),
-    //       )
-    //     ],
-    //     color: Colors.transparent,
-    //     decoration: TextDecoration.underline,
-    //     decorationColor: Color(0xFF007881),
-    //     decorationThickness: 2);
+    const TextStyle textStyle = TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+    );
+    TextStyle linkStyle = TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        shadows: [
+          Shadow(
+            color: Theme.of(context).colorScheme.tertiary,
+            offset: Offset(0, -1),
+          )
+        ],
+        color: Colors.transparent,
+        decoration: TextDecoration.underline,
+        decorationColor: Theme.of(context).colorScheme.tertiary,
+        decorationThickness: 2);
 
     return Scaffold(
       appBar: const SysBar(),
@@ -76,11 +64,12 @@ class MyLoginState extends State<MyLogin> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'enter'.tr,
+                        'registration'.tr,
                         style: TextStyle(
-                          color: Get.isDarkMode ? Colors.white : Colors.black,
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
+                          // color: Get.isDarkMode ? Colors.white : Colors.black,
+                          fontSize: 32,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Roboto',
                         ),
                       ),
                     ],
@@ -93,106 +82,102 @@ class MyLoginState extends State<MyLogin> {
                 padding: EdgeInsets.symmetric(
                     vertical: vertical, horizontal: horizontal),
                 child: TextFormField(
-                  autofocus: true,
-                  focusNode: focusNodeField,
                   onChanged: (value) {
-                    _fieldValue = value;
-                    loginPageController.isFilled = _fieldValue;
-
+                    loginPageController.nameFieldIsFilled = value;
                   },
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'EmailOrPhoneNumber'.tr,
+                    labelText: 'yourName'.tr,
                   ),
                 ),
               ),
-
               Container(
                 key: UniqueKey(),
+                height: height,
                 padding: EdgeInsets.symmetric(
                     vertical: vertical, horizontal: horizontal),
-                child: Column(
+                child: TextFormField(
+                  onChanged: (value) {
+                    loginPageController.emailFieldIsFilled = value;
+                  },
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: 'Email'.tr,
+                  ),
+                ),
+              ),
+              Container(
+                key: UniqueKey(),
+                height: height,
+                padding: EdgeInsets.symmetric(
+                    vertical: vertical, horizontal: horizontal),
+                child: TextFormField(
+                  onChanged: (value) {
+                    loginPageController.phoneFieldIsFilled = value;
+                  },
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    labelText: 'PhoneNumber'.tr,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Obx(
+                        () => Checkbox(
+                          // checkColor: Colors.white,
+                          activeColor: Theme.of(context).colorScheme.secondary,
+                          value: isChecked.value,
+                          onChanged: (bool? value) {
+                            loginPageController.isChecked = value!;
+                            isChecked.value = value;
+                          },
+                        ),
+                      ),
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('iHaveReadAndAccept'.tr, style: textStyle),
+                            GestureDetector(
+                                onTap: () {},
+                                child: Text('userAgreementTerms'.tr,
+                                    style: linkStyle))
+                          ])
+                    ]),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                    vertical: vertical, horizontal: horizontal),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    PinPutView(),
+                    Expanded(
+                      child: Container(
+                        key: UniqueKey(),
+                        height: height,
+                        padding: EdgeInsets.symmetric(
+                            vertical: vertical, horizontal: 0),
+                        child: ElevatedButton(
+                          // onPressed: () => Get.toNamed('/learning_page2'),
+
+                          onPressed: () {
+                            internetCheck.initConnectivity();
+                            loginPageController.checkFields() ? Get.offNamed('/mainPage') : null;
+                          },
+                          child: Text('doRegistration'.tr),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-
-              // Container(
-              //   key: UniqueKey(),
-              //   padding: EdgeInsets.symmetric(
-              //       vertical: vertical, horizontal: horizontal),
-              //   child: Column(
-              //     children: [
-              //       Row(
-              //         children: [
-              //           Obx(
-              //             () => Checkbox(
-              //               // checkColor: Colors.white,
-              //               activeColor:
-              //                   Theme.of(context).colorScheme.secondary,
-              //               value: isChecked.value,
-              //               onChanged: (bool? value) {
-              //                 isChecked.value = value!;
-              //               },
-              //             ),
-              //           ),
-              //           Text('iHaveReadAndAccept'.tr, style: textStyle),
-              //         ],
-              //       ),
-              //       const SizedBox(height: 0.0),
-              //       GestureDetector(
-              //         onTap: () {},
-              //         child: Text('userAgreementTerms'.tr, style: linkStyle),
-              //       )
-              //     ],
-              //   ),
-              // ),
-
-              // Container(
-              //   padding: EdgeInsets.symmetric(
-              //       vertical: vertical, horizontal: horizontal),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       Expanded(
-              //         child: Container(
-              //           key: UniqueKey(),
-              //           height: height,
-              //           padding: EdgeInsets.symmetric(
-              //               vertical: vertical, horizontal: horizontal),
-              //           child: ElevatedButton(
-              //             // onPressed: () => Get.toNamed('/learning_page2'),
-              //
-              //             onPressed: () {
-              //               internetCheck.initConnectivity();
-              //               loginPageController.isChecked = isChecked.value;
-              //               loginPageController.isFilled = _fieldValue;
-              //               loginPageController.showsSnackBar();
-              //             },
-              //             child: Text('toComeIn'.tr),
-              //           ),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Container(
-              //       padding: EdgeInsets.symmetric(
-              //           vertical: 0, horizontal: horizontal),
-              //       child: TextButton(
-              //         onPressed: () => Get.toNamed('/learning_page2'),
-              //         child: Text('registration'.tr),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // const SizedBox(
-              //   height: 180,
-              // ),
+              const SizedBox(
+                height: 180,
+              ),
             ],
           ),
         ),

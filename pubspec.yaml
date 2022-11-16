@@ -24,7 +24,6 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   flutter_native_splash: ^2.2.14
-  pinput: ^2.2.16
 
 
 dev_dependencies:
