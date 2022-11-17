@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_settings/parts/internet_check.dart';
-import 'package:megaohm_app/widgets/navigation/navDrawer.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
@@ -50,7 +49,7 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
 
     return Scaffold(
       appBar: const SysBar(),
-      drawer: const NavDrawer(),
+      // drawer: const NavDrawer(),
       body: Form(
         key: _formKey,
         child: Center(
@@ -123,30 +122,32 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
                 child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Obx(
-                        () => Checkbox(
-                          // checkColor: Colors.white,
-                          activeColor: Theme.of(context).colorScheme.secondary,
-                          value: isChecked.value,
-                          onChanged: (bool? value) {
-                            loginPageController.isChecked = value!;
-                            isChecked.value = value;
-                          },
-                        ),
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Obx(
+                      () => Checkbox(
+                        // checkColor: Colors.white,
+                        activeColor: Theme.of(context).colorScheme.secondary,
+                        value: isChecked.value,
+                        onChanged: (bool? value) {
+                          loginPageController.isChecked = value!;
+                          isChecked.value = value;
+                        },
                       ),
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('iHaveReadAndAccept'.tr, style: textStyle),
-                            GestureDetector(
-                                onTap: () {},
-                                child: Text('userAgreementTerms'.tr,
-                                    style: linkStyle))
-                          ])
-                    ]),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('iHaveReadAndAccept'.tr, style: textStyle),
+                        GestureDetector(
+                            onTap: () {},
+                            child:
+                                Text('userAgreementTerms'.tr, style: linkStyle))
+                      ],
+                    )
+                  ],
+                ),
               ),
               Container(
                 padding: EdgeInsets.symmetric(
@@ -163,9 +164,12 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
                         child: ElevatedButton(
                           // onPressed: () => Get.toNamed('/learning_page2'),
 
-                          onPressed: () {
-                            internetCheck.initConnectivity();
-                            loginPageController.checkFields() ? Get.offNamed('/mainPage') : null;
+                          onPressed: () async {
+                            if (await internetCheck.initConnectivity()) {
+                              loginPageController.checkFields()
+                                  ? Get.offNamed('/mainPage')
+                                  : null;
+                            }
                           },
                           child: Text('doRegistration'.tr),
                         ),

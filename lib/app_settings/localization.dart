@@ -4,6 +4,9 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'code': 'Code',
+          'EnterCode': 'Enter code (sent to email)',
+          'confirm': 'CONFIRM',
           'validPhone': 'Enter a valid phone number please',
           'validName': 'Enter a valid name please',
           'validEmail': 'Enter a valid e-mail please',
@@ -14,7 +17,6 @@ class Localization extends Translations {
           'emptyField': 'Fill in the empty field(s) please',
           'language': 'English',
           'noInternet': 'Turn on the Internet please!',
-          'searchCountry': 'Search country',
           'invalidMobileNumber': 'Invalid Mobile Number',
           'didNotReceiveCode': 'Didn’t receive code?',
           'get': 'To get the code',
@@ -27,7 +29,7 @@ class Localization extends Translations {
           'password': 'Your password',
           'enter': 'Enter',
           'registration': 'Registration',
-          'doRegistration': 'Register oneself',
+          'doRegistration': 'REGISTER ONESELF',
           'toComeIn': 'INPUT',
           'profile': 'profile',
           'lightDarkModes': 'Light/Dark modes',
@@ -38,6 +40,9 @@ class Localization extends Translations {
           'AppBarTitle': 'Megaohm',
         },
         'ru_RU': {
+          'code': 'Код',
+          'EnterCode': 'Введите код (отправлен на е-маил)',
+          'confirm': '  ПОДТВЕРДИТЬ',
           'validPhone': 'Пожалуйста, введите корректный номер телефона',
           'validEmail': 'Пожалуйста, введите корректный e-mail',
           'validName': 'Пожалуйста, введите корректное имя',
@@ -48,7 +53,6 @@ class Localization extends Translations {
           'emptyField': 'Пожалуйста, заполните пустые поля',
           'language': 'Русский',
           'noInternet': 'Включите пожалуйста интернет!',
-          'searchCountry': 'Поиск страны:',
           'invalidMobileNumber': 'Некорректный номер телефона',
           'didNotReceiveCode': 'Не получили код?',
           'get': 'Получить код',
@@ -61,7 +65,7 @@ class Localization extends Translations {
           'password': 'Ваш пароль',
           'enter': 'Вход',
           'registration': 'Регистрация',
-          'doRegistration': 'Зарегистрироваться',
+          'doRegistration': 'ЗАРЕГИСТРИРОВАТЬСЯ',
           'toComeIn': 'ВОЙТИ',
           'profile': 'Профиль',
           'lightDarkModes': 'Ночной/Дневной режимы',
