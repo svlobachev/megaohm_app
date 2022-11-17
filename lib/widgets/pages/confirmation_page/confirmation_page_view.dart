@@ -26,12 +26,13 @@ class ConformationPageView extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Image.asset(
-                            'assets/img/back_arrow.png',
-                            height: 16,
-                          ),
+                          // Image.asset(
+                          //   'assets/img/back_arrow.png',
+                          //   height: 16,
+                          // ),
                           Text(
-                            '   '+'registration'.tr,
+                            // '   '+
+                                'registration'.tr,
                             style: const TextStyle(
                               // color: Get.isDarkMode ? Colors.white : Colors.black,
                               fontSize: 32,

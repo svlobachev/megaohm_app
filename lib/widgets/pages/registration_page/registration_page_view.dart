@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_settings/parts/internet_check.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/bottom_sheet_page_view.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'registration_page_controller.dart';
@@ -48,6 +49,7 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
         decorationThickness: 2);
 
     return Scaffold(
+      // bottomSheet: mYBottomSheet(context),
       appBar: const SysBar(),
       // drawer: const NavDrawer(),
       body: Form(
@@ -141,7 +143,8 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
                       children: [
                         Text('iHaveReadAndAccept'.tr, style: textStyle),
                         GestureDetector(
-                            onTap: () => Get.toNamed('/terms'),
+                            // onTap: () => Get.toNamed('/terms'),
+                            onTap: () => myBottomSheet (context),
                             child:
                                 Text('userAgreementTerms'.tr, style: linkStyle))
                       ],
@@ -167,7 +170,7 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
                           onPressed: () async {
                             if (await internetCheck.initConnectivity()) {
                               loginPageController.checkFields()
-                                  ? Get.offNamed('/mainPage')
+                                  ? Get.toNamed('/conformation')
                                   : null;
                             }
                           },
