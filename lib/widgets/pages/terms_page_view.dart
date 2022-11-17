@@ -33,7 +33,7 @@ class TermsPageView extends StatelessWidget {
                                   'userAgreementTerms'.tr,
                                   style: const TextStyle(
                                     // color: Get.isDarkMode ? Colors.white : Colors.black,
-                                    fontSize: 32,
+                                    fontSize: 24,
                                     fontWeight: FontWeight.w500,
                                     fontFamily: 'Roboto',
                                   ),
