@@ -141,7 +141,7 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
                       children: [
                         Text('iHaveReadAndAccept'.tr, style: textStyle),
                         GestureDetector(
-                            onTap: () {},
+                            onTap: () => Get.toNamed('/terms'),
                             child:
                                 Text('userAgreementTerms'.tr, style: linkStyle))
                       ],
