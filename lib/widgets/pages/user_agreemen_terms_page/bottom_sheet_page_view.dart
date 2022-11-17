@@ -18,14 +18,13 @@ myBottomSheet(context) {
             Container(
               key: UniqueKey(),
               height: height,
-              padding: EdgeInsets.symmetric(vertical: vertical, horizontal: 0),
+              padding: EdgeInsets.symmetric(vertical: vertical),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'userAgreementTerms'.tr,
                     style: const TextStyle(
-                      // color: Get.isDarkMode ? Colors.white : Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Roboto',
@@ -43,7 +42,6 @@ myBottomSheet(context) {
                       child: Container(
                         key: UniqueKey(),
                         height: height,
-                        color: Colors.green,
                         child:  MySliverPage(),
                       ),
                     ),

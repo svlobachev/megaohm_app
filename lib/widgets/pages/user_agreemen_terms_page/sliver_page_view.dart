@@ -10,7 +10,6 @@ class MySliverPage extends StatelessWidget {
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: SizedBox(
-              // height: 1000,
               child: Column(
                 children: const [
                   Text(
