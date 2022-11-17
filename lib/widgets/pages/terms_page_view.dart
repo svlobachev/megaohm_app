@@ -21,14 +21,25 @@ class TermsPageView extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                        Text(
-                          overflow: TextOverflow.clip,
-                          'userAgreementTerms'.tr,
-                          style: const TextStyle(
-                            // color: Get.isDarkMode ? Colors.white : Colors.black,
-                            fontSize: 32,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'Roboto',
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: vertical, horizontal: horizontal),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  overflow: TextOverflow.clip,
+                                  'userAgreementTerms'.tr,
+                                  style: const TextStyle(
+                                    // color: Get.isDarkMode ? Colors.white : Colors.black,
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Roboto',
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
 
@@ -39,40 +50,46 @@ class TermsPageView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
                           Flexible(
-                            child: Text("A looooooooooooooooooong textA looooooooooooooooooong textA looooooooooooooooooong textA looooooooooooooooooong textA looooooooooooooooooong textA looooooooooooooooooong textA looooooooooooooooooong textA looooooooooooooooooong text"),
+                            child: Text("A looooooooooooooooooong "
+                                "textA "
+                                "textA "
+                                "textA "
+                                "textA "
+                                "textA "
+                                "textA "
+                                "textA "
+                                "looooooooooooooooooong textA "
+                                "looooooooooooooooooong textA "
+                                "looooooooooooooooooong textA "
+                                "looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong "
+                                "textA looooooooooooooooooong text"),
                           ),
                         ],
                       ),
                     ),
-
-                    // Container(
-                    //   padding: EdgeInsets.symmetric(
-                    //       vertical: vertical, horizontal: horizontal),
-                    //   child: Text(
-                    //     'userAgreementTerms'.tr,
-                    //     style: const TextStyle(
-                    //       // color: Get.isDarkMode ? Colors.white : Colors.black,
-                    //       fontSize: 32,
-                    //       // fontWeight: FontWeight.w500,
-                    //       fontFamily: 'Roboto',
-                    //     ),
-                    //   ),
-                    // ),
-
-                    // Container(
-                    //   padding: EdgeInsets.symmetric(
-                    //       vertical: vertical, horizontal: horizontal),
-                    //   child: Text(
-                    //     'EnterCode'.tr,
-                    //     style: const TextStyle(
-                    //       // color: Get.isDarkMode ? Colors.white : Colors.black,
-                    //       // fontSize: 32,
-                    //       fontWeight: FontWeight.w400,
-                    //       fontFamily: 'Roboto',
-                    //     ),
-                    //   ),
-                    // ),
-
               ],
             ),
             const SizedBox(
