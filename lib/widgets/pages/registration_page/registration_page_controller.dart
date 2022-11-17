@@ -34,11 +34,12 @@ class RegistrationPageController {
     }
     if (_nameFieldIsFilled.isNotEmpty) {
       final bool result =
-          RegExp(r"^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$").hasMatch(_nameFieldIsFilled.trim());
+          RegExp(r"^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$")
+              .hasMatch(_nameFieldIsFilled.trim());
       // if (kDebugMode) {
       //   print("_nameFieldIsFilledValidation --> $result");
       // }
-      if(!result) {
+      if (!result) {
         mySnackBarGet.mySnackBar(
           'validName',
           const Icon(
@@ -58,7 +59,7 @@ class RegistrationPageController {
       // if (kDebugMode) {
       //   print("_emailFieldIsFilledValidation --> $result");
       // }
-      if(!result) {
+      if (!result) {
         mySnackBarGet.mySnackBar(
           'validEmail',
           const Icon(
@@ -71,13 +72,13 @@ class RegistrationPageController {
       }
     }
     if (_phoneFieldIsFilled.isNotEmpty) {
-      final bool result = RegExp(
-          r"^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$")
-          .hasMatch(_phoneFieldIsFilled.trim());
+      final bool result =
+          RegExp(r"^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$")
+              .hasMatch(_phoneFieldIsFilled.trim());
       // if (kDebugMode) {
       //   print("_phoneFieldIsFilled --> $result");
       // }
-      if(!result) {
+      if (!result) {
         mySnackBarGet.mySnackBar(
           'validPhone',
           const Icon(
@@ -91,7 +92,6 @@ class RegistrationPageController {
     }
     return true;
   }
-
 
   set phoneFieldIsFilled(String value) {
     _phoneFieldIsFilled = value;

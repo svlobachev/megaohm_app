@@ -31,7 +31,6 @@ class ConformationPageView extends StatelessWidget {
                           //   height: 16,
                           // ),
                           Text(
-                            // '   '+
                                 'registration'.tr,
                             style: const TextStyle(
                               // color: Get.isDarkMode ? Colors.white : Colors.black,

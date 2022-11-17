@@ -4,6 +4,7 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'allClear': 'All clear',
           'code': 'Code',
           'EnterCode': 'Enter code (sent to email)',
           'confirm': 'CONFIRM',
@@ -40,6 +41,7 @@ class Localization extends Translations {
           'AppBarTitle': 'Megaohm',
         },
         'ru_RU': {
+          'allClear': 'Всё понятно',
           'code': 'Код',
           'EnterCode': 'Введите код (отправлен на е-маил)',
           'confirm': '  ПОДТВЕРДИТЬ',

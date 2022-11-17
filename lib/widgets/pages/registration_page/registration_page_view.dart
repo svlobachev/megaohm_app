@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_settings/parts/internet_check.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/bottom_sheet_page_view.dart';
+import 'package:megaohm_app/widgets/pages/user_agreemen_terms_page/bottom_sheet_page_view.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'registration_page_controller.dart';
