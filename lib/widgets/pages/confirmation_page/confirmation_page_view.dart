@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:megaohm_app/app_settings/parts/internet_check.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 
+import 'counter_view.dart';
+
 class ConformationPageView extends StatelessWidget {
    ConformationPageView({Key? key}) : super(key: key);
    InternetCheck internetCheck = Get.find();
@@ -102,6 +104,16 @@ class ConformationPageView extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: horizontal),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MyCounter(),
+                    ],
+                  )
               ),
               const SizedBox(
                 height: 180,

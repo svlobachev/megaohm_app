@@ -20,7 +20,7 @@ class Localization extends Translations {
           'noInternet': 'Turn on the Internet please!',
           'invalidMobileNumber': 'Invalid Mobile Number',
           'didNotReceiveCode': 'Didn’t receive code?',
-          'get': 'To get the code',
+          'get': 'Get the code again',
           'PhoneNumber': 'Your phone Number',
           'enterСodeText':
               'Enter the last 4 digits of the number from which we will call you. For example:\n +1_123_456_XXXX ⬅',
@@ -57,7 +57,7 @@ class Localization extends Translations {
           'noInternet': 'Включите пожалуйста интернет!',
           'invalidMobileNumber': 'Некорректный номер телефона',
           'didNotReceiveCode': 'Не получили код?',
-          'get': 'Получить код',
+          'get': 'Получить код повторно',
           'welcome': 'Добро пожаловать!',
           'PhoneNumber': 'Номер телефона',
           'enterСodeText':

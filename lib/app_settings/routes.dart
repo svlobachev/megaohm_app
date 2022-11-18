@@ -13,6 +13,7 @@ String myInitialRoute = '/';
 
 List<GetPage> myGetPages = [
   GetPage(name: '/', page: () =>  const RegistrationPageView()),
+  // GetPage(name: '/', page: () =>   ConformationPageView()),
   GetPage(name: '/conformation', page: () =>   ConformationPageView()),
   // GetPage(name: '/', page: () =>  registrationCompleteWay.registrationWay()),
   GetPage(name: '/mainPage', page: () =>  MainPage()),
