@@ -144,7 +144,7 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
                         Text('iHaveReadAndAccept'.tr, style: textStyle),
                         GestureDetector(
                             // onTap: () => Get.toNamed('/terms'),
-                            onTap: () => myBottomSheet (context),
+                            onTap: () => myBottomSheet(context),
                             child:
                                 Text('userAgreementTerms'.tr, style: linkStyle))
                       ],
@@ -170,7 +170,10 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
                           onPressed: () async {
                             if (await internetCheck.initConnectivity()) {
                               loginPageController.checkFields()
-                                  ? Get.toNamed('/conformation')
+                                  ? {
+
+                                Get.toNamed('/conformation')
+                              }
                                   : null;
                             }
                           },

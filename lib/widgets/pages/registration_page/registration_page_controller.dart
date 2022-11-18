@@ -108,4 +108,10 @@ class RegistrationPageController {
   set isChecked(bool value) {
     _isChecked = value;
   }
+
+  String get nameFieldIsFilled => _nameFieldIsFilled;
+
+  String get emailFieldIsFilled => _emailFieldIsFilled;
+
+  String get phoneFieldIsFilled => _phoneFieldIsFilled;
 }
