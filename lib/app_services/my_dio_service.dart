@@ -13,8 +13,7 @@ class MyDioService {
     debugPrint("_baseUrl --> $_baseUrl");
   }
 
-  Future<Map<String, dynamic>> floraAPI(
-      {path = '', method = '', data}) async {
+  Future<Map<String, dynamic>> floraAPI({path = '', method = '', data}) async {
     var dio = Dio();
     dio.options
       ..baseUrl = _baseUrl
@@ -28,6 +27,7 @@ class MyDioService {
         'accept': 'application/json',
         'Content-Type': 'application/json; charset=UTF-8',
       };
+
     if (method == 'post') {
       var response = await dio.post(
         path,
