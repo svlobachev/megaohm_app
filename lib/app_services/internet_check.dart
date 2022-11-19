@@ -7,21 +7,21 @@ import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 class InternetCheck {
   MySnackBarGet mySnackBarGet = Get.find();
-  Future<bool> initConnectivity() async {
 
+  Future<bool> initConnectivity() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       debugPrint("Нет соединения с интернетом!");
       mySnackBarGet.mySnackBar(
-        'noInternet',
-        const Icon(
+        localizationName: 'noInternet',
+        icon: const Icon(
           Icons.dangerous,
           color: Colors.red,
           size: 30.0,
         ),
       );
       return false;
-    } else  {
+    } else {
       return true;
     }
   }

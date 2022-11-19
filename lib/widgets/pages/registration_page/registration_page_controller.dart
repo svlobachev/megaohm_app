@@ -13,8 +13,8 @@ class RegistrationPageController {
         _emailFieldIsFilled.isEmpty ||
         _phoneFieldIsFilled.isEmpty) {
       mySnackBarGet.mySnackBar(
-        'emptyField',
-        const Icon(
+        localizationName: 'emptyField',
+        icon: const Icon(
           Icons.text_fields,
           color: Colors.red,
           size: 30.0,
@@ -23,8 +23,8 @@ class RegistrationPageController {
       return false;
     } else if (!_isChecked) {
       mySnackBarGet.mySnackBar(
-        'agreeToTheTerms',
-        const Icon(
+        localizationName: 'agreeToTheTerms',
+        icon: const Icon(
           Icons.text_fields,
           color: Colors.red,
           size: 30.0,
@@ -41,8 +41,8 @@ class RegistrationPageController {
       // }
       if (!result) {
         mySnackBarGet.mySnackBar(
-          'validName',
-          const Icon(
+          localizationName: 'validName',
+          icon: const Icon(
             Icons.text_fields,
             color: Colors.red,
             size: 30.0,
@@ -53,16 +53,15 @@ class RegistrationPageController {
     }
     if (_emailFieldIsFilled.isNotEmpty) {
       final bool result = RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"
-      )
+              r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(_emailFieldIsFilled.trim());
       // if (kDebugMode) {
       //   print("_emailFieldIsFilledValidation --> $result");
       // }
       if (!result) {
         mySnackBarGet.mySnackBar(
-          'validEmail',
-          const Icon(
+          localizationName: 'validEmail',
+          icon: const Icon(
             Icons.text_fields,
             color: Colors.red,
             size: 30.0,
@@ -80,8 +79,8 @@ class RegistrationPageController {
       // }
       if (!result) {
         mySnackBarGet.mySnackBar(
-          'validPhone',
-          const Icon(
+          localizationName: 'validPhone',
+          icon: const Icon(
             Icons.text_fields,
             color: Colors.red,
             size: 30.0,
