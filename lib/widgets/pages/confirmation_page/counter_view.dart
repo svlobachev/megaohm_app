@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:megaohm_app/app_settings/parts/internet_check.dart';
+import 'package:megaohm_app/app_services/internet_check.dart';
 
 class MyCounter extends StatelessWidget {
   var _onVisibleFooter = false.obs;

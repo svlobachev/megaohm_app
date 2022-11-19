@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:megaohm_app/app_settings/parts/internet_check.dart';
+import 'package:megaohm_app/app_services/internet_check.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 
 import 'counter_view.dart';

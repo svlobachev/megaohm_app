@@ -15,7 +15,7 @@ paths:
   /auth:
     post:
       tags:
-      - auth
+        - auth
       summary: 'User registration request from the app'
       operationId: reg_user
       requestBody:
@@ -43,7 +43,7 @@ paths:
   /auth/{token}:
     put:
       tags:
-      - auth
+        - auth
       summary: "Confirm user's registration"
       description: 'As normal result server responses with an jwt pair'
       operationId: confirm_user
@@ -82,7 +82,7 @@ paths:
   /auth/{token}/resend:
     put:
       tags:
-      - auth
+        - auth
       summary: 'Code resend request'
       operationId: resend_code
       parameters:
@@ -109,7 +109,7 @@ paths:
   /auth/renew:
     put:
       tags:
-      - auth
+        - auth
       summary: 'Access token renew request'
       operationId: renew_jwt
       requestBody:
@@ -148,11 +148,11 @@ components:
     RegUserReq:
       type: object
       required:
-      - clientID
-      - phone
-      - email
-      - authType
-      - clientType
+        - clientID
+        - phone
+        - email
+        - authType
+        - clientType
       properties:
         clientID:
           type: string
@@ -180,7 +180,7 @@ components:
     RegUserResponse:
       type: object
       required:
-      - token
+        - token
       properties:
         token:
           type: string
@@ -192,7 +192,7 @@ components:
     ConfirmUserReq:
       type: object
       required:
-      - code
+        - code
       properties:
         code:
           type: string
@@ -201,8 +201,8 @@ components:
     TokenPair:
       type: object
       required:
-      - rt
-      - at
+        - rt
+        - at
       properties:
         rt:
           type: string
@@ -213,7 +213,7 @@ components:
     TokenRenewReq:
       type: object
       required:
-      - rt
+        - rt
       properties:
         rt:
           type: string

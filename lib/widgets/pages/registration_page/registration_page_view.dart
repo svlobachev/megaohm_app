@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:megaohm_app/app_settings/parts/internet_check.dart';
+import 'package:megaohm_app/app_services/internet_check.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 import 'package:megaohm_app/widgets/pages/user_agreemen_terms_page/bottom_sheet_page_view.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
@@ -17,8 +17,11 @@ class RegistrationPageView extends StatefulWidget {
 class RegistrationPageViewState extends State<RegistrationPageView> {
   final _formKey = GlobalKey<FormState>();
   InternetCheck internetCheck = Get.find();
+
   RegistrationPageController loginPageController = Get.find();
   MySnackBarGet mySnackBarGet = Get.find();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -171,9 +174,8 @@ class RegistrationPageViewState extends State<RegistrationPageView> {
                             if (await internetCheck.initConnectivity()) {
                               loginPageController.checkFields()
                                   ? {
-
-                                Get.toNamed('/conformation')
-                              }
+                                      Get.toNamed('/conformation')
+                                    }
                                   : null;
                             }
                           },
