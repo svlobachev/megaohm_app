@@ -37,11 +37,6 @@ class MyDioService {
         ),
       );
       dataMap = json.decode(response.toString());
-
-      // for(var item in dataMap.entries){
-      //   // item представляет MapEntry<K, V>
-      //   debugPrint("${item.key} - ${item.value}");
-      // }
     } else if (method == 'put') {
       var response = await dio.put(
         path,
