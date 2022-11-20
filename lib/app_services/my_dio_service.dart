@@ -13,6 +13,8 @@ class MyDioService {
     debugPrint("_baseUrl --> $_baseUrl");
   }
 
+  String get baseUrl => _baseUrl;
+
   Future<Map<String, dynamic>> floraAPI({path = '', method = '', data}) async {
     var dio = Dio();
     dio.options

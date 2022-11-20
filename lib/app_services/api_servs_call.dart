@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'my_dio_service.dart';
 
-class APIServersCall {
+class ServerAvailabilityCheck {
   MyDioService myDioSettings = Get.find();
   serversCalling() async {
     String urlOfServer;
