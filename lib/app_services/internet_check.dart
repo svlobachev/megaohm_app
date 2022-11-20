@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
-import 'api_servs_call.dart';
 import 'my_dio_service.dart';
+import 'server_availability_check.dart';
 
 class InternetCheck {
   MySnackBarGet mySnackBarGet = Get.find();

@@ -7,28 +7,15 @@ import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'registration_page_controller.dart';
 
-// class RegistrationPageView extends StatelessWidget {
-//   const RegistrationPageView({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }
-
 class RegistrationPageView extends StatelessWidget {
   RegistrationPageView({Key? key}) : super(key: key);
-  
-  InternetCheck internetCheck = Get.find();
 
+  InternetCheck internetCheck = Get.find();
   RegistrationPageController registrationPageController = Get.find();
   MySnackBarGet mySnackBarGet = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    // final SessionController _session = Get.find();
-    // _session.sessionControl()
-
     var isChecked = false.obs;
     double vertical = 5;
     double horizontal = 17;
@@ -38,6 +25,7 @@ class RegistrationPageView extends StatelessWidget {
       fontSize: 12,
       fontWeight: FontWeight.w400,
     );
+
     TextStyle linkStyle = TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w400,
@@ -68,7 +56,6 @@ class RegistrationPageView extends StatelessWidget {
                     Text(
                       'registration'.tr,
                       style: const TextStyle(
-                        // color: Get.isDarkMode ? Colors.white : Colors.black,
                         fontSize: 32,
                         fontWeight: FontWeight.w500,
                         fontFamily: 'Roboto',
@@ -166,8 +153,6 @@ class RegistrationPageView extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           vertical: vertical, horizontal: 0),
                       child: ElevatedButton(
-                        // onPressed: () => Get.toNamed('/learning_page2'),
-
                         onPressed: () async {
                           if (await internetCheck.initConnectivity()) {
                             registrationPageController.fieldValidation()

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 class RegistrationPageController {
-  MySnackBarGet mySnackBarGet = MySnackBarGet();
+  MySnackBarGet mySnackBarGet = Get.find();
   bool _isChecked = false;
   String _nameFieldIsFilled = '';
   String _emailFieldIsFilled = '';

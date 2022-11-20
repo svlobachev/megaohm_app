@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 class LoginPageController {
-  MySnackBarGet mySnackBarGet = MySnackBarGet();
+  MySnackBarGet mySnackBarGet = Get.find();
 
   String _emailFieldIsFilled = '';
   String _phoneFieldIsFilled = '';

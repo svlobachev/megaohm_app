@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:megaohm_app/app_services/api_servs_call.dart';
 import 'package:megaohm_app/app_services/my_dio_service.dart';
+import 'package:megaohm_app/app_services/server_availability_check.dart';
 import 'package:megaohm_app/app_settings/dependency_injection.dart';
 
 main() {
   test('DioAPIServersCall', () async {
-    dependencyInjection();
+    dependencyInjectionInit();
     ServerAvailabilityCheck aPIServersCall = Get.find();
     MyDioService myDioService = Get.find();
     await aPIServersCall.serversCalling();

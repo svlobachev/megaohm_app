@@ -10,15 +10,11 @@ class LoginPageView extends StatelessWidget {
   LoginPageView({Key? key}) : super(key: key);
 
   InternetCheck internetCheck = Get.find();
-
   LoginPageController loginPageController = Get.find();
   MySnackBarGet mySnackBarGet = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    // final SessionController _session = Get.find();
-    // _session.sessionControl()
-
     double vertical = 5;
     double horizontal = 17;
     double height = 54;
@@ -119,8 +115,6 @@ class LoginPageView extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(vertical: vertical, horizontal: 0),
                     child: TextButton(
-                      // onPressed: () => Get.toNamed('/learning_page2'),
-
                       onPressed: () async {
                         if (await internetCheck.initConnectivity()) {
                           Get.toNamed('/registration');
