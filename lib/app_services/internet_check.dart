@@ -18,7 +18,7 @@ class InternetCheck {
   Future<bool> initConnectivity() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
-      debugPrint("Нет соединения с интернетом!");
+      debugPrint("--> Нет соединения с интернетом!");
       mySnackBarGet.mySnackBar(
         localizationName: 'noInternet',
         icon: const Icon(
