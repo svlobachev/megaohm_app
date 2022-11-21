@@ -10,13 +10,13 @@ class RegistrationAPIService {
   MyDioService myDioService = Get.find();
 
   String _clientID = '';
-  String _nameFieldIsFilled = '';
+  // String _nameFieldIsFilled = '';
   String _emailFieldIsFilled = '';
   String _phoneFieldIsFilled = '';
 
   setValues() async {
     _clientID = getDeviceId.deviceId;
-    _nameFieldIsFilled = registrationPageController.nameFieldIsFilled;
+    // _nameFieldIsFilled = registrationPageController.nameFieldIsFilled;
     _emailFieldIsFilled = registrationPageController.emailFieldIsFilled;
     _phoneFieldIsFilled = registrationPageController.phoneFieldIsFilled;
   }
