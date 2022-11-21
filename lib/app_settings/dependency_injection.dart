@@ -15,7 +15,7 @@ dependencyInjectionInit() {
   Get.put(ServerAvailabilityCheck());
   Get.put(RegistrationPageController());
   Get.put(LoginPageController());
-  Get.put(ClickInternetCheck());
   Get.put(BackgroundInternetCheck());
+  Get.put(ClickInternetCheck());
   Get.put(ForAllForms());
 }

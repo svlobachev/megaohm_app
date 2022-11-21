@@ -6,36 +6,43 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
+import 'background_internet_check.dart';
 import 'my_dio_service.dart';
 import 'server_availability_check.dart';
 
 class ClickInternetCheck {
   final MySnackBarGet _mySnackBarGet = Get.find();
-  final ServerAvailabilityCheck _serverAvailabilityCheck = ServerAvailabilityCheck();
+  final ServerAvailabilityCheck _serverAvailabilityCheck =
+      ServerAvailabilityCheck();
   final MyDioService _myDioService = Get.find();
+  BackgroundInternetCheck backgroundInternetCheck = Get.find();
 
   Future<bool> initConnectivity() async {
-
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       try {
-      _mySnackBarGet.mySnackBar(
-        localizationName: 'noInternet',
-        icon: const Icon(
-          Icons.dangerous,
-          color: Colors.red,
-          size: 30.0,
-        ),
-      );
-    }catch(e){
+        _mySnackBarGet.mySnackBar(
+          localizationName: 'noInternet',
+          icon: const Icon(
+            Icons.dangerous,
+            color: Colors.red,
+            size: 30.0,
+          ),
+        );
+      } catch (e) {
         if (kDebugMode) {
           print(e);
         }
       }
       debugPrint("--> Нет соединения с интернетом!");
       _myDioService.baseUrl = '';
+      backgroundInternetCheck.i++;
+      if (backgroundInternetCheck.i == 1) {
+        backgroundInternetCheck.initConnectivity();
+      }
       return false;
     } else {
+      backgroundInternetCheck.i = 0;
       if (_myDioService.baseUrl.isEmpty) {
         _serverAvailabilityCheck.serversCalling();
       }

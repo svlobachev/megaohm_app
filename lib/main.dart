@@ -14,6 +14,7 @@ Future<void> main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   BackgroundInternetCheck backgroundInternetCheck = Get.find();
   backgroundInternetCheck.initConnectivity();
+  backgroundInternetCheck.i++;
   await Hive.initFlutter();
   await Hive.openBox('RegistrationBox');
   hiveInit();
