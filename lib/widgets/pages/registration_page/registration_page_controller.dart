@@ -53,6 +53,8 @@ class RegistrationPageController {
       }
     }
     if (_emailFieldIsFilled.isNotEmpty) {
+      // final bool result = RegExp(
+      //         r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
       final bool result = RegExp(
               r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(_emailFieldIsFilled.trim());
@@ -72,6 +74,8 @@ class RegistrationPageController {
       }
     }
     if (_phoneFieldIsFilled.isNotEmpty) {
+      // final bool result =
+      //     RegExp(r"^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$")
       final bool result =
           RegExp(r"^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$")
               .hasMatch(_phoneFieldIsFilled.trim());
