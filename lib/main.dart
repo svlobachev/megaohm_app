@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:megaohm_app/app_services/background_internet_check.dart';
 import 'package:megaohm_app/app_settings/app_view.dart';
 
+import 'app_services/get_device_id.dart';
 import 'app_services/hive_init.dart';
 import 'app_settings/dependency_injection.dart';
 
@@ -20,5 +21,7 @@ Future<void> main() async {
   hiveInit();
   runApp(MyApp());
   FlutterNativeSplash.remove();
+  GetDeviceId getDeviceId = Get.find();
+  getDeviceId.getDeviceId();
 
 }

@@ -6,6 +6,11 @@ import 'package:megaohm_app/app_services/server_availability_check.dart';
 import 'package:megaohm_app/app_settings/dependency_injection.dart';
 
 main() {
+
+  test('getDiviceId', () async {
+
+  });
+
   test('DioAPIServersCall', () async {
     dependencyInjectionInit();
     ServerAvailabilityCheck aPIServersCall = Get.find();
@@ -14,7 +19,7 @@ main() {
 
     Map<String, dynamic> dataMap =
         await myDioService.floraAPI(path: '/auth', method: 'post', data: {
-      "clientID": "00000000-0000-0000-0000-000000000000",
+      "clientID": "eee60127-1de7-59aa-92cf-d34cff956cae",
       "clientType": "flora_v1",
       "phone": "+71234567890",
       "email": "example@email.me",

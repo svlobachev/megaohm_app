@@ -4,7 +4,7 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
-          'allClear': 'Сlear',
+          'allClear': 'Clear',
           'code': 'Code',
           'EnterCode': 'Enter code (sent to email)',
           'confirm': 'CONFIRM',
