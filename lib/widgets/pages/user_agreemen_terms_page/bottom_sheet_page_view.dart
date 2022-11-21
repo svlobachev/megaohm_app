@@ -21,8 +21,18 @@ myBottomSheet(context) {
           children: [
             Container(
               key: UniqueKey(),
+              padding: EdgeInsets.only(top: 4),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/img/pic_1.png'),
+                ],
+              ),
+            ),
+            Container(
+              key: UniqueKey(),
               height: height,
-              padding: EdgeInsets.symmetric(vertical: vertical),
+              padding: EdgeInsets.symmetric(horizontal: horizontal),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -10,7 +10,7 @@ class MyDioService {
 
   set baseUrl(String value) {
     _baseUrl = value;
-    debugPrint("_baseUrl --> $_baseUrl");
+    if(_baseUrl.isNotEmpty)debugPrint("_baseUrl --> $_baseUrl");
   }
 
   String get baseUrl => _baseUrl;

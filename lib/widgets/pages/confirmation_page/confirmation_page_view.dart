@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:megaohm_app/app_services/internet_check.dart';
+import 'package:megaohm_app/app_services/click_internet_check.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 
@@ -8,7 +8,7 @@ import 'counter_view.dart';
 
 class ConformationPageView extends StatelessWidget {
    ConformationPageView({Key? key}) : super(key: key);
-   final InternetCheck _internetCheck = Get.find();
+   final ClickInternetCheck _clickInternetCheck = Get.find();
    final ForAllForms _forAllForms = Get.find();
 
   @override
@@ -98,7 +98,7 @@ class ConformationPageView extends StatelessWidget {
                           // onPressed: () => Get.toNamed('/learning_page2'),
 
                           onPressed: () async {
-                            if (await _internetCheck.initConnectivity()) {
+                            if (await _clickInternetCheck.initConnectivity()) {
                               // loginPageController.checkFields()
                               //     ? Get.offNamed('/mainPage')
                               //     : null;

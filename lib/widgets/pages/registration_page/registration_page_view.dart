@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:megaohm_app/app_services/internet_check.dart';
+import 'package:megaohm_app/app_services/click_internet_check.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 import 'package:megaohm_app/widgets/pages/user_agreemen_terms_page/bottom_sheet_page_view.dart';
@@ -11,7 +11,7 @@ class RegistrationPageView extends StatelessWidget{
   RegistrationPageView({Key? key}) : super(key: key);
 
   final ForAllForms _forAllForms = Get.find();
-  final InternetCheck _internetCheck = Get.find();
+  final ClickInternetCheck _clickInternetCheck = Get.find();
   final RegistrationPageController _registrationPageController = Get.find();
 
   @override
@@ -155,7 +155,7 @@ class RegistrationPageView extends StatelessWidget{
                           vertical: vertical, horizontal: 0),
                       child: ElevatedButton(
                         onPressed: () async {
-                          if (await _internetCheck.initConnectivity()) {
+                          if (await _clickInternetCheck.initConnectivity()) {
                             _registrationPageController.fieldValidation()
                                 ? {Get.toNamed('/conformation')}
                                 : null;

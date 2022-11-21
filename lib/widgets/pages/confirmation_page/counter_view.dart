@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:megaohm_app/app_services/internet_check.dart';
+import 'package:megaohm_app/app_services/click_internet_check.dart';
 
 class MyCounter extends StatelessWidget {
   var _onVisibleFooter = false.obs;
   var _onCounter = ''.obs;
   var _onCounterTime = 60.obs;
   final int _onCounterStep = 0;
-  final InternetCheck _internetCheck = Get.find();
+  final ClickInternetCheck _clickInternetCheck = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class MyCounter extends StatelessWidget {
                   ),
                 ),
                 onPressed: () async {
-                  if (await _internetCheck.initConnectivity()) {
+                  if (await _clickInternetCheck.initConnectivity()) {
                     _onVisibleFooter.value = true;
                     for (var i = _onCounterTime.value; i > 0; i--) {
                       _onCounter.value = "$i";

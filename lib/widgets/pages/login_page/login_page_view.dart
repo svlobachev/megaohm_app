@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:megaohm_app/app_services/internet_check.dart';
+import 'package:megaohm_app/app_services/click_internet_check.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 
@@ -9,7 +9,7 @@ import 'login_page_controller.dart';
 class LoginPageView extends StatelessWidget {
   LoginPageView({Key? key}) : super(key: key);
 
-  final InternetCheck _internetCheck = Get.find();
+  final ClickInternetCheck _clickInternetCheck = Get.find();
   final LoginPageController _loginPageController = Get.find();
   final ForAllForms _forAllForms = Get.find();
 
@@ -19,7 +19,7 @@ class LoginPageView extends StatelessWidget {
     final double horizontal = _forAllForms.horizontal;
     final double height = _forAllForms.height;
     final double bottomSizedBox = _forAllForms.bottomSizedBoxHeight;
-
+    // _internetCheck.initConnectivity();
     return Scaffold(
       appBar: const SysBar(),
       // drawer: const NavDrawer(),
@@ -91,7 +91,7 @@ class LoginPageView extends StatelessWidget {
                         // onPressed: () => Get.toNamed('/learning_page2'),
 
                         onPressed: () async {
-                          if (await _internetCheck.initConnectivity()) {
+                          if (await _clickInternetCheck.initConnectivity()) {
                             _loginPageController.fieldValidation()
                                 ? {Get.toNamed('/conformation')}
                                 : null;
@@ -117,7 +117,7 @@ class LoginPageView extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: vertical, horizontal: 0),
                     child: TextButton(
                       onPressed: () async {
-                        if (await _internetCheck.initConnectivity()) {
+                        if (await _clickInternetCheck.initConnectivity()) {
                           Get.toNamed('/registration');
                         }
                       },

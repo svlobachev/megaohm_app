@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:megaohm_app/app_services/internet_check.dart';
+import 'package:megaohm_app/app_services/background_internet_check.dart';
+import 'package:megaohm_app/app_services/click_internet_check.dart';
 import 'package:megaohm_app/app_services/my_dio_service.dart';
 import 'package:megaohm_app/app_services/server_availability_check.dart';
 import 'package:megaohm_app/widgets/pages/login_page/login_page_controller.dart';
@@ -14,6 +15,7 @@ dependencyInjectionInit() {
   Get.put(ServerAvailabilityCheck());
   Get.put(RegistrationPageController());
   Get.put(LoginPageController());
-  Get.put(InternetCheck());
+  Get.put(ClickInternetCheck());
+  Get.put(BackgroundInternetCheck());
   Get.put(ForAllForms());
 }
