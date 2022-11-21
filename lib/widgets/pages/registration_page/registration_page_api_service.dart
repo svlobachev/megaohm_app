@@ -24,10 +24,10 @@ class RegistrationAPIService {
   userRegistration() async {
     Map<String, dynamic> dataMap =
     await myDioService.floraAPI(path: '/auth', method: 'post', data: {
-      "clientID": "eee60127-1de7-59aa-92cf-d34cff956cae",
+      "clientID": _clientID,
       "clientType": "flora_v1",
-      "phone": "+71234567890",
-      "email": "example@email.me",
+      "phone": _phoneFieldIsFilled,
+      "email": _emailFieldIsFilled,
       "authType": "email"
     });
     for (var item in dataMap.entries) {

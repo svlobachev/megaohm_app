@@ -195,8 +195,7 @@ class RegistrationPageView extends StatelessWidget {
                             _registrationPageController.fieldValidation()
                                 ? {
                                     _registrationAPIService.setValues(),
-                                    await _registrationAPIService
-                                        .userRegistration(),
+                                     _registrationAPIService.userRegistration(),
                                     Get.toNamed('/conformation')
                                   }
                                 : null;
