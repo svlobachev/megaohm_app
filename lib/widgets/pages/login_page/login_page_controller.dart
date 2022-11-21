@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 class LoginPageController {
-  MySnackBarGet mySnackBarGet = Get.find();
+  final MySnackBarGet _mySnackBarGet = Get.find();
 
   String _emailFieldIsFilled = '';
   String _phoneFieldIsFilled = '';
@@ -12,7 +12,7 @@ class LoginPageController {
     if (
         _emailFieldIsFilled.isEmpty ||
         _phoneFieldIsFilled.isEmpty) {
-      mySnackBarGet.mySnackBar(
+      _mySnackBarGet.mySnackBar(
         localizationName: 'emptyField',
         icon: const Icon(
           Icons.text_fields,
@@ -30,7 +30,7 @@ class LoginPageController {
       //   print("_emailFieldIsFilledValidation --> $result");
       // }
       if (!result) {
-        mySnackBarGet.mySnackBar(
+        _mySnackBarGet.mySnackBar(
           localizationName: 'validEmail',
           icon: const Icon(
             Icons.text_fields,
@@ -49,7 +49,7 @@ class LoginPageController {
       //   print("_phoneFieldIsFilled --> $result");
       // }
       if (!result) {
-        mySnackBarGet.mySnackBar(
+        _mySnackBarGet.mySnackBar(
           localizationName: 'validPhone',
           icon: const Icon(
             Icons.text_fields,

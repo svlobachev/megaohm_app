@@ -6,11 +6,14 @@ import 'package:megaohm_app/widgets/pages/login_page/login_page_controller.dart'
 import 'package:megaohm_app/widgets/pages/registration_page/registration_page_controller.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
+import 'for_all_forms.dart';
+
 dependencyInjectionInit() {
   Get.put(MySnackBarGet());
   Get.put(MyDioService());
   Get.put(ServerAvailabilityCheck());
-  Get.put(InternetCheck());
   Get.put(RegistrationPageController());
   Get.put(LoginPageController());
+  Get.put(InternetCheck());
+  Get.put(ForAllForms());
 }

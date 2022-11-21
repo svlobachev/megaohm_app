@@ -9,9 +9,9 @@ import 'my_dio_service.dart';
 import 'server_availability_check.dart';
 
 class InternetCheck {
-  MySnackBarGet mySnackBarGet = Get.find();
-  ServerAvailabilityCheck serverAvailabilityCheck = Get.find();
-  MyDioService myDioService = Get.find();
+  final MySnackBarGet _mySnackBarGet = Get.find();
+  final ServerAvailabilityCheck _serverAvailabilityCheck = Get.find();
+  final MyDioService _myDioService = Get.find();
   // APIServersCall aPIServersCall = APIServersCall();
   // MyDioService myDioService = MyDioService();
 
@@ -19,7 +19,7 @@ class InternetCheck {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       debugPrint("--> Нет соединения с интернетом!");
-      mySnackBarGet.mySnackBar(
+      _mySnackBarGet.mySnackBar(
         localizationName: 'noInternet',
         icon: const Icon(
           Icons.dangerous,
@@ -29,8 +29,8 @@ class InternetCheck {
       );
       return false;
     } else {
-      if (myDioService.baseUrl.isEmpty) {
-        serverAvailabilityCheck.serversCalling();
+      if (_myDioService.baseUrl.isEmpty) {
+        _serverAvailabilityCheck.serversCalling();
       }
       return true;
     }

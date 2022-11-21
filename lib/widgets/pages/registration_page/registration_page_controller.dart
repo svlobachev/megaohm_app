@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 class RegistrationPageController {
-  MySnackBarGet mySnackBarGet = Get.find();
+  final MySnackBarGet _mySnackBarGet = Get.find();
   bool _isChecked = false;
   String _nameFieldIsFilled = '';
   String _emailFieldIsFilled = '';
@@ -13,7 +13,7 @@ class RegistrationPageController {
     if (_nameFieldIsFilled.isEmpty ||
         _emailFieldIsFilled.isEmpty ||
         _phoneFieldIsFilled.isEmpty) {
-      mySnackBarGet.mySnackBar(
+      _mySnackBarGet.mySnackBar(
         localizationName: 'emptyField',
         icon: const Icon(
           Icons.text_fields,
@@ -23,7 +23,7 @@ class RegistrationPageController {
       );
       return false;
     } else if (!_isChecked) {
-      mySnackBarGet.mySnackBar(
+      _mySnackBarGet.mySnackBar(
         localizationName: 'agreeToTheTerms',
         icon: const Icon(
           Icons.text_fields,
@@ -41,7 +41,7 @@ class RegistrationPageController {
       //   print("_nameFieldIsFilledValidation --> $result");
       // }
       if (!result) {
-        mySnackBarGet.mySnackBar(
+        _mySnackBarGet.mySnackBar(
           localizationName: 'validName',
           icon: const Icon(
             Icons.text_fields,
@@ -60,7 +60,7 @@ class RegistrationPageController {
       //   print("_emailFieldIsFilledValidation --> $result");
       // }
       if (!result) {
-        mySnackBarGet.mySnackBar(
+        _mySnackBarGet.mySnackBar(
           localizationName: 'validEmail',
           icon: const Icon(
             Icons.text_fields,
@@ -79,7 +79,7 @@ class RegistrationPageController {
       //   print("_phoneFieldIsFilled --> $result");
       // }
       if (!result) {
-        mySnackBarGet.mySnackBar(
+        _mySnackBarGet.mySnackBar(
           localizationName: 'validPhone',
           icon: const Icon(
             Icons.text_fields,

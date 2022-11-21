@@ -8,7 +8,7 @@ class MyCounter extends StatelessWidget {
   var _onCounter = ''.obs;
   var _onCounterTime = 60.obs;
   final int _onCounterStep = 0;
-  final InternetCheck internetCheck = Get.find();
+  final InternetCheck _internetCheck = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class MyCounter extends StatelessWidget {
                   ),
                 ),
                 onPressed: () async {
-                  if (await internetCheck.initConnectivity()) {
+                  if (await _internetCheck.initConnectivity()) {
                     _onVisibleFooter.value = true;
                     for (var i = _onCounterTime.value; i > 0; i--) {
                       _onCounter.value = "$i";

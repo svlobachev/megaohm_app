@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_services/internet_check.dart';
+import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 import 'package:megaohm_app/widgets/pages/user_agreemen_terms_page/bottom_sheet_page_view.dart';
-import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'registration_page_controller.dart';
 
-class RegistrationPageView extends StatelessWidget {
+class RegistrationPageView extends StatelessWidget{
   RegistrationPageView({Key? key}) : super(key: key);
 
-  InternetCheck internetCheck = Get.find();
-  RegistrationPageController registrationPageController = Get.find();
-  MySnackBarGet mySnackBarGet = Get.find();
+  final ForAllForms _forAllForms = Get.find();
+  final InternetCheck _internetCheck = Get.find();
+  final RegistrationPageController _registrationPageController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     var isChecked = false.obs;
-    double vertical = 5;
-    double horizontal = 17;
-    double height = 54;
+    final double vertical = _forAllForms.vertical;
+    final double horizontal = _forAllForms.horizontal;
+    final double height = _forAllForms.height;
+    final double bottomSizedBox = _forAllForms.bottomSizedBoxHeight;
 
     const TextStyle textStyle = TextStyle(
       fontSize: 12,
@@ -72,7 +73,7 @@ class RegistrationPageView extends StatelessWidget {
                   vertical: vertical, horizontal: horizontal),
               child: TextFormField(
                 onChanged: (value) {
-                  registrationPageController.nameFieldIsFilled = value;
+                  _registrationPageController.nameFieldIsFilled = value;
                 },
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
@@ -87,7 +88,7 @@ class RegistrationPageView extends StatelessWidget {
                   vertical: vertical, horizontal: horizontal),
               child: TextFormField(
                 onChanged: (value) {
-                  registrationPageController.emailFieldIsFilled = value;
+                  _registrationPageController.emailFieldIsFilled = value;
                 },
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
@@ -102,7 +103,7 @@ class RegistrationPageView extends StatelessWidget {
                   vertical: vertical, horizontal: horizontal),
               child: TextFormField(
                 onChanged: (value) {
-                  registrationPageController.phoneFieldIsFilled = value;
+                  _registrationPageController.phoneFieldIsFilled = value;
                 },
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
@@ -121,7 +122,7 @@ class RegistrationPageView extends StatelessWidget {
                       activeColor: Theme.of(context).colorScheme.secondary,
                       value: isChecked.value,
                       onChanged: (bool? value) {
-                        registrationPageController.isChecked = value!;
+                        _registrationPageController.isChecked = value!;
                         isChecked.value = value;
                       },
                     ),
@@ -154,8 +155,8 @@ class RegistrationPageView extends StatelessWidget {
                           vertical: vertical, horizontal: 0),
                       child: ElevatedButton(
                         onPressed: () async {
-                          if (await internetCheck.initConnectivity()) {
-                            registrationPageController.fieldValidation()
+                          if (await _internetCheck.initConnectivity()) {
+                            _registrationPageController.fieldValidation()
                                 ? {Get.toNamed('/conformation')}
                                 : null;
                           }
@@ -167,8 +168,8 @@ class RegistrationPageView extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 180,
+             SizedBox(
+              height: bottomSizedBox,
             ),
           ],
         ),

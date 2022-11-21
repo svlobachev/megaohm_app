@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_services/internet_check.dart';
+import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
-import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'login_page_controller.dart';
 
 class LoginPageView extends StatelessWidget {
   LoginPageView({Key? key}) : super(key: key);
 
-  InternetCheck internetCheck = Get.find();
-  LoginPageController loginPageController = Get.find();
-  MySnackBarGet mySnackBarGet = Get.find();
+  final InternetCheck _internetCheck = Get.find();
+  final LoginPageController _loginPageController = Get.find();
+  final ForAllForms _forAllForms = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    double vertical = 5;
-    double horizontal = 17;
-    double height = 54;
+    final double vertical = _forAllForms.vertical;
+    final double horizontal = _forAllForms.horizontal;
+    final double height = _forAllForms.height;
+    final double bottomSizedBox = _forAllForms.bottomSizedBoxHeight;
 
     return Scaffold(
       appBar: const SysBar(),
@@ -51,7 +52,7 @@ class LoginPageView extends StatelessWidget {
                   vertical: vertical, horizontal: horizontal),
               child: TextFormField(
                 onChanged: (value) {
-                  loginPageController.emailFieldIsFilled = value;
+                  _loginPageController.emailFieldIsFilled = value;
                 },
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
@@ -66,7 +67,7 @@ class LoginPageView extends StatelessWidget {
                   vertical: vertical, horizontal: horizontal),
               child: TextFormField(
                 onChanged: (value) {
-                  loginPageController.phoneFieldIsFilled = value;
+                  _loginPageController.phoneFieldIsFilled = value;
                 },
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
@@ -90,8 +91,8 @@ class LoginPageView extends StatelessWidget {
                         // onPressed: () => Get.toNamed('/learning_page2'),
 
                         onPressed: () async {
-                          if (await internetCheck.initConnectivity()) {
-                            loginPageController.fieldValidation()
+                          if (await _internetCheck.initConnectivity()) {
+                            _loginPageController.fieldValidation()
                                 ? {Get.toNamed('/conformation')}
                                 : null;
                           }
@@ -116,7 +117,7 @@ class LoginPageView extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: vertical, horizontal: 0),
                     child: TextButton(
                       onPressed: () async {
-                        if (await internetCheck.initConnectivity()) {
+                        if (await _internetCheck.initConnectivity()) {
                           Get.toNamed('/registration');
                         }
                       },
@@ -126,8 +127,8 @@ class LoginPageView extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 180,
+             SizedBox(
+              height: bottomSizedBox,
             ),
           ],
         ),

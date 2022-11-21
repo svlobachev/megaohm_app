@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/pages/user_agreemen_terms_page/sliver_page_view.dart';
 
 myBottomSheet(context) {
-  double vertical = 5;
-  double horizontal = 17;
-  double height = 54;
+  final ForAllForms forAllForms = Get.find();
+
+  final double vertical = forAllForms.vertical;
+  final double horizontal = forAllForms.horizontal;
+  final double height = forAllForms.height;
+
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
