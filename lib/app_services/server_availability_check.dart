@@ -5,12 +5,13 @@ import 'my_dio_service.dart';
 
 class ServerAvailabilityCheck {
   MyDioService myDioSettings = Get.find();
-  serversCalling() async {
+
+  serversCalling()  async {
     String urlOfServer;
     List<String> listOfServers = [
-      'https://api1.megaohm.ru:44302/mvp',
+      'https://dev.api.megaohm.ru:44302/mvp',
+          'https://api1.megaohm.ru:44302/mvp',
       'https://api2.megaohm.ru:44302/mvp',
-      'https://dev.api.megaohm.ru:44302/mvp'
     ];
 
     Future<bool> serverCall(String baseUrl) async {
@@ -30,8 +31,10 @@ class ServerAvailabilityCheck {
     for (urlOfServer in listOfServers) {
       if (await serverCall(urlOfServer)) {
         // debugPrint("Рабочий сервер --> $urlOfServer");
-        myDioSettings.baseUrl = urlOfServer;
-        return urlOfServer;
+        if (myDioSettings.baseUrl.isEmpty) {
+          myDioSettings.baseUrl = urlOfServer;
+          break;
+        }
       }
     }
   }

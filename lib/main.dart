@@ -10,15 +10,15 @@ import 'app_services/hive_init.dart';
 import 'app_settings/dependency_injection.dart';
 
 Future<void> main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('RegistrationBox');
+  hiveInit();
   dependencyInjectionInit();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   BackgroundInternetCheck backgroundInternetCheck = Get.find();
   backgroundInternetCheck.initConnectivity();
   backgroundInternetCheck.i++;
-  await Hive.initFlutter();
-  await Hive.openBox('RegistrationBox');
-  hiveInit();
   runApp(MyApp());
   FlutterNativeSplash.remove();
   GetDeviceId getDeviceId = Get.find();

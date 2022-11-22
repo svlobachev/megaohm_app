@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'my_dio_service.dart';
@@ -12,7 +13,7 @@ class BackgroundInternetCheck {
       ServerAvailabilityCheck();
   final MyDioService _myDioService = Get.find();
   int _i = 0;
-  // int _ii = 0;
+  int _ii = 0;
 
   int get i => _i;
 
@@ -24,8 +25,8 @@ class BackgroundInternetCheck {
   initConnectivity() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
-      // _ii++;
-      // debugPrint("--> Нет соединения с интернетом! $_ii");
+      _ii++;
+      debugPrint("--> Нет соединения с интернетом! $_ii");
       _myDioService.baseUrl = '';
       Future.delayed(
           const Duration(seconds: 1), () => initConnectivity());

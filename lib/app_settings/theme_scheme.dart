@@ -70,6 +70,8 @@ ColorScheme myFlexSchemeDark = const ColorScheme(
 
 ThemeData MyFlexThemeDataLight = FlexThemeData.light(
   colorScheme: myFlexSchemeLight,
+
+  appBarStyle: FlexAppBarStyle.scaffoldBackground,
   blendLevel: 20,
   appBarOpacity: 0.95,
   tabBarStyle: FlexTabBarStyle.forBackground,
@@ -121,6 +123,7 @@ ThemeData MyFlexThemeDataLight = FlexThemeData.light(
 ThemeData MyFlexThemeDataDark = FlexThemeData.dark(
   colorScheme: myFlexSchemeDark,
 
+  appBarStyle: FlexAppBarStyle.scaffoldBackground,
   blendLevel: 15,
   appBarOpacity: 0.90,
   tabBarStyle: FlexTabBarStyle.forBackground,

@@ -10,12 +10,17 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // final SessionController _session = Get.find();
     // _session.sessionControl();
-    return const Scaffold(
+    return  Scaffold(
       appBar: MyAppBar(),
       drawer: NavDrawer(),
       body: Scaffold(
-          // bottomNavigationBar: MyBottomNavigationBar(),
+        // bottomNavigationBar: MyBottomNavigationBar(),
+        body: Container(
+          child: Center(
+            child: Text("Добро пожаловать!"),
           ),
+        ),
+      ),
     );
   }
 }

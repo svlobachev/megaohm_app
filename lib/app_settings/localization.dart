@@ -54,7 +54,7 @@ class Localization extends Translations {
           'agreeToTheTerms': 'Пожалуйста, согласитесь с условиями пользовательского соглашения',
           'userAgreementTerms': 'Условия пользовательского соглашения',
           'iHaveReadAndAccept': 'Я ознакомлен(а) и принимаю ',
-          'emptyField': 'Пожалуйста, заполните пустые поля',
+          'emptyField': 'Пожалуйста, заполните пустое поле(я)',
           'language': 'Русский',
           'noInternet': 'Включите пожалуйста интернет!',
           'invalidMobileNumber': 'Некорректный номер телефона',

@@ -18,15 +18,15 @@ class GetDeviceId {
       if (kDebugMode) {
         print('AndroidID --> $androidID');
       } // e.g. "Moto G (4)"
-      _deviceId = androidID;
-      // return androidID;
+      // _deviceId = androidID;
+      _deviceId = uuid.v1();// Это только для теста
     } else if (Platform.isIOS) {
       IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
       if (kDebugMode) {
         print('iosIdVendor --> ${iosInfo.identifierForVendor}');
       } // e.g. "iPod7,1"
-      _deviceId = iosInfo.identifierForVendor!;
-
+      // _deviceId = iosInfo.identifierForVendor!;
+      _deviceId = uuid.v1();// Это только для теста
     }
   }
 }
