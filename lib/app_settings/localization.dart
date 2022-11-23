@@ -4,6 +4,7 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'serverNotReady': 'Try again later please',
           'searchCountry': 'Search country',
           'allClear': 'Clear',
           'code': 'Code',
@@ -42,6 +43,7 @@ class Localization extends Translations {
           'AppBarTitle': 'Megaohm',
         },
         'ru_RU': {
+          'serverNotReady': 'Пожалуйста, сделайте попытку чуть позже',
           'searchCountry': 'Поиск страны:',
           'allClear': 'Понятно',
           'code': 'Код',

@@ -4,11 +4,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 class MyDioService {
-  final MySnackBarGet _mySnackBarGet = Get.find();
   String _baseUrl = '';
   late Map<String, dynamic> dataMap;
 
@@ -45,13 +42,16 @@ class MyDioService {
           ),
         );
       } on DioError catch (e) {
-        debugPrint("--> $e");
-        dataMap = {"DioError": e};
+        dataMap["DioError"] = e;
+        final resp = e.response;
+        resp != null
+            ? dataMap["DioStatusCode"]= resp.statusCode
+            : null;
       }
       if (response.data.isNotEmpty) {
         dataMap = json.decode(response.toString());
       } else {
-        debugPrint("--> post response is empty");
+        dataMap["DioEmpty"] = "--> put response is empty";
       }
     } else if (method == 'put') {
       var response;
@@ -64,21 +64,16 @@ class MyDioService {
           ),
         );
       } on DioError catch (e) {
-        _mySnackBarGet.mySnackBar(
-          localizationName: 'pinIsIncorrect',
-          icon: const Icon(
-            Icons.password,
-            color: Colors.red,
-            size: 30.0,
-          ),
-        );
-        debugPrint("--> $e");
-        dataMap = {"DioError": e};
+        dataMap["DioError"] = e;
+        final resp = e.response;
+        resp != null
+            ? dataMap["DioStatusCode"]= resp.statusCode
+            : null;
       }
       if (response.data.isNotEmpty) {
         dataMap = json.decode(response.toString());
       } else {
-        debugPrint("--> put response is empty");
+        dataMap["DioEmpty"] = "--> put response is empty";
       }
     }
     return dataMap;

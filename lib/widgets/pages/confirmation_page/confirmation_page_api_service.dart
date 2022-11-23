@@ -11,9 +11,9 @@ class ConfirmationAPIService {
   final ConfirmationPageController confirmationPageController = Get.find();
   final MySnackBarGet _mySnackBarGet = Get.find();
   final MyDioService _myDioService = Get.find();
-  // Box box = Hive.box('RegistrationBox');
 
-  String _token = '';
+  // Box box = Hive.box('RegistrationBox');
+  
   String _tokenRt = '';
   String _tokenAt = '';
 
@@ -22,17 +22,22 @@ class ConfirmationAPIService {
   String get tokenAt => _tokenAt;
 
   Future<bool> confirmUserRegistration() async {
-    _token = _registrationAPIService.token;
+    String token = _registrationAPIService.token;
     String code = confirmationPageController.codeFieldIsFilled;
     debugPrint("confirm_code --> $code");
     Map<String, dynamic> dataMap = await _myDioService
-        .floraAPI(path: "/auth/$_token", method: 'put', data: {"code": code});
+        .floraAPI(path: "/auth/$token", method: 'put', data: {"code": code});
     for (var item in dataMap.entries) {
+      debugPrint("${item.key} - ${item.value}");
+    }
+    for (var item in dataMap.entries) {
+      ;
       if (item.key.trim() == "rt") {
         _tokenRt = item.value.trim();
       } else if (item.key.trim() == "at") {
         _tokenAt = item.value.trim();
-      } else if (item.key.trim() == "DioError") {
+      } else if (item.key.trim() == "DioError" ||
+          item.key.trim() == "DioEmpty") {
         _mySnackBarGet.mySnackBar(
           localizationName: 'pinIsIncorrect',
           icon: const Icon(
@@ -43,7 +48,6 @@ class ConfirmationAPIService {
         );
         return false;
       }
-      debugPrint("${item.key} - ${item.value}");
     }
     if (_tokenRt.isNotEmpty && _tokenRt.isNotEmpty) {
       return true;
@@ -51,16 +55,32 @@ class ConfirmationAPIService {
     return false;
   }
 
-  codeResend() async {
+  Future<bool> codeResend() async {
+    String token = _registrationAPIService.token;
+    debugPrint("inputResendToken --> $token");
     Map<String, dynamic> dataMap = await _myDioService
-        .floraAPI(path: "/auth/$_token/resend", method: 'put', data: {});
+        .floraAPI(path: "/auth/$token/resend", method: 'put', data: null);
     for (var item in dataMap.entries) {
-      if(item.key.trim() == "token") {
-        _token = item.value.trim();
-      }
       debugPrint("${item.key} - ${item.value}");
     }
+    for (var item in dataMap.entries) {
+      if (item.key.trim() == "token") {
+        _registrationAPIService.token = item.value.trim();
+        debugPrint("newResendToken --> " + item.value.trim());
+        return true;
+      } else if (item.key.trim() == "DioError" ||
+          item.key.trim() == "DioEmpty") {
+        _mySnackBarGet.mySnackBar(
+          localizationName: 'serverNotReady',
+          icon: const Icon(
+            Icons.access_time,
+            color: Colors.red,
+            size: 30.0,
+          ),
+        );
+        return false;
+      }
+    }
+    return false;
   }
-
-  accessTokenRenew() {}
 }
