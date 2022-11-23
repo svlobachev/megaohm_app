@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:megaohm_app/app_services/my_dio_service.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/registration_page_api_service.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
@@ -11,9 +10,10 @@ class ConfirmationAPIService {
   final RegistrationAPIService _registrationAPIService = Get.find();
   final ConfirmationPageController confirmationPageController = Get.find();
   final MySnackBarGet _mySnackBarGet = Get.find();
-  Box box = Hive.box('RegistrationBox');
-  MyDioService myDioService = Get.find();
+  final MyDioService _myDioService = Get.find();
+  // Box box = Hive.box('RegistrationBox');
 
+  String _token = '';
   String _tokenRt = '';
   String _tokenAt = '';
 
@@ -22,11 +22,11 @@ class ConfirmationAPIService {
   String get tokenAt => _tokenAt;
 
   Future<bool> confirmUserRegistration() async {
-    var token = _registrationAPIService.token;
-    var code = confirmationPageController.codeFieldIsFilled;
+    _token = _registrationAPIService.token;
+    String code = confirmationPageController.codeFieldIsFilled;
     debugPrint("confirm_code --> $code");
-    Map<String, dynamic> dataMap = await myDioService
-        .floraAPI(path: "/auth/$token", method: 'put', data: {"code": code});
+    Map<String, dynamic> dataMap = await _myDioService
+        .floraAPI(path: "/auth/$_token", method: 'put', data: {"code": code});
     for (var item in dataMap.entries) {
       if (item.key.trim() == "rt") {
         _tokenRt = item.value.trim();
@@ -51,7 +51,16 @@ class ConfirmationAPIService {
     return false;
   }
 
-  codeResend() {}
+  codeResend() async {
+    Map<String, dynamic> dataMap = await _myDioService
+        .floraAPI(path: "/auth/$_token/resend", method: 'put', data: {});
+    for (var item in dataMap.entries) {
+      if(item.key.trim() == "token") {
+        _token = item.value.trim();
+      }
+      debugPrint("${item.key} - ${item.value}");
+    }
+  }
 
   accessTokenRenew() {}
 }

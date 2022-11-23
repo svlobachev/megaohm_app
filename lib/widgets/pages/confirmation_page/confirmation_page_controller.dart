@@ -5,16 +5,10 @@ import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 class ConfirmationPageController {
   final MySnackBarGet _mySnackBarGet = Get.find();
-  String _codeFieldIsFilled = '';
-
-  set codeFieldIsFilled(String value) {
-    _codeFieldIsFilled = value;
-  }
-
-  String get codeFieldIsFilled => _codeFieldIsFilled;
+  String codeFieldIsFilled = '';
 
   bool fieldValidation() {
-    if (_codeFieldIsFilled.isEmpty) {
+    if (codeFieldIsFilled.isEmpty) {
       _mySnackBarGet.mySnackBar(
         localizationName: 'emptyField',
         icon: const Icon(
@@ -25,10 +19,10 @@ class ConfirmationPageController {
       );
       return false;
     }
-    if (_codeFieldIsFilled.isNotEmpty) {
+    if (codeFieldIsFilled.isNotEmpty) {
       final bool result =
       RegExp(r"[0-9]{6}")
-          .hasMatch(_codeFieldIsFilled.trim());
+          .hasMatch(codeFieldIsFilled.trim());
       if (kDebugMode) {
         // print("_codeFieldIsFilled --> $result");
       }

@@ -3,30 +3,35 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:megaohm_app/app_services/click_internet_check.dart';
 
+import 'confirmation_page_api_service.dart';
+
 class MyCounter extends StatelessWidget {
   var _onVisibleFooter = false.obs;
   var _onCounter = ''.obs;
   final _onCounterTime = 60.obs;
   final int _onCounterStep = 0;
   final ClickInternetCheck _clickInternetCheck = Get.find();
+  final ConfirmationAPIService confirmationAPIService = Get.find();
+
+  counter() async {
+    _onVisibleFooter.value = true;
+    for (var i = _onCounterTime.value; i > 0; i--) {
+      _onCounter.value = "$i";
+      await Future.delayed(
+        const Duration(seconds: 1),
+            () {
+          if (i == 1) {
+            _onVisibleFooter.value = false;
+          }
+        },
+      );
+    }
+    _onCounterTime.value += _onCounterStep;
+  }
 
   @override
   Widget build(BuildContext context) {
-    counter() async {
-        _onVisibleFooter.value = true;
-        for (var i = _onCounterTime.value; i > 0; i--) {
-          _onCounter.value = "$i";
-          await Future.delayed(
-            const Duration(seconds: 1),
-            () {
-              if (i == 1) {
-                _onVisibleFooter.value = false;
-              }
-            },
-          );
-        }
-        _onCounterTime.value += _onCounterStep;
-    }
+
     counter();
     return SingleChildScrollView(
       // padding: EdgeInsets.fromLTRB(24, 64, 24, 24),
@@ -52,6 +57,7 @@ class MyCounter extends StatelessWidget {
                 ),
                 onPressed: () async {
                   if (await _clickInternetCheck.initConnectivity()) {
+                    confirmationAPIService.codeResend();
                     counter();
                   }
                 },

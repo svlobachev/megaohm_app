@@ -191,14 +191,10 @@ class RegistrationPageView extends StatelessWidget {
                           vertical: vertical, horizontal: 0),
                       child: ElevatedButton(
                         onPressed: () async {
-                          if (await _clickInternetCheck.initConnectivity()) {
-                            if(_registrationPageController.fieldValidation())
-                                 {
-                                    _registrationAPIService.setValues();
-                                     await _registrationAPIService.userRegistration();
-                                    Get.toNamed('/conformation', arguments: '');
-                                  }
-
+                          if (await _clickInternetCheck.initConnectivity() &&
+                              _registrationPageController.fieldValidation()) {
+                            await _registrationAPIService.userRegistration();
+                            Get.toNamed('/conformation', arguments: '');
                           }
                         },
                         child: Text('doRegistration'.tr),

@@ -6,6 +6,7 @@ import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 
 import 'confirmation_page_api_service.dart';
 import 'confirmation_page_controller.dart';
+import 'confirmation_page_model.dart';
 import 'counter_view.dart';
 
 class ConformationPageView extends StatelessWidget {
@@ -13,6 +14,7 @@ class ConformationPageView extends StatelessWidget {
   final ClickInternetCheck _clickInternetCheck = Get.find();
   final ConfirmationAPIService _confirmationAPIService = Get.find();
   final ConfirmationPageController _confirmationPageController = Get.find();
+  final ConfirmationPageModel _confirmationPageModel = Get.find();
   final ForAllForms _forAllForms = Get.find();
 
   @override
@@ -98,15 +100,13 @@ class ConformationPageView extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           vertical: vertical, horizontal: 0),
                       child: ElevatedButton(
-
                         onPressed: () async {
-                          if (await _clickInternetCheck.initConnectivity()) {
-                            if (_confirmationPageController.fieldValidation()) {
-                              if (await _confirmationAPIService
+                          if (await _clickInternetCheck.initConnectivity() &&
+                              _confirmationPageController.fieldValidation() &&
+                              await _confirmationAPIService
                                   .confirmUserRegistration()) {
-                                Get.toNamed('/mainPage');
-                              }
-                            }
+                            _confirmationPageModel.registrationCompleted();
+                            Get.toNamed('/mainPage');
                           }
                         },
                         child: Text('confirm'.tr),
