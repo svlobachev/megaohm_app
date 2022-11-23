@@ -13,7 +13,7 @@ class ConfirmationAPIService {
   final MyDioService _myDioService = Get.find();
 
   // Box box = Hive.box('RegistrationBox');
-  
+
   String _tokenRt = '';
   String _tokenAt = '';
 
