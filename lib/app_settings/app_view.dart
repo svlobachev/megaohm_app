@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -26,6 +27,8 @@ class MyApp extends StatelessWidget {
       debugPrint("Выбран язык --> ${ui.window.locale.languageCode.toUpperCase()}");
       debugPrint("Выбрана страна --> ${ui.window.locale.countryCode?.toUpperCase()}");
     return GetMaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       translations: Localization(),
       // ваши переводы
       locale: ui.window.locale,
