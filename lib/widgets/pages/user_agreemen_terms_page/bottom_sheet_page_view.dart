@@ -14,6 +14,7 @@ myBottomSheet(context) {
     context: context,
     isScrollControlled: true,
     builder: (BuildContext context) {
+      FocusScope.of(context).requestFocus(FocusNode());
       return FractionallySizedBox(
         heightFactor: 0.9,
         child: Column(

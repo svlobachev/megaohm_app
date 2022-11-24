@@ -21,7 +21,6 @@ class Localization extends Translations {
           'language': 'English',
           'noInternet': 'Turn on the Internet please!',
           'invalidMobileNumber': 'Invalid Mobile Number',
-          'didNotReceiveCode': 'Didn’t receive code?',
           'get': 'Get the code again',
           'PhoneNumber': 'Your phone Number',
           'enterСodeText':
@@ -60,7 +59,6 @@ class Localization extends Translations {
           'language': 'Русский',
           'noInternet': 'Включите пожалуйста интернет!',
           'invalidMobileNumber': 'Некорректный номер телефона',
-          'didNotReceiveCode': 'Не получили код?',
           'get': 'Получить код повторно',
           'welcome': 'Добро пожаловать!',
           'PhoneNumber': 'Номер телефона',

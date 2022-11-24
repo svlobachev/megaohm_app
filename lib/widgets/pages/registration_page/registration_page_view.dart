@@ -190,7 +190,7 @@ class RegistrationPageView extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.symmetric(
-                  vertical: vertical, horizontal: horizontal),
+                  vertical: vertical+12, horizontal: horizontal),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
