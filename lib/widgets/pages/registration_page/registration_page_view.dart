@@ -117,7 +117,7 @@ class RegistrationPageView extends StatelessWidget {
             ),
             Container(
               key: UniqueKey(),
-              height: height + 20,
+              height: height + 22,
               padding: EdgeInsets.symmetric(
                   vertical: vertical, horizontal: horizontal),
               child: IntlPhoneField(

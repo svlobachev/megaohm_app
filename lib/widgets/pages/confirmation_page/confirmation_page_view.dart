@@ -108,7 +108,7 @@ class ConformationPageView extends StatelessWidget {
                               await _confirmationAPIService
                                   .confirmUserRegistration()) {
                             _confirmationPageModel.registrationCompleted();
-                            Get.toNamed('/mainPage');
+                            Get.offAllNamed('/mainPage');
                           }
                         },
                         child: Text('confirm'.tr),
