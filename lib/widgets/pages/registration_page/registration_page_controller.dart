@@ -56,8 +56,7 @@ class RegistrationPageController {
       // final bool result = RegExp(
       //         r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
       final bool result = RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.([a-zA-Z]{2,})+")
-              // r"/[A-Z0-9._%+-]+ @[A-Z0-9-]+. +.[A-Z]{2,4} / IGM+")
+              r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.([a-zA-Z]{2,})+$")
           .hasMatch(_emailFieldIsFilled.trim());
       // if (kDebugMode) {
       //   print("_emailFieldIsFilledValidation --> $result");
