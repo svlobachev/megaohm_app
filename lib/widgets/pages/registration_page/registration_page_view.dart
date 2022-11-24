@@ -74,18 +74,24 @@ class RegistrationPageView extends StatelessWidget {
                 ),
               ],
             ),
+
+
             Container(
               key: UniqueKey(),
               height: height,
               padding: EdgeInsets.symmetric(
                   vertical: vertical, horizontal: horizontal),
               child: TextFormField(
+
                 onChanged: (value) {
                   _registrationPageController.nameFieldIsFilled = value;
                 },
-                textAlignVertical: TextAlignVertical.top,
+                // textAlignVertical: TextAlignVertical.top,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                      vertical: vertical, horizontal: horizontal),
+                  // isDense: true,
                   labelText: 'yourName'.tr,
                 ),
               ),
@@ -99,24 +105,28 @@ class RegistrationPageView extends StatelessWidget {
                 onChanged: (value) {
                   _registrationPageController.emailFieldIsFilled = value;
                 },
-                textAlignVertical: TextAlignVertical.top,
+                // textAlignVertical: TextAlignVertical.top,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                      vertical: vertical, horizontal: horizontal),
+                  // isDense: true,
                   labelText: 'Email'.tr,
                 ),
               ),
             ),
             Container(
               key: UniqueKey(),
-              height: height + 25,
+              height: height + 20,
               padding: EdgeInsets.symmetric(
                   vertical: vertical, horizontal: horizontal),
               child: IntlPhoneField(
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                      vertical: vertical, horizontal: horizontal),
+                  // isDense: true,
                   labelText: 'PhoneNumber'.tr,
                 ),
-                textAlignVertical: TextAlignVertical.top,
-                flagsButtonPadding: EdgeInsets.only(top: 5),
                 dropdownIconPosition: IconPosition.leading,
                 autovalidateMode: AutovalidateMode.disabled,
                 showCountryFlag: false,
@@ -132,6 +142,7 @@ class RegistrationPageView extends StatelessWidget {
                 onTap: () async {},
               ),
             ),
+
             // Container(
             //   key: UniqueKey(),
             //   height: height,

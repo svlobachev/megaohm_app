@@ -44,15 +44,11 @@ class MyDioService {
       } on DioError catch (e) {
         dataMap["DioError"] = e;
         final resp = e.response;
-        resp != null
-            ? dataMap["DioStatusCode"]= resp.statusCode
-            : null;
+        resp != null ? dataMap["DioStatusCode"] = resp.statusCode : null;
       }
-      if (response.data.isNotEmpty) {
-        dataMap = json.decode(response.toString());
-      } else {
-        dataMap["DioEmpty"] = "--> put response is empty";
-      }
+      response.data.isNotEmpty
+          ? dataMap = json.decode(response.toString())
+          : dataMap["DioEmpty"] = "--> put response is empty";
     } else if (method == 'put') {
       var response;
       try {
@@ -66,15 +62,11 @@ class MyDioService {
       } on DioError catch (e) {
         dataMap["DioError"] = e;
         final resp = e.response;
-        resp != null
-            ? dataMap["DioStatusCode"]= resp.statusCode
-            : null;
+        resp != null ? dataMap["DioStatusCode"] = resp.statusCode : null;
       }
-      if (response.data.isNotEmpty) {
-        dataMap = json.decode(response.toString());
-      } else {
-        dataMap["DioEmpty"] = "--> put response is empty";
-      }
+      response.data.isNotEmpty
+          ? dataMap = json.decode(response.toString())
+          : dataMap["DioEmpty"] = "--> put response is empty";
     }
     return dataMap;
   }

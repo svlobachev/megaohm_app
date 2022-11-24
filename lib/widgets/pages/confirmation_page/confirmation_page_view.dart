@@ -83,6 +83,8 @@ class ConformationPageView extends StatelessWidget {
                 },
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                      vertical: vertical, horizontal: horizontal),
                   labelText: 'code'.tr,
                 ),
               ),
