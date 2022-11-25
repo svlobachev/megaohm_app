@@ -22,7 +22,7 @@ class ClickInternetCheck {
     if (connectivityResult == ConnectivityResult.none) {
       try {
         _mySnackBarGet.mySnackBar(
-          localizationName: 'noInternet',
+          text: 'noInternet'.tr,
           icon: const Icon(
             Icons.dangerous,
             color: Colors.red,

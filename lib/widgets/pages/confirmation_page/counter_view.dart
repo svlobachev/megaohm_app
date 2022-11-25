@@ -75,7 +75,7 @@ class MyCounter extends StatelessWidget {
                 onPressed:
                     (){
                   _mySnackBarGet.mySnackBar(
-                    localizationName: 'serverNotReady',
+                    text: 'serverNotReady'.tr,
                     icon: const Icon(
                       Icons.access_time,
                       color: Colors.red,

@@ -12,8 +12,6 @@ class ConfirmationAPIService {
   final MySnackBarGet _mySnackBarGet = Get.find();
   final MyDioService _myDioService = Get.find();
 
-  // Box box = Hive.box('RegistrationBox');
-
   String _tokenRt = '';
   String _tokenAt = '';
 
@@ -27,31 +25,28 @@ class ConfirmationAPIService {
     debugPrint("confirm_code --> $code");
     Map<String, dynamic> dataMap = await _myDioService
         .floraAPI(path: "/auth/$token", method: 'put', data: {"code": code});
-    for (var item in dataMap.entries) {
-      debugPrint("${item.key} - ${item.value}");
-    }
-    for (var item in dataMap.entries) {
-      if (item.key.trim() == "rt") {
-        _tokenRt = item.value.trim();
-      } else if (item.key.trim() == "at") {
-        _tokenAt = item.value.trim();
-      } else if (item.key.trim() == "DioError" ||
-          item.key.trim() == "DioEmpty") {
-        _mySnackBarGet.mySnackBar(
-          localizationName: 'pinIsIncorrect',
-          icon: const Icon(
-            Icons.password,
-            color: Colors.red,
-            size: 30.0,
-          ),
-        );
-        return false;
+
+    bool goodResponse(dataMap) {
+      for (var item in dataMap.entries) {
+        debugPrint("${item.key} - ${item.value}");
+        if (item.key.trim() == "rt") {
+          _tokenRt = item.value.trim();
+        } else if (item.key.trim() == "at") {
+          _tokenAt = item.value.trim();
+        }
       }
+      if (_tokenRt.isNotEmpty && _tokenRt.isNotEmpty) {
+        return true;
+      }
+      return false;
     }
-    if (_tokenRt.isNotEmpty && _tokenRt.isNotEmpty) {
+
+    if (goodResponse(dataMap)) {
       return true;
+    } else {
+      responseWithErrors(dataMap);
+      return false;
     }
-    return false;
   }
 
   Future<bool> codeResend() async {
@@ -59,57 +54,97 @@ class ConfirmationAPIService {
     debugPrint("inputResendToken --> $token");
     Map<String, dynamic> dataMap = await _myDioService.floraAPI(
         path: "/auth/$token/resend", method: 'put', data: null);
-    for (var item in dataMap.entries) {
-      debugPrint("${item.key} - ${item.value}");
-    }
-    for (var item in dataMap.entries) {
-      if (item.key.trim() == "token") {
-        _registrationAPIService.token = item.value.trim();
-        debugPrint("newResendToken --> " + item.value.trim());
-        return true;
-      } else if (item.key.trim() == "DioError" ||
-          item.key.trim() == "DioEmpty") {
-        _mySnackBarGet.mySnackBar(
-          localizationName: 'serverNotReady',
-          icon: const Icon(
-            Icons.access_time,
-            color: Colors.red,
-            size: 30.0,
-          ),
-        );
-        return false;
+
+    bool goodResponse(dataMap) {
+      for (var item in dataMap.entries) {
+        debugPrint("${item.key} - ${item.value}");
+        if (item.key.trim() == "token") {
+          _registrationAPIService.token = item.value.trim();
+          debugPrint("newResendToken --> " + item.value.trim());
+          return true;
+        }
       }
+      return false;
     }
-    return false;
+
+    if (goodResponse(dataMap)) {
+      return true;
+    } else {
+      responseWithErrors(dataMap);
+      return false;
+    }
   }
 
   accessTokenRenew() async {
+    // String token = _registrationAPIService.token;
+    String code = confirmationPageController.codeFieldIsFilled;
+    debugPrint("confirm_code --> $code");
     Map<String, dynamic> dataMap = await _myDioService
         .floraAPI(path: "/auth/renew", method: 'put', data: {"rt": _tokenRt});
-    for (var item in dataMap.entries) {
-      debugPrint("${item.key} - ${item.value}");
-    }
-    for (var item in dataMap.entries) {
-      if (item.key.trim() == "rt") {
-        _tokenRt = item.value.trim();
-      } else if (item.key.trim() == "at") {
-        _tokenAt = item.value.trim();
-      } else if (item.key.trim() == "DioError" ||
-          item.key.trim() == "DioEmpty") {
-        _mySnackBarGet.mySnackBar(
-          localizationName: 'serverNotReady',
-          icon: const Icon(
-            Icons.password,
-            color: Colors.red,
-            size: 30.0,
-          ),
-        );
-        return false;
+
+    bool goodResponse(dataMap) {
+      for (var item in dataMap.entries) {
+        debugPrint("${item.key} - ${item.value}");
       }
+      for (var item in dataMap.entries) {
+        if (item.key.trim() == "rt") {
+          _tokenRt = item.value.trim();
+        } else if (item.key.trim() == "at") {
+          _tokenAt = item.value.trim();
+        }
+      }
+      if (_tokenRt.isNotEmpty && _tokenRt.isNotEmpty) {
+        return true;
+      }
+      return false;
     }
-    if (_tokenRt.isNotEmpty && _tokenRt.isNotEmpty) {
+
+    if (goodResponse(dataMap)) {
       return true;
+    } else {
+      responseWithErrors(dataMap);
+      return false;
     }
-    return false;
+  }
+
+  responseWithErrors(dataMap) {
+    for (var item in dataMap.entries) {
+      debugPrint("${item.key} - ${item.value}, ");
+    }
+    String _additionalText = "";
+    // '400': 'Invalid request',
+    // '401': 'Incorrect rt token',
+    // '404': 'Client not found',
+    // '422': 'Token already used',
+    // '429': 'Too many request',
+    // '500': 'Server error',
+    switch (dataMap['responseStatusCode']) {
+      case '400':
+        _additionalText = dataMap['responseStatusCode'] + ": " + '400'.tr;
+        break;
+      case '401':
+        _additionalText = dataMap['responseStatusCode'] + ": " + '401'.tr;
+        break;
+      case '404':
+        _additionalText = dataMap['responseStatusCode'] + ": " + '404'.tr;
+        break;
+      case '422':
+        _additionalText = dataMap['responseStatusCode'] + ": " + '422'.tr;
+        break;
+      case '429':
+        _additionalText = dataMap['responseStatusCode'] + ": " + '429'.tr;
+        break;
+      case '500':
+        _additionalText = dataMap['responseStatusCode'] + ": " + '500'.tr;
+        break;
+    }
+    _mySnackBarGet.mySnackBar(
+        text: _additionalText,
+        icon: const Icon(
+          Icons.dangerous,
+          color: Colors.red,
+          size: 30.0,
+        ),
+        duration: 7);
   }
 }

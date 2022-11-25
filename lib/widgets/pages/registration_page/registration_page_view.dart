@@ -206,8 +206,6 @@ class RegistrationPageView extends StatelessWidget {
                           if (await _clickInternetCheck.initConnectivity() &&
                               _registrationPageController.fieldValidation()) {
                             _showDialog.dialogBuilder(context);
-                            // await _registrationAPIService.userRegistration();
-                            // Get.offNamed('/conformation');
                           }
                         },
                         child: Text('doRegistration'.tr),

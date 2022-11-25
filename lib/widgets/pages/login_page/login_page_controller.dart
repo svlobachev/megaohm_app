@@ -13,7 +13,7 @@ class LoginPageController {
         _emailFieldIsFilled.isEmpty ||
         _phoneFieldIsFilled.isEmpty) {
       _mySnackBarGet.mySnackBar(
-        localizationName: 'emptyField',
+        text: 'emptyField'.tr,
         icon: const Icon(
           Icons.text_fields,
           color: Colors.red,
@@ -31,7 +31,7 @@ class LoginPageController {
       // }
       if (!result) {
         _mySnackBarGet.mySnackBar(
-          localizationName: 'validEmail',
+          text: 'validEmail'.tr,
           icon: const Icon(
             Icons.text_fields,
             color: Colors.red,
@@ -50,7 +50,7 @@ class LoginPageController {
       // }
       if (!result) {
         _mySnackBarGet.mySnackBar(
-          localizationName: 'validPhone',
+          text: 'validPhone'.tr,
           icon: const Icon(
             Icons.text_fields,
             color: Colors.red,

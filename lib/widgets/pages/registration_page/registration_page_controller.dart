@@ -14,17 +14,17 @@ class RegistrationPageController {
         _emailFieldIsFilled.isEmpty ||
         _phoneFieldIsFilled.isEmpty) {
       _mySnackBarGet.mySnackBar(
-        localizationName: 'emptyField',
-        icon: const Icon(
-          Icons.text_fields,
-          color: Colors.red,
-          size: 30.0,
-        ),
-      );
+          text: 'emptyField'.tr,
+          icon: const Icon(
+            Icons.text_fields,
+            color: Colors.red,
+            size: 30.0,
+          ),
+          );
       return false;
     } else if (!_isChecked) {
       _mySnackBarGet.mySnackBar(
-        localizationName: 'agreeToTheTerms',
+        text: 'agreeToTheTerms'.tr,
         icon: const Icon(
           Icons.text_fields,
           color: Colors.red,
@@ -42,7 +42,7 @@ class RegistrationPageController {
       // }
       if (!result) {
         _mySnackBarGet.mySnackBar(
-          localizationName: 'validName',
+          text: 'validName'.tr,
           icon: const Icon(
             Icons.text_fields,
             color: Colors.red,
@@ -63,7 +63,7 @@ class RegistrationPageController {
       // }
       if (!result) {
         _mySnackBarGet.mySnackBar(
-          localizationName: 'validEmail',
+          text: 'validEmail'.tr,
           icon: const Icon(
             Icons.text_fields,
             color: Colors.red,
@@ -84,7 +84,7 @@ class RegistrationPageController {
       // }
       if (!result) {
         _mySnackBarGet.mySnackBar(
-          localizationName: 'validPhone',
+          text: 'validPhone'.tr,
           icon: const Icon(
             Icons.text_fields,
             color: Colors.red,

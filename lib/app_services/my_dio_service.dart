@@ -14,7 +14,7 @@ class MyDioService {
   Future<Map<String, dynamic>> floraAPI({path = '', method = '', data}) async {
     var baseUrl = _box.get("baseUrl");
     var dio = Dio();
-    if (baseUrl.isNotEmpty) debugPrint("floraAPI_baseUrl --> $baseUrl");
+    // if (baseUrl.isNotEmpty) debugPrint("floraAPI_baseUrl --> $baseUrl");
     dio.options
       ..baseUrl = baseUrl
       ..connectTimeout = 3000 //3s
@@ -28,6 +28,7 @@ class MyDioService {
         'Content-Type': 'application/json; charset=UTF-8',
       };
 
+
     if (method == 'post') {
       // var response;
       try {
@@ -38,9 +39,11 @@ class MyDioService {
             contentType: Headers.jsonContentType,
           ),
         );
+        dataMap["responseStatusCode"] = response.statusCode.toString();
+        // debugPrint("responseStatusCode --> ${response.statusCode}");
         response.data.isNotEmpty
             ? dataMap = json.decode(response.toString())
-            : dataMap["DioEmpty"] = "--> put response is empty";
+            : null;
       } on DioError catch (e) {
         dataMap["DioError"] = e.message;
         debugPrint(e.message.toString());
@@ -48,7 +51,6 @@ class MyDioService {
         resp != null ? {
           debugPrint(resp.statusCode.toString()),
           dataMap["DioStatusCode"] = resp.statusCode.toString(),
-          dataMap["DioStatusMessage"] = resp.statusMessage.toString()
         } : null;
       }
     } else if (method == 'put') {
@@ -60,16 +62,17 @@ class MyDioService {
             contentType: Headers.jsonContentType,
           ),
         );
+        dataMap["responseStatusCode"] = response.statusCode.toString();
+        // debugPrint("responseStatusCode --> ${response.statusCode}");
         response.data.isNotEmpty
             ? dataMap = json.decode(response.toString())
-            : dataMap["DioEmpty"] = "--> put response is empty";
+            : null;
       } on DioError catch (e) {
         dataMap["DioError"] = e.message;
         final resp = e.response;
         resp != null ? {
           debugPrint(resp.statusCode.toString()),
           dataMap["DioStatusCode"] = resp.statusCode.toString(),
-          dataMap["DioStatusMessage"] = resp.statusMessage.toString()
         } : null;
       }
     }

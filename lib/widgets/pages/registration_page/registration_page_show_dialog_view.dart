@@ -39,11 +39,14 @@ class ShowDialog {
               style: TextButton.styleFrom(
                 textStyle: Theme.of(context).textTheme.labelLarge,
               ),
-              child: Text("change".tr,              style: const TextStyle(
-                fontSize: 18,
-                // fontWeight: FontWeight.w500,
-                fontFamily: 'Roboto',
-              ),),
+              child: Text(
+                "change".tr,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto',
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -52,14 +55,18 @@ class ShowDialog {
               style: TextButton.styleFrom(
                 textStyle: Theme.of(context).textTheme.labelLarge,
               ),
-              child: Text("doRegistrationLowerCase".tr,              style: const TextStyle(
-                fontSize: 18,
-                // fontWeight: FontWeight.w500,
-                fontFamily: 'Roboto',
-              ),),
+              child: Text(
+                "doRegistrationLowerCase".tr,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto',
+                ),
+              ),
               onPressed: () async {
-                await _registrationAPIService.userRegistration();
-                Get.offNamed("/conformation");
+                if (await _registrationAPIService.userRegistration()) {
+                  Get.offAllNamed("/conformation");
+                }
               },
             ),
           ],

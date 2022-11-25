@@ -2,8 +2,16 @@ import 'package:get/get.dart';
 
 class Localization extends Translations {
   @override
-  Map<String, Map<String, String>> get keys => {
+  Map<String, Map<String, String>> get keys =>
+      {
         'en_US': {
+          'tryLater': 'try later',
+          '400': 'Invalid request',
+          '401': 'Incorrect rt token',
+          '404': 'Client not found',
+          '422': 'Token already used',
+          '429': 'Too many request',
+          '500': 'Server error',
           'change': 'Change',
           'yourData': 'Your data:',
           'serverNotReady': 'Try again later please',
@@ -26,7 +34,7 @@ class Localization extends Translations {
           'get': 'Get the code again',
           'PhoneNumber': 'Your phone Number',
           'enterСodeText':
-              'Enter the last 4 digits of the number from which we will call you. For example:\n +1_123_456_XXXX ⬅',
+          'Enter the last 4 digits of the number from which we will call you. For example:\n +1_123_456_XXXX ⬅',
           "pinIsIncorrect": "Incorrect code, please try again",
           'welcome': 'Welcome',
           'Email': 'Your email',
@@ -42,9 +50,16 @@ class Localization extends Translations {
           'instruction': 'Instruction',
           'contactWithDevelopers': 'Contact with developers',
           'settings': 'Settings',
-          'AppBarTitle': 'Megaohm',
+          'AppBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'tryLater': 'попробуйте позже',
+          '400': 'Неверный запрос',
+          '401': 'Неправильный токен rt',
+          '404': 'Клиент не найден',
+          '422': 'Токен уже использован',
+          '429': 'Слишком много запросов',
+          '500': 'Ошибка сервера',
           'change': 'Изменить',
           'yourData': 'Ваши данные:',
           'serverNotReady': 'Пожалуйста, сделайте попытку чуть позже',
@@ -68,7 +83,7 @@ class Localization extends Translations {
           'welcome': 'Добро пожаловать!',
           'PhoneNumber': 'Номер телефона',
           'enterСodeText':
-              'Введите последние 4 цифры номера с которого мы вам позвоним. Например:\n +7_123_456_XXXX ⬅',
+          'Введите последние 4 цифры номера с которого мы вам позвоним. Например:\n +7_123_456_XXXX ⬅',
           "pinIsIncorrect": "Некорректный код, попробуйте ещё раз.",
           'Email': 'Почта',
           'password': 'Ваш пароль',
@@ -83,7 +98,7 @@ class Localization extends Translations {
           'instruction': 'Инструкция',
           'contactWithDevelopers': 'Связь с разработчиками',
           'settings': 'Настройки',
-          'AppBarTitle': 'Мегаом',
+          'AppBarTitle': 'Мегаом'
         }
       };
 }

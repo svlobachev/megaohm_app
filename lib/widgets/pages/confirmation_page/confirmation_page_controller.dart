@@ -10,7 +10,7 @@ class ConfirmationPageController {
   bool fieldValidation() {
     if (codeFieldIsFilled.isEmpty) {
       _mySnackBarGet.mySnackBar(
-        localizationName: 'emptyField',
+        text: 'emptyField'.tr,
         icon: const Icon(
           Icons.text_fields,
           color: Colors.red,
@@ -28,7 +28,7 @@ class ConfirmationPageController {
       }
       if (!result) {
         _mySnackBarGet.mySnackBar(
-          localizationName: 'pinIsIncorrect',
+          text: 'pinIsIncorrect'.tr,
           icon: const Icon(
             Icons.text_fields,
             color: Colors.red,

@@ -16,16 +16,18 @@ class GetDeviceId {
       AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
       var androidID = uuid.v5(Uuid.NAMESPACE_URL, androidInfo.id);
         debugPrint('AndroidID --> $androidID');
- // e.g. "Moto G (4)"
       // _deviceId = androidID;
-      _deviceId = uuid.v1();// Это только для теста
+
+      // _deviceId = uuid.v1();// Это только для теста
+      _deviceId = "39ba4339-8fdc-554b-b27b-46764f60b5c3";// Это только для теста
+      debugPrint('TestAndroidID --> $_deviceId');
     } else if (Platform.isIOS) {
       IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-      if (kDebugMode) {
         debugPrint('iosIdVendor --> ${iosInfo.identifierForVendor}');
-      } // e.g. "iPod7,1"
+
       // _deviceId = iosInfo.identifierForVendor!;
       _deviceId = uuid.v1();// Это только для теста
+      debugPrint('TestIosIdVendor --> ${iosInfo.identifierForVendor}');
     }
   }
 }

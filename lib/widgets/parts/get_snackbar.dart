@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MySnackBarGet {
-  mySnackBar({required String localizationName,required Icon icon}) {
+  mySnackBar({required String text,required Icon icon , int duration =3 }) {
+
     Get.snackbar(
       '',
-      localizationName.tr,
+      text,
       showProgressIndicator: true,
-        icon: icon
+        icon: icon,
+        duration: Duration(seconds: duration),
     );
   }
 }
