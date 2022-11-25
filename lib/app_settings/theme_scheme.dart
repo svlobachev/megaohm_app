@@ -79,6 +79,7 @@ ThemeData MyFlexThemeDataLight = FlexThemeData.light(
   swapColors: true,
   tooltipsMatchBackground: true,
   subThemesData: const FlexSubThemesData(
+    dialogRadius: 6.0,
     thinBorderWidth: 1.0,
     thickBorderWidth: 1.0,
     elevatedButtonRadius: 4.0,
@@ -129,6 +130,7 @@ ThemeData MyFlexThemeDataDark = FlexThemeData.dark(
   tabBarStyle: FlexTabBarStyle.forBackground,
   tooltipsMatchBackground: true,
   subThemesData: const FlexSubThemesData(
+    dialogRadius: 6.0,
     thinBorderWidth: 1.0,
     thickBorderWidth: 1.0,
     elevatedButtonRadius: 4.0,

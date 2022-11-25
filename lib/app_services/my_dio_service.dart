@@ -4,22 +4,19 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 class MyDioService {
-  String _baseUrl = '';
-  late Map<String, dynamic> dataMap;
+  final Box _box = Hive.box('RegistrationBox');
 
-  set baseUrl(String value) {
-    _baseUrl = value;
-    if (_baseUrl.isNotEmpty) debugPrint("_baseUrl --> $_baseUrl");
-  }
-
-  String get baseUrl => _baseUrl;
+  late Map<String, dynamic> dataMap = {};
 
   Future<Map<String, dynamic>> floraAPI({path = '', method = '', data}) async {
+    var baseUrl = _box.get("baseUrl");
     var dio = Dio();
+    if (baseUrl.isNotEmpty) debugPrint("floraAPI_baseUrl --> $baseUrl");
     dio.options
-      ..baseUrl = _baseUrl
+      ..baseUrl = baseUrl
       ..connectTimeout = 3000 //3s
       ..receiveTimeout = 3000
       ..validateStatus = (int? status) {
@@ -32,41 +29,49 @@ class MyDioService {
       };
 
     if (method == 'post') {
-      var response;
+      // var response;
       try {
-        response = await dio.post(
+        var response = await dio.post(
           path,
           data: data,
           options: Options(
             contentType: Headers.jsonContentType,
           ),
         );
+        response.data.isNotEmpty
+            ? dataMap = json.decode(response.toString())
+            : dataMap["DioEmpty"] = "--> put response is empty";
       } on DioError catch (e) {
-        dataMap["DioError"] = e;
+        dataMap["DioError"] = e.message;
+        debugPrint(e.message.toString());
         final resp = e.response;
-        resp != null ? dataMap["DioStatusCode"] = resp.statusCode : null;
+        resp != null ? {
+          debugPrint(resp.statusCode.toString()),
+          dataMap["DioStatusCode"] = resp.statusCode.toString(),
+          dataMap["DioStatusMessage"] = resp.statusMessage.toString()
+        } : null;
       }
-      response.data.isNotEmpty
-          ? dataMap = json.decode(response.toString())
-          : dataMap["DioEmpty"] = "--> put response is empty";
     } else if (method == 'put') {
-      var response;
       try {
-        response = await dio.put(
+        var response = await dio.put(
           path,
           data: data,
           options: Options(
             contentType: Headers.jsonContentType,
           ),
         );
+        response.data.isNotEmpty
+            ? dataMap = json.decode(response.toString())
+            : dataMap["DioEmpty"] = "--> put response is empty";
       } on DioError catch (e) {
-        dataMap["DioError"] = e;
+        dataMap["DioError"] = e.message;
         final resp = e.response;
-        resp != null ? dataMap["DioStatusCode"] = resp.statusCode : null;
+        resp != null ? {
+          debugPrint(resp.statusCode.toString()),
+          dataMap["DioStatusCode"] = resp.statusCode.toString(),
+          dataMap["DioStatusMessage"] = resp.statusMessage.toString()
+        } : null;
       }
-      response.data.isNotEmpty
-          ? dataMap = json.decode(response.toString())
-          : dataMap["DioEmpty"] = "--> put response is empty";
     }
     return dataMap;
   }

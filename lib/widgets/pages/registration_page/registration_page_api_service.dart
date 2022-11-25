@@ -14,7 +14,7 @@ import 'package:megaohm_app/widgets/pages/registration_page/registration_page_co
 
   userRegistration() async {
     String clientID = _getDeviceId.deviceId;
-    // String nameFieldIsFilled = _registrationPageController.nameFieldIsFilled;
+    String nameFieldIsFilled = _registrationPageController.nameFieldIsFilled;
     String emailFieldIsFilled = _registrationPageController.emailFieldIsFilled;
     String phoneFieldIsFilled = _registrationPageController.phoneFieldIsFilled;
     Map<String, dynamic> dataMap =

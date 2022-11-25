@@ -4,17 +4,17 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'background_internet_check.dart';
-import 'my_dio_service.dart';
 import 'server_availability_check.dart';
 
 class ClickInternetCheck {
+  final Box _box = Hive.box('RegistrationBox');
   final MySnackBarGet _mySnackBarGet = Get.find();
   final ServerAvailabilityCheck _serverAvailabilityCheck =
       ServerAvailabilityCheck();
-  final MyDioService _myDioService = Get.find();
   BackgroundInternetCheck backgroundInternetCheck = Get.find();
 
   Future<bool> initConnectivity() async {
@@ -35,7 +35,7 @@ class ClickInternetCheck {
         }
       }
       debugPrint("--> Нет соединения с интернетом!");
-      _myDioService.baseUrl = '';
+      _box.put('baseUrl', '');
       backgroundInternetCheck.i++;
       if (backgroundInternetCheck.i == 1) {
         backgroundInternetCheck.initConnectivity();
@@ -43,7 +43,8 @@ class ClickInternetCheck {
       return false;
     } else {
       backgroundInternetCheck.i = 0;
-      if (_myDioService.baseUrl.isEmpty) {
+      if (_box.get('baseUrl') == '') {
+         // debugPrint("ClickInternetCheck_myDioService.baseUrl --> isEmpty");
         _serverAvailabilityCheck.serversCalling();
       }
       return true;

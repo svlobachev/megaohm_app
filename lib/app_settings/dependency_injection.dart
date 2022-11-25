@@ -10,17 +10,18 @@ import 'package:megaohm_app/widgets/pages/confirmation_page/confirmation_page_mo
 import 'package:megaohm_app/widgets/pages/login_page/login_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/registration_page_api_service.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/registration_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/registration_page_show_dialog_view.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'for_all_forms.dart';
 
 dependencyInjectionInit() {
   Get.put(MySnackBarGet());
-  Get.put(MyDioService());
   Get.put(ServerAvailabilityCheck());
+  Get.put(MyDioService());
+  Get.put(BackgroundInternetCheck());
   Get.put(RegistrationPageController());
   Get.put(LoginPageController());
-  Get.put(BackgroundInternetCheck());
   Get.put(ClickInternetCheck());
   Get.put(ForAllForms());
   Get.put(GetDeviceId());
@@ -28,4 +29,5 @@ dependencyInjectionInit() {
   Get.put(ConfirmationPageController());
   Get.put(ConfirmationAPIService());
   Get.put(ConfirmationPageModel());
+  Get.put(ShowDialog());
 }

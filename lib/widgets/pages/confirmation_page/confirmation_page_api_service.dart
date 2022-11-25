@@ -31,7 +31,6 @@ class ConfirmationAPIService {
       debugPrint("${item.key} - ${item.value}");
     }
     for (var item in dataMap.entries) {
-      ;
       if (item.key.trim() == "rt") {
         _tokenRt = item.value.trim();
       } else if (item.key.trim() == "at") {
@@ -58,8 +57,8 @@ class ConfirmationAPIService {
   Future<bool> codeResend() async {
     String token = _registrationAPIService.token;
     debugPrint("inputResendToken --> $token");
-    Map<String, dynamic> dataMap = await _myDioService
-        .floraAPI(path: "/auth/$token/resend", method: 'put', data: null);
+    Map<String, dynamic> dataMap = await _myDioService.floraAPI(
+        path: "/auth/$token/resend", method: 'put', data: null);
     for (var item in dataMap.entries) {
       debugPrint("${item.key} - ${item.value}");
     }
@@ -80,6 +79,36 @@ class ConfirmationAPIService {
         );
         return false;
       }
+    }
+    return false;
+  }
+
+  accessTokenRenew() async {
+    Map<String, dynamic> dataMap = await _myDioService
+        .floraAPI(path: "/auth/renew", method: 'put', data: {"rt": _tokenRt});
+    for (var item in dataMap.entries) {
+      debugPrint("${item.key} - ${item.value}");
+    }
+    for (var item in dataMap.entries) {
+      if (item.key.trim() == "rt") {
+        _tokenRt = item.value.trim();
+      } else if (item.key.trim() == "at") {
+        _tokenAt = item.value.trim();
+      } else if (item.key.trim() == "DioError" ||
+          item.key.trim() == "DioEmpty") {
+        _mySnackBarGet.mySnackBar(
+          localizationName: 'serverNotReady',
+          icon: const Icon(
+            Icons.password,
+            color: Colors.red,
+            size: 30.0,
+          ),
+        );
+        return false;
+      }
+    }
+    if (_tokenRt.isNotEmpty && _tokenRt.isNotEmpty) {
+      return true;
     }
     return false;
   }

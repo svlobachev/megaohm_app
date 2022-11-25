@@ -6,7 +6,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:megaohm_app/app_services/click_internet_check.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_api_service.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/registration_page_show_dialog_view.dart';
 import 'package:megaohm_app/widgets/pages/user_agreemen_terms_page/bottom_sheet_page_view.dart';
 
 import 'registration_page_controller.dart';
@@ -17,7 +17,8 @@ class RegistrationPageView extends StatelessWidget {
   final ForAllForms _forAllForms = Get.find();
   final ClickInternetCheck _clickInternetCheck = Get.find();
   final RegistrationPageController _registrationPageController = Get.find();
-  final RegistrationAPIService _registrationAPIService = Get.find();
+  final ShowDialog _showDialog = Get.find();
+  // final RegistrationAPIService _registrationAPIService = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -204,8 +205,9 @@ class RegistrationPageView extends StatelessWidget {
                         onPressed: () async {
                           if (await _clickInternetCheck.initConnectivity() &&
                               _registrationPageController.fieldValidation()) {
-                            await _registrationAPIService.userRegistration();
-                            Get.toNamed('/conformation', arguments: '');
+                            _showDialog.dialogBuilder(context);
+                            // await _registrationAPIService.userRegistration();
+                            // Get.offNamed('/conformation');
                           }
                         },
                         child: Text('doRegistration'.tr),

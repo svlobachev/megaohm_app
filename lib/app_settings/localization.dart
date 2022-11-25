@@ -4,6 +4,8 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'change': 'Change',
+          'yourData': 'Your data:',
           'serverNotReady': 'Try again later please',
           'searchCountry': 'Search country',
           'allClear': 'Clear',
@@ -32,6 +34,7 @@ class Localization extends Translations {
           'enter': 'Enter',
           'registration': 'Registration',
           'doRegistration': 'REGISTER ONESELF',
+          'doRegistrationLowerCase': 'Register',
           'toComeIn': 'INPUT',
           'profile': 'profile',
           'lightDarkModes': 'Light/Dark modes',
@@ -42,6 +45,8 @@ class Localization extends Translations {
           'AppBarTitle': 'Megaohm',
         },
         'ru_RU': {
+          'change': 'Изменить',
+          'yourData': 'Ваши данные:',
           'serverNotReady': 'Пожалуйста, сделайте попытку чуть позже',
           'searchCountry': 'Поиск страны:',
           'allClear': 'Понятно',
@@ -70,6 +75,7 @@ class Localization extends Translations {
           'enter': 'Вход',
           'registration': 'Регистрация',
           'doRegistration': 'ЗАРЕГИСТРИРОВАТЬСЯ',
+          'doRegistrationLowerCase': 'Зарегистрироваться',
           'toComeIn': 'ВОЙТИ',
           'profile': 'Профиль',
           'lightDarkModes': 'Ночной/Дневной режимы',

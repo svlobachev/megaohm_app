@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 
 import 'my_dio_service.dart';
 
 class ServerAvailabilityCheck {
-  MyDioService myDioSettings = Get.find();
+  final Box _box = Hive.box('RegistrationBox');
+  MyDioService myDioSettings = MyDioService();
 
-  serversCalling()  async {
+  serversCalling()   async {
+
     String urlOfServer;
     List<String> listOfServers = [
       'https://dev.api.megaohm.ru:44302/mvp',
@@ -15,13 +17,15 @@ class ServerAvailabilityCheck {
     ];
 
     Future<bool> serverCall(String baseUrl) async {
+
       try {
         Dio dio = Dio();
         await dio.post(baseUrl);
       } on DioError catch (e) {
+        // debugPrint(e.message);
         final response = e.response;
         if (response != null) {
-          // debugPrint(response.statusCode);
+          // debugPrint(response.statusCode.toString());
           return true;
         }
       }
@@ -31,8 +35,9 @@ class ServerAvailabilityCheck {
     for (urlOfServer in listOfServers) {
       if (await serverCall(urlOfServer)) {
         // debugPrint("Рабочий сервер --> $urlOfServer");
-        if (myDioSettings.baseUrl.isEmpty) {
-          myDioSettings.baseUrl = urlOfServer;
+        if (_box.get('baseUrl') == '') {
+          _box.put("baseUrl", urlOfServer);
+          // myDioSettings.baseUrl = urlOfServer;
           break;
         }
       }

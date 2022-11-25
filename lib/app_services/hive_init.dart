@@ -1,10 +1,13 @@
 
 
+import 'package:hive/hive.dart';
+
 hiveInit() {
-  // var box = Hive.box('RegistrationBox');
+  var box = Hive.box('RegistrationBox');
+
   // box.deleteFromDisk();
 
-  // box.delete('token');
+  box.put('baseUrl', '');
   // box.delete('registrationComplete');
   // box.delete('registrationPinCode');
   //

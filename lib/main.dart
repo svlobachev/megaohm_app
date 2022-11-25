@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -7,9 +9,12 @@ import 'package:megaohm_app/app_settings/app_view.dart';
 
 import 'app_services/get_device_id.dart';
 import 'app_services/hive_init.dart';
+import 'app_services/my_http_overrides.dart';
 import 'app_settings/dependency_injection.dart';
 
-Future<void> main() async {
+
+ main() async {
+  HttpOverrides.global = MyHttpOverrides();
   await Hive.initFlutter();
   await Hive.openBox('RegistrationBox');
   hiveInit();
@@ -20,8 +25,8 @@ Future<void> main() async {
   backgroundInternetCheck.initConnectivity();
   backgroundInternetCheck.i++;
   runApp(MyApp());
-  FlutterNativeSplash.remove();
   GetDeviceId getDeviceId = Get.find();
   getDeviceId.getDeviceId();
+  FlutterNativeSplash.remove();
 
 }
