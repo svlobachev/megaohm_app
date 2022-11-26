@@ -18,9 +18,9 @@ import 'for_all_forms.dart';
 
 dependencyInjectionInit() {
   Get.put(MyDioService());
-  Get.put(AccessTokenRenew());
   Get.put(RegistrationStatusController());
   Get.put(MySnackBarGet());
+  Get.put(AccessTokenRenew());
   Get.put(ServerAvailabilityCheck());
   Get.put(BackgroundInternetCheck());
   Get.put(RegistrationPageController());

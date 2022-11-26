@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
+import 'access_token_renew.dart';
 import 'my_dio_service.dart';
 
 class ServerAvailabilityCheck {
   final Box _box = Hive.box('RegistrationBox');
   MyDioService myDioSettings = MyDioService();
-
+  final AccessTokenRenew accessTokenRenew = Get.find();
   serversCalling()   async {
 
     String urlOfServer;
@@ -37,6 +39,7 @@ class ServerAvailabilityCheck {
         // debugPrint("Рабочий сервер --> $urlOfServer");
         if (_box.get('baseUrl') == '') {
           _box.put("baseUrl", urlOfServer);
+          accessTokenRenew.accessTokenRenew();
           // myDioSettings.baseUrl = urlOfServer;
           break;
         }

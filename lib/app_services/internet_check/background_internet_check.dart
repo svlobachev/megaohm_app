@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import '../HTTP_Dio/server_availability_check.dart';
-
 class BackgroundInternetCheck {
   final Box _box = Hive.box('RegistrationBox');
+
   final ServerAvailabilityCheck _serverAvailabilityCheck =
       ServerAvailabilityCheck();
   int i = 0;
@@ -26,6 +26,8 @@ class BackgroundInternetCheck {
       if (_box.get('baseUrl') == '') {
         // debugPrint("BackgroundInternetCheck_myDioService.baseUrl --> isEmpty");
         _serverAvailabilityCheck.serversCalling();
+
+
       }
     }
 

@@ -82,7 +82,7 @@ class RegistrationAPIService {
           color: Colors.red,
           size: 30.0,
         ),
-        duration: 7);
+        duration: 3);
   }
 
 }

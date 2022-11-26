@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:megaohm_app/app_services/HTTP_Dio/my_dio_service.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
-
 
 class AccessTokenRenew {
   final Box _box = Hive.box('RegistrationBox');
@@ -14,18 +12,20 @@ class AccessTokenRenew {
   String _tokenAt = '';
 
   String get tokenRt => _tokenRt;
+
   String get tokenAt => _tokenAt;
 
   accessTokenRenew() async {
     _tokenRt = _box.get("tokenRt");
     _tokenAt = _box.get("tokenAt");
+
     Map<String, dynamic> dataMap = await _myDioService
         .floraAPI(path: "/auth/renew", method: 'put', data: {"rt": _tokenRt});
 
     bool goodResponse(dataMap) {
-      for (var item in dataMap.entries) {
-        debugPrint("${item.key} - ${item.value}");
-      }
+      // for (var item in dataMap.entries) {
+      //   debugPrint("${item.key} - ${item.value}");
+      // }
       for (var item in dataMap.entries) {
         if (item.key.trim() == "rt") {
           _tokenRt = item.value.trim();
@@ -88,6 +88,6 @@ class AccessTokenRenew {
           color: Colors.red,
           size: 30.0,
         ),
-        duration: 7);
+        duration: 3);
   }
 }
