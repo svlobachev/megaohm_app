@@ -12,8 +12,7 @@ import 'app_services/get_device_id.dart';
 import 'app_services/hive_init.dart';
 import 'app_settings/dependency_injection.dart';
 
-
- main() async {
+main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   HttpOverrides.global = MyHttpOverrides();
@@ -21,7 +20,6 @@ import 'app_settings/dependency_injection.dart';
   await Hive.openBox('RegistrationBox');
   hiveInit();
   dependencyInjectionInit();
-
   BackgroundInternetCheck backgroundInternetCheck = Get.find();
   backgroundInternetCheck.initConnectivity();
   backgroundInternetCheck.i++;
