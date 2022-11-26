@@ -21,12 +21,7 @@ class ShowDialog {
           title: Text("yourData".tr),
           content: Container(
             child: Text(
-              "yourName".tr +
-                  ": $_nameFieldIsFilled\n\n" +
-                  "Email".tr +
-                  ": $_emailFieldIsFilled\n\n" +
-                  "PhoneNumber".tr +
-                  ": $_phoneFieldIsFilled\n",
+              "${"yourName".tr}: $_nameFieldIsFilled\n\n${"Email".tr}: $_emailFieldIsFilled\n\n${"PhoneNumber".tr}: $_phoneFieldIsFilled\n",
               style: const TextStyle(
                 fontSize: 18,
                 // fontWeight: FontWeight.w500,
