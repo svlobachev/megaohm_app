@@ -10,15 +10,8 @@ class BackgroundInternetCheck {
   final Box _box = Hive.box('RegistrationBox');
   final ServerAvailabilityCheck _serverAvailabilityCheck =
       ServerAvailabilityCheck();
-  int _i = 0;
+  int i = 0;
   int _ii = 0;
-
-  int get i => _i;
-
-  set i(int value) {
-    _i = value;
-    // debugPrint(_i.toString());
-  }
 
   initConnectivity() async {
     var connectivityResult = await (Connectivity().checkConnectivity());

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:megaohm_app/app_services/HTTP_Dio/access_token_renew.dart';
 import 'package:megaohm_app/app_services/HTTP_Dio/my_dio_service.dart';
 import 'package:megaohm_app/app_services/HTTP_Dio/server_availability_check.dart';
 import 'package:megaohm_app/app_services/get_device_id.dart';
@@ -30,4 +31,5 @@ dependencyInjectionInit() {
   Get.put(ConfirmationAPIService());
   Get.put(ConfirmationPageModel());
   Get.put(ShowDialog());
+  Get.put(AccessTokenRenew());
 }

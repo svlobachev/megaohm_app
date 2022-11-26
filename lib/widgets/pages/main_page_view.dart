@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:megaohm_app/app_services/HTTP_Dio/access_token_renew.dart';
 import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
-import 'package:megaohm_app/widgets/pages/confirmation_page/confirmation_page_api_service.dart';
 
 import '../navigation/myAppBar.dart';
 import '../navigation/navDrawer.dart';
@@ -10,7 +10,7 @@ import '../navigation/navDrawer.dart';
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
   final ClickInternetCheck _clickInternetCheck = Get.find();
-  final ConfirmationAPIService _confirmationAPIService = Get.find();
+  final AccessTokenRenew _accessTokenRenew = Get.find();
   final Box _box = Hive.box('RegistrationBox');
 
 
@@ -32,9 +32,9 @@ class MainPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () async {
                     if (await _clickInternetCheck.initConnectivity() &&
-                        await _confirmationAPIService.accessTokenRenew()) {
-                      tokenRt.value = _confirmationAPIService.tokenRt;
-                      tokenAt.value = _confirmationAPIService.tokenAt;
+                        await _accessTokenRenew.accessTokenRenew()) {
+                      tokenRt.value = _accessTokenRenew.tokenRt;
+                      tokenAt.value = _accessTokenRenew.tokenAt;
                     }
                   },
                   child: const Text("Обновить"),

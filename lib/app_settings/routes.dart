@@ -6,12 +6,12 @@ import 'package:megaohm_app/widgets/pages/main_page_view.dart';
 import '../widgets/pages/registration_page/registration_page_view.dart';
 
 String myInitialRoute = '/';
-RegistrationStatusController _registrationController = Get.find();
+RegistrationStatusController _registrationStatusController = Get.find();
 List<GetPage> myGetPages = [
 
   GetPage(
       name: '/',
-      page: () => _registrationController.registrationControl()
+      page: () => _registrationStatusController.registrationControl()
           ? MainPage()
           : RegistrationPageView()),
 
