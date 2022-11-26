@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:megaohm_app/app_settings/theme_scheme.dart';
+
+import 'navDrawer_show_dialog.dart';
 
 // Press the Navigation Drawer button to the left of AppBar to show
 // a simple Drawer with two items.
@@ -11,6 +12,7 @@ class NavDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NavDrawerShowDialog _navDrawerShowDialog = Get.find();
      UserAccountsDrawerHeader drawerHeader = UserAccountsDrawerHeader(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.secondary,
@@ -27,24 +29,31 @@ class NavDrawer extends StatelessWidget {
         children: [
           drawerHeader,
           ListTile(
-            title: Text('profile'.tr),
-            leading: const Icon(Icons.account_box_outlined),
+            title: Text('myDevices'.tr),
+            leading: const Icon(Icons.devices_other),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          // ListTile(
+          //   title: Text('lightDarkModes'.tr),
+          //   leading: const Icon(Icons.dark_mode),
+          //   onTap: () {
+          //     Get.changeTheme(
+          //         Get.isDarkMode ? MyFlexThemeDataLight : MyFlexThemeDataDark);
+          //     Get.back();
+          //   },
+          // ),
+          ListTile(
+            title: Text('settings'.tr),
+            leading: const Icon(Icons.settings),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('lightDarkModes'.tr),
-            leading: const Icon(Icons.dark_mode),
-            onTap: () {
-              Get.changeTheme(
-                  Get.isDarkMode ? MyFlexThemeDataLight : MyFlexThemeDataDark);
-              Get.back();
-            },
-          ),
-          ListTile(
-            title: Text('languages'.tr),
-            leading: const Icon(Icons.language),
+            title: Text('aboutTheApp'.tr),
+            leading: const Icon(Icons.info_outline),
             onTap: () {
               // _locale == Locale('en', 'US')
               //     ? Get.updateLocale(Locale('ru', 'RU'))
@@ -53,26 +62,13 @@ class NavDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('instruction'.tr),
-            leading: const Icon(Icons.integration_instructions),
+            title: Text('goOut'.tr),
+            leading: const Icon(Icons.exit_to_app),
             onTap: () {
-              Navigator.pop(context);
+              _navDrawerShowDialog.dialogBuilder(context);
             },
           ),
-          ListTile(
-            title: Text('contactWithDevelopers'.tr),
-            leading: const Icon(Icons.games_sharp),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('settings'.tr),
-            leading: const Icon(Icons.settings),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+
         ],
       ),
     );

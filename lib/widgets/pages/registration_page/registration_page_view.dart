@@ -18,7 +18,6 @@ class RegistrationPageView extends StatelessWidget {
   final ClickInternetCheck _clickInternetCheck = Get.find();
   final RegistrationPageController _registrationPageController = Get.find();
   final ShowDialog _showDialog = Get.find();
-  // final RegistrationAPIService _registrationAPIService = Get.find();
 
   @override
   Widget build(BuildContext context) {

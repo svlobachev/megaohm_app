@@ -5,6 +5,11 @@ class Localization extends Translations {
   Map<String, Map<String, String>> get keys =>
       {
         'en_US': {
+          'cancel': 'Cancel',
+          'logOut': 'Are you sure you want to log out of your account?',
+          'goOut': 'Go out',
+          'aboutTheApp': 'About the app',
+          'myDevices': 'My devices',
           'tryLater': 'try later',
           '400': 'Invalid request',
           '401': 'Incorrect rt token',
@@ -53,6 +58,11 @@ class Localization extends Translations {
           'AppBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'cancel': 'Отменить',
+          'logOut': 'Вы действительно хотите выйти из аккаунта?',
+          'goOut': 'Выйти',
+          'aboutTheApp': 'О приложении',
+          'myDevices': 'Мои устройства',
           'tryLater': 'попробуйте позже',
           '400': 'Неверный запрос',
           '401': 'Неправильный токен rt',
