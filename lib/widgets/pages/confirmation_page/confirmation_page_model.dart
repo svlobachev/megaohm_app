@@ -5,13 +5,12 @@ import 'package:megaohm_app/widgets/pages/registration_page/registration_page_co
 
 import 'confirmation_page_api_service.dart';
 
-class ConfirmationPageModel{
+class ConfirmationPageModel {
   final Box _box = Hive.box('RegistrationBox');
   final ConfirmationAPIService _confirmationAPIService = Get.find();
   final RegistrationPageController _registrationPageController = Get.find();
 
-
-  registrationCompleted(){
+  registrationCompleted() {
     _box.put("registrationStatus", "completed");
     _box.put("tokenAt", _confirmationAPIService.tokenAt);
     _box.put("tokenRt", _confirmationAPIService.tokenRt);
@@ -19,6 +18,6 @@ class ConfirmationPageModel{
     _box.put("phone", _registrationPageController.phoneFieldIsFilled);
     _box.put("email", _registrationPageController.emailFieldIsFilled);
 
-    debugPrint("registrationStatus --> "+_box.get("registrationStatus"));
+    debugPrint("registrationStatus --> " + _box.get("registrationStatus"));
   }
 }

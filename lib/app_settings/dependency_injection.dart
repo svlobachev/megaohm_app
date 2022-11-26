@@ -17,10 +17,11 @@ import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 import 'for_all_forms.dart';
 
 dependencyInjectionInit() {
+  Get.put(MyDioService());
+  Get.put(AccessTokenRenew());
   Get.put(RegistrationStatusController());
   Get.put(MySnackBarGet());
   Get.put(ServerAvailabilityCheck());
-  Get.put(MyDioService());
   Get.put(BackgroundInternetCheck());
   Get.put(RegistrationPageController());
   Get.put(ClickInternetCheck());
@@ -31,5 +32,4 @@ dependencyInjectionInit() {
   Get.put(ConfirmationAPIService());
   Get.put(ConfirmationPageModel());
   Get.put(ShowDialog());
-  Get.put(AccessTokenRenew());
 }
