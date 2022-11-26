@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:megaohm_app/app_services/my_dio_service.dart';
-import 'package:megaohm_app/app_services/server_availability_check.dart';
+import 'package:megaohm_app/app_services/HTTP_Dio/my_dio_service.dart';
+import 'package:megaohm_app/app_services/HTTP_Dio/server_availability_check.dart';
 import 'package:megaohm_app/app_settings/dependency_injection.dart';
 import 'package:uuid/uuid.dart';
 

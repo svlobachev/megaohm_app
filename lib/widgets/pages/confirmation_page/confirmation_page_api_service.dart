@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:megaohm_app/app_services/my_dio_service.dart';
+import 'package:megaohm_app/app_services/HTTP_Dio/my_dio_service.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/registration_page_api_service.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
@@ -89,10 +89,10 @@ class ConfirmationAPIService {
       for (var item in dataMap.entries) {
         if (item.key.trim() == "rt") {
           _tokenRt = item.value.trim();
-          _box.put("tokenRt", item.value.trim());
+          _box.put("tokenRt", _tokenRt);
         } else if (item.key.trim() == "at") {
           _tokenAt = item.value.trim();
-          _box.put("tokenAt", item.value.trim());
+          _box.put("tokenAt", _tokenAt);
         }
       }
       if (_tokenRt.isNotEmpty && _tokenRt.isNotEmpty) {

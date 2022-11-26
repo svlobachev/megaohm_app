@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
+import '../HTTP_Dio/server_availability_check.dart';
 import 'background_internet_check.dart';
-import 'server_availability_check.dart';
 
 class ClickInternetCheck {
   final Box _box = Hive.box('RegistrationBox');

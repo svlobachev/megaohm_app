@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/confirmation_page_api_service.dart';
 
-import '../../app_services/click_internet_check.dart';
 import '../navigation/myAppBar.dart';
 import '../navigation/navDrawer.dart';
 

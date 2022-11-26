@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:megaohm_app/app_services/click_internet_check.dart';
+import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/registration_page_show_dialog_view.dart';

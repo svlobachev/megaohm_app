@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:megaohm_app/app_services/click_internet_check.dart';
+import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'confirmation_page_api_service.dart';

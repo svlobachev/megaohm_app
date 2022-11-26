@@ -4,7 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-import 'server_availability_check.dart';
+import '../HTTP_Dio/server_availability_check.dart';
 
 class BackgroundInternetCheck {
   final Box _box = Hive.box('RegistrationBox');

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:megaohm_app/app_services/click_internet_check.dart';
+import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 
