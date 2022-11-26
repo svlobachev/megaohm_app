@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/confirmation_page_api_service.dart';
 
 import '../../app_services/click_internet_check.dart';
@@ -10,11 +11,15 @@ class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
   final ClickInternetCheck _clickInternetCheck = Get.find();
   final ConfirmationAPIService _confirmationAPIService = Get.find();
+  final Box _box = Hive.box('RegistrationBox');
+
 
   @override
   Widget build(BuildContext context) {
-    var tokenRt = _confirmationAPIService.tokenRt.obs;
-    var tokenAt = _confirmationAPIService.tokenAt.obs;
+    String _tokenRt = _box.get("tokenRt");
+    String _tokenAt = _box.get("tokenAt");
+    var tokenRt = _tokenRt.obs;
+    var tokenAt = _tokenAt.obs;
     return Scaffold(
       appBar: MyAppBar(),
       drawer: NavDrawer(),

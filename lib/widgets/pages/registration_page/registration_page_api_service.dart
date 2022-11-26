@@ -9,7 +9,6 @@ class RegistrationAPIService {
   final RegistrationPageController _registrationPageController = Get.find();
   final GetDeviceId _getDeviceId = Get.find();
   final MyDioService _myDioService = Get.find();
-  final MySnackBarGet _mySnackBarGet = Get.find();
   String token = '';
 
   Future<bool> userRegistration() async {
@@ -44,8 +43,8 @@ class RegistrationAPIService {
     }
     return false;
   }
-
   responseWithErrors(dataMap) {
+    final MySnackBarGet _mySnackBarGet = Get.find();
     for (var item in dataMap.entries) {
       debugPrint("${item.key} - ${item.value}, ");
     }
@@ -85,4 +84,5 @@ class RegistrationAPIService {
         ),
         duration: 7);
   }
+
 }

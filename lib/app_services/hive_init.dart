@@ -8,8 +8,8 @@ hiveInit() {
   // box.deleteFromDisk();
 
   box.put('baseUrl', '');
-  // box.delete('registrationComplete');
-  // box.delete('registrationPinCode');
+
+  // box.delete('registrationStatus');
   //
   // box.put('session', '');
   //
