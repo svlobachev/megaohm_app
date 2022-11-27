@@ -14,9 +14,9 @@ class ServerAvailabilityCheck {
   serversCalling() async {
     String urlOfServer;
     List<String> listOfServers = [
-      'https://dev.api.megaohm.ru:44302/mvp',
-      'https://api1.megaohm.ru:44302/mvp',
-      'https://api2.megaohm.ru:44302/mvp',
+      'url: https://dev.api.megaohm.ru:44301/mvp',
+      // 'https://api1.megaohm.ru:44302:44302/mvp',
+      // 'https://api2.megaohm.ru:44302:44302/mvp',
     ];
 
     Future<bool> serverCall(String baseUrl) async {

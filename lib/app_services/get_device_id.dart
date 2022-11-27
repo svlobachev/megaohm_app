@@ -18,8 +18,8 @@ class GetDeviceId {
         debugPrint('AndroidID --> $androidID');
       // _deviceId = androidID;
 
-      _deviceId = uuid.v1();// Это только для теста
-      // _deviceId = "39ba4339-8fdc-554b-b27b-46764f60b5c3";// Это только для теста
+      // _deviceId = uuid.v1();// Это только для теста
+      _deviceId = "39ba4339-8fdc-554b-b27b-46764f60b5c3";// Это только для теста
       debugPrint('TestAndroidID --> $_deviceId');
     } else if (Platform.isIOS) {
       IosDeviceInfo iosInfo = await deviceInfo.iosInfo;

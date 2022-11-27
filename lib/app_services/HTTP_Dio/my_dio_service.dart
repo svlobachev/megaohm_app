@@ -74,7 +74,7 @@ class MyDioService {
         resp != null
             ? {
                 debugPrint(resp.statusCode.toString()),
-                dataMap["DioStatusCode"] = resp.statusCode.toString(),
+                dataMap["DioStatusCode"] = resp.data.statusCode.toString(),
               }
             : null;
       }
