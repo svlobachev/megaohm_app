@@ -71,7 +71,7 @@ ColorScheme myFlexSchemeDark = const ColorScheme(
 ThemeData MyFlexThemeDataLight = FlexThemeData.light(
   colorScheme: myFlexSchemeLight,
 
-  // appBarStyle: FlexAppBarStyle.scaffoldBackground,
+  appBarStyle: FlexAppBarStyle.scaffoldBackground,
   blendLevel: 20,
   appBarOpacity: 0.95,
   tabBarStyle: FlexTabBarStyle.forBackground,
@@ -83,8 +83,8 @@ ThemeData MyFlexThemeDataLight = FlexThemeData.light(
     thinBorderWidth: 1.0,
     thickBorderWidth: 1.0,
     elevatedButtonRadius: 4.0,
-    elevatedButtonSchemeColor: SchemeColor.onPrimary,
-    elevatedButtonSecondarySchemeColor: SchemeColor.secondary,
+    elevatedButtonSchemeColor: SchemeColor.secondary,
+    elevatedButtonSecondarySchemeColor: SchemeColor.onPrimary,
     inputDecoratorIsFilled: false,
     inputDecoratorRadius: 4.0,
     inputDecoratorUnfocusedBorderIsColored: false,
@@ -117,14 +117,14 @@ ThemeData MyFlexThemeDataLight = FlexThemeData.light(
   ),
   useMaterial3ErrorColors: true,
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
-  useMaterial3: true,
+  useMaterial3: false,
   fontFamily: GoogleFonts.roboto().fontFamily,
 );
 
 ThemeData MyFlexThemeDataDark = FlexThemeData.dark(
   colorScheme: myFlexSchemeDark,
 
-  // appBarStyle: FlexAppBarStyle.scaffoldBackground,
+  appBarStyle: FlexAppBarStyle.scaffoldBackground,
   blendLevel: 15,
   appBarOpacity: 0.90,
   tabBarStyle: FlexTabBarStyle.forBackground,
@@ -167,7 +167,7 @@ ThemeData MyFlexThemeDataDark = FlexThemeData.dark(
   ),
   useMaterial3ErrorColors: true,
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
-  useMaterial3: true,
+  useMaterial3: false,
 // To use the playground font, add GoogleFonts package and uncomment
 // fontFamily: GoogleFonts.notoSans().fontFamily,
   fontFamily: GoogleFonts.roboto().fontFamily,

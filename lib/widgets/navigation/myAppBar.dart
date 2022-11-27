@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({Key? key}) : super(key: key);
@@ -9,36 +9,26 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     // Color _appBarColor = Theme.of(context).colorScheme.secondary;
     Color appBarColor = Theme.of(context).colorScheme.secondary;
-    return GFAppBar(
+    return AppBar(
+      iconTheme:  IconThemeData(
+          color: Theme.of(context).colorScheme.onPrimary,
+        size: 30,
+      ),
         backgroundColor: appBarColor,
-      title: Text('AppBarTitle'.tr),
-      // title: Text('AppBarTitle'),
-      actions: <Widget>[
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GFIconBadge(
-              counterChild: const GFBadge(
-                child: Text("12"),
-              ),
-              child: GFIconButton(
-                color: appBarColor,
-                onPressed: () {},
-                icon: const Icon(Icons.add_alert),
-                shape: GFIconButtonShape.circle,
-                // iconSize: 20.0,
-              ),
-            ),
-          ),
-        ),
-        // IconButton(
-        //   icon: const Icon(Icons.add_alert),
-        //   tooltip: 'Show Snackbar',
-        //   onPressed: () {
-        //     const SnackBar(content: Text('This is a snackbar'));
-        //   },
-        // ),
-      ],
+      title: Text('AppBarTitle'.tr, style: TextStyle(
+          color: Theme.of(context).colorScheme.onPrimary,
+          fontWeight: FontWeight.w300),),
+      // backgroundColor: Theme.of(context).colorScheme.primary,
+
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: Theme.of(context).colorScheme.tertiary,
+        statusBarIconBrightness:
+        Get.isDarkMode ? Brightness.dark : Brightness.light,
+        // For Android (dark icons)
+        statusBarBrightness: Get.isDarkMode
+            ? Brightness.dark
+            : Brightness.light, // For iOS (dark icons)
+      ),
     );
   }
 

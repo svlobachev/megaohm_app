@@ -15,6 +15,8 @@ class MyCounter extends StatelessWidget {
   var _onCounterTime = 60.obs;
   final int _onCounterStep = 0;
 
+  MyCounter({super.key});
+
   counter() async {
     _onVisibleFooter.value = true;
     for (var i = _onCounterTime.value; i > 0; i--) {

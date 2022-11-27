@@ -28,7 +28,6 @@ class MyDioService {
         'Content-Type': 'application/json; charset=UTF-8',
       };
 
-
     if (method == 'post') {
       // var response;
       try {
@@ -48,10 +47,12 @@ class MyDioService {
         dataMap["DioError"] = e.message;
         debugPrint(e.message.toString());
         final resp = e.response;
-        resp != null ? {
-          debugPrint(resp.statusCode.toString()),
-          dataMap["DioStatusCode"] = resp.statusCode.toString(),
-        } : null;
+        resp != null
+            ? {
+                debugPrint(resp.statusCode.toString()),
+                dataMap["DioStatusCode"] = resp.statusCode.toString(),
+              }
+            : null;
       }
     } else if (method == 'put') {
       try {
@@ -70,11 +71,16 @@ class MyDioService {
       } on DioError catch (e) {
         dataMap["DioError"] = e.message;
         final resp = e.response;
-        resp != null ? {
-          debugPrint(resp.statusCode.toString()),
-          dataMap["DioStatusCode"] = resp.statusCode.toString(),
-        } : null;
+        resp != null
+            ? {
+                debugPrint(resp.statusCode.toString()),
+                dataMap["DioStatusCode"] = resp.statusCode.toString(),
+              }
+            : null;
       }
+    }
+    for (var item in dataMap.entries) {
+      debugPrint("${item.key}: ${item.value}");
     }
     return dataMap;
   }

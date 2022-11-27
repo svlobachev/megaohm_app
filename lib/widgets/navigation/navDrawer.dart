@@ -1,30 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:hive/hive.dart';
 
 import 'navDrawer_show_dialog.dart';
 
-// Press the Navigation Drawer button to the left of AppBar to show
-// a simple Drawer with two items.
 class NavDrawer extends StatelessWidget {
-  const NavDrawer({Key? key}) : super(key: key);
-  // Locale _locale = Locale('ru', 'RU');
+   NavDrawer({Key? key}) : super(key: key);
+  var box = Hive.box('RegistrationBox');
+
 
   @override
   Widget build(BuildContext context) {
-    NavDrawerShowDialog _navDrawerShowDialog = Get.find();
-     UserAccountsDrawerHeader drawerHeader = UserAccountsDrawerHeader(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.secondary,
-        ),
-      accountName: Text('Uncle Bob'),
-      accountEmail: Text('uncle_bob@gmail.com'),
-      currentAccountPicture: CircleAvatar(
+    String accountName = box.get('name');
+    String accountEmail = box.get('email');
+    NavDrawerShowDialog navDrawerShowDialog = Get.find();
+    UserAccountsDrawerHeader drawerHeader = UserAccountsDrawerHeader(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      accountName: Text(accountName,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onPrimary,
+          )),
+      accountEmail: Text(accountEmail,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onPrimary,
+          )),
+      currentAccountPicture: const CircleAvatar(
         child: FlutterLogo(size: 42.0),
       ),
     );
     return Drawer(
-
       child: ListView(
         children: [
           drawerHeader,
@@ -65,10 +71,9 @@ class NavDrawer extends StatelessWidget {
             title: Text('goOut'.tr),
             leading: const Icon(Icons.exit_to_app),
             onTap: () {
-              _navDrawerShowDialog.dialogBuilder(context);
+              navDrawerShowDialog.dialogBuilder(context);
             },
           ),
-
         ],
       ),
     );

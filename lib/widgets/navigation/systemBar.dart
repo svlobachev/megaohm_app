@@ -10,6 +10,7 @@ class SysBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+
       // backgroundColor: Theme.of(context).colorScheme.primary,
       backgroundColor:
       Platform.isIOS ? Theme.of(context).colorScheme.secondary : null,

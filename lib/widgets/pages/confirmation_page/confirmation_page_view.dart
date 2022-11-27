@@ -6,8 +6,8 @@ import 'package:megaohm_app/widgets/navigation/systemBar.dart';
 
 import 'confirmation_page_api_service.dart';
 import 'confirmation_page_controller.dart';
+import 'confirmation_page_counter_view.dart';
 import 'confirmation_page_model.dart';
-import 'counter_view.dart';
 
 class ConformationPageView extends StatelessWidget {
   ConformationPageView({Key? key}) : super(key: key);
