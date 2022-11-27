@@ -32,30 +32,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  // Widget build(BuildContext context) {
-  //   return GFAppBar(
-  //     leading: GFIconButton(
-  //       icon: Icon(
-  //         Icons.message,
-  //         color: Colors.white,
-  //       ),
-  //       onPressed: () {},
-  //       type: GFButtonType.transparent,
-  //     ),
-  //     title: Text("GF Appbar"),
-  //     actions: <Widget>[
-  //       GFIconButton(
-  //         icon: Icon(
-  //           Icons.favorite,
-  //           color: Colors.white,
-  //         ),
-  //         onPressed: () {},
-  //         type: GFButtonType.transparent,
-  //       ),
-  //     ],
-  //   );
-  // }
-
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
