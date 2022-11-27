@@ -10,14 +10,12 @@ class NavDrawerShowDialog {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          content: Container(
-            child: Text(
-              "logOut".tr,
-              style: const TextStyle(
-                fontSize: 18,
-                // fontWeight: FontWeight.w500,
-                fontFamily: 'Roboto',
-              ),
+          content: Text(
+            "logOut".tr,
+            style: const TextStyle(
+              fontSize: 18,
+              // fontWeight: FontWeight.w500,
+              fontFamily: 'Roboto',
             ),
           ),
           actions: <Widget>[

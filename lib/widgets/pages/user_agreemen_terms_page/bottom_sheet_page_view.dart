@@ -22,7 +22,7 @@ myBottomSheet(context) {
           children: [
             Container(
               key: UniqueKey(),
-              padding: EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: 4),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -54,7 +54,7 @@ myBottomSheet(context) {
                 child: Column(
                   children: [
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         key: UniqueKey(),
                         height: height,
                         child:  MySliverPage(),

@@ -60,7 +60,7 @@ class ConfirmationAPIService {
         // debugPrint("${item.key} - ${item.value}");
         if (item.key.trim() == "token") {
           _registrationAPIService.token = item.value.trim();
-          debugPrint("newResendToken --> " + item.value.trim());
+          debugPrint("newResendToken --> ${item.value.trim()}");
           return true;
         }
       }

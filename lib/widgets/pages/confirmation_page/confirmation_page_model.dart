@@ -18,6 +18,6 @@ class ConfirmationPageModel {
     _box.put("phone", _registrationPageController.phoneFieldIsFilled);
     _box.put("email", _registrationPageController.emailFieldIsFilled);
 
-    debugPrint("registrationStatus --> " + _box.get("registrationStatus"));
+    debugPrint("registrationStatus -->  ${_box.get("registrationStatus")}");
   }
 }

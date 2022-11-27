@@ -5,7 +5,7 @@ import 'package:megaohm_app/widgets/pages/registration_page/registration_page_co
 
 class ShowDialog {
   final RegistrationAPIService _registrationAPIService = Get.find();
-  RegistrationPageController _registrationPageController = Get.find();
+  final RegistrationPageController _registrationPageController = Get.find();
   String _nameFieldIsFilled = '';
   String _emailFieldIsFilled = '';
   String _phoneFieldIsFilled = '';
@@ -19,14 +19,12 @@ class ShowDialog {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("yourData".tr),
-          content: Container(
-            child: Text(
-              "${"yourName".tr}: $_nameFieldIsFilled\n\n${"Email".tr}: $_emailFieldIsFilled\n\n${"PhoneNumber".tr}: $_phoneFieldIsFilled\n",
-              style: const TextStyle(
-                fontSize: 18,
-                // fontWeight: FontWeight.w500,
-                fontFamily: 'Roboto',
-              ),
+          content: Text(
+            "${"yourName".tr}: $_nameFieldIsFilled\n\n${"Email".tr}: $_emailFieldIsFilled\n\n${"PhoneNumber".tr}: $_phoneFieldIsFilled\n",
+            style: const TextStyle(
+              fontSize: 18,
+              // fontWeight: FontWeight.w500,
+              fontFamily: 'Roboto',
             ),
           ),
           actions: <Widget>[
