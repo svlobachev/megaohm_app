@@ -35,7 +35,7 @@ class RegistrationPageController {
     }
     if (_nameFieldIsFilled.isNotEmpty) {
       final bool result =
-          RegExp(r"^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$")
+          RegExp(r"^([А-Яа-яё]{1,23}|[A-Za-z]{1,23})$")
               .hasMatch(_nameFieldIsFilled.trim());
       // if (kDebugMode) {
       //   print("_nameFieldIsFilledValidation --> $result");

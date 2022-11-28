@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:megaohm_app/app_services/internet_check/background_internet_check.dart';
 import 'package:megaohm_app/app_settings/app_view.dart';
 
+import 'app_services/HTTP_Dio/access_token_renew.dart';
 import 'app_services/HTTP_Dio/my_http_overrides.dart';
 import 'app_services/get_device_id.dart';
 import 'app_services/hive_init.dart';
@@ -20,11 +21,13 @@ main() async {
   await Hive.openBox('RegistrationBox');
   hiveInit();
   dependencyInjectionInit();
-  BackgroundInternetCheck backgroundInternetCheck = Get.find();
-  backgroundInternetCheck.initConnectivity();
+  final BackgroundInternetCheck backgroundInternetCheck = Get.find();
+  await backgroundInternetCheck.initConnectivity();
   backgroundInternetCheck.i++;
-  runApp(MyApp());
+  final AccessTokenRenew accessTokenRenew = Get.find();
+  accessTokenRenew.accessTokenRenew();
   GetDeviceId getDeviceId = Get.find();
   getDeviceId.getDeviceId();
+  runApp(MyApp());
   FlutterNativeSplash.remove();
 }

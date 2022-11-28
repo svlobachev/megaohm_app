@@ -25,7 +25,7 @@ class BackgroundInternetCheck {
       i = 0;
       if (_box.get('baseUrl') == '') {
         // debugPrint("BackgroundInternetCheck_myDioService.baseUrl --> isEmpty");
-        _serverAvailabilityCheck.serversCalling();
+        await _serverAvailabilityCheck.serversCalling();
       }
     }
   }

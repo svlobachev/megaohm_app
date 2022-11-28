@@ -44,8 +44,7 @@ class ClickInternetCheck {
     } else {
       backgroundInternetCheck.i = 0;
       if (_box.get('baseUrl') == '') {
-         // debugPrint("ClickInternetCheck_myDioService.baseUrl --> isEmpty");
-        _serverAvailabilityCheck.serversCalling();
+        await _serverAvailabilityCheck.serversCalling();
       }
       return true;
     }

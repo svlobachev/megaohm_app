@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
-import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'confirmation_page_api_service.dart';
 
 class MyCounter extends StatelessWidget {
   final ClickInternetCheck _clickInternetCheck = Get.find();
   final ConfirmationAPIService confirmationAPIService = Get.find();
-  final MySnackBarGet _mySnackBarGet = Get.find();
   var _onVisibleFooter = false.obs;
   var _onCounter = ''.obs;
   var _onCounterTime = 60.obs;
@@ -74,17 +72,7 @@ class MyCounter extends StatelessWidget {
               maintainState: true,
               visible: _onVisibleFooter.value ? true : false,
               child: TextButton(
-                onPressed:
-                    (){
-                  _mySnackBarGet.mySnackBar(
-                    text: 'serverNotReady'.tr,
-                    icon: const Icon(
-                      Icons.access_time,
-                      color: Colors.red,
-                      size: 30.0,
-                    ),
-                  );
-                },
+                onPressed: null,
                 child: Obx(
                   () => Text(
                     _onCounter.value,
