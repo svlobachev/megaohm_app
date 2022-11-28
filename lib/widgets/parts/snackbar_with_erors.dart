@@ -35,8 +35,9 @@ responseWithErrors(dataMap) {
   mySnackBarGet.mySnackBar(
       text: additionalText,
       icon: const Icon(
-        Icons.dangerous_outlined,
-        color: Colors.red,
+        // Icons.dangerous_outlined,
+        Icons.warning_amber_rounded,
+        color: Colors.redAccent,
         size: 30.0,
       ),
       duration: 3);

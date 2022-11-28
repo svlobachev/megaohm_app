@@ -13,7 +13,7 @@ class ConfirmationPageController {
         text: 'emptyField'.tr,
         icon: const Icon(
           Icons.text_fields,
-          color: Colors.red,
+          color: Colors.redAccent,
           size: 30.0,
         ),
       );
@@ -31,7 +31,7 @@ class ConfirmationPageController {
           text: 'pinIsIncorrect'.tr,
           icon: const Icon(
             Icons.text_fields,
-            color: Colors.red,
+            color: Colors.redAccent,
             size: 30.0,
           ),
         );

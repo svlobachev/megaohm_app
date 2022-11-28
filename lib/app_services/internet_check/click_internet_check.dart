@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -20,21 +19,16 @@ class ClickInternetCheck {
   Future<bool> initConnectivity() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
-      try {
-        _mySnackBarGet.mySnackBar(
-          text: 'noInternet'.tr,
-          icon: const Icon(
-            Icons.dangerous,
-            color: Colors.red,
-            size: 30.0,
-          ),
-        );
-      } catch (e) {
-        if (kDebugMode) {
-          print(e);
-        }
-      }
-      debugPrint("--> Нет соединения с интернетом!");
+      _mySnackBarGet.mySnackBar(
+        text: 'noInternet'.tr,
+        icon: const Icon(
+          Icons.dangerous_outlined,
+          color: Colors.redAccent,
+          size: 30.0,
+        ),
+      );
+
+      // debugPrint("--> Нет интернета!");
       _box.put('baseUrl', '');
       backgroundInternetCheck.i++;
       if (backgroundInternetCheck.i == 1) {

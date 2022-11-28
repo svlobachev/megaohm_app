@@ -17,7 +17,7 @@ class RegistrationPageController {
           text: 'emptyField'.tr,
           icon: const Icon(
             Icons.text_fields,
-            color: Colors.red,
+            color: Colors.redAccent,
             size: 30.0,
           ),
           );
@@ -27,7 +27,7 @@ class RegistrationPageController {
         text: 'agreeToTheTerms'.tr,
         icon: const Icon(
           Icons.text_fields,
-          color: Colors.red,
+          color: Colors.redAccent,
           size: 30.0,
         ),
       );
@@ -45,7 +45,7 @@ class RegistrationPageController {
           text: 'validName'.tr,
           icon: const Icon(
             Icons.text_fields,
-            color: Colors.red,
+            color: Colors.redAccent,
             size: 30.0,
           ),
         );
@@ -66,7 +66,7 @@ class RegistrationPageController {
           text: 'validEmail'.tr,
           icon: const Icon(
             Icons.text_fields,
-            color: Colors.red,
+            color: Colors.redAccent,
             size: 30.0,
           ),
         );
@@ -87,7 +87,7 @@ class RegistrationPageController {
           text: 'validPhone'.tr,
           icon: const Icon(
             Icons.text_fields,
-            color: Colors.red,
+            color: Colors.redAccent,
             size: 30.0,
           ),
         );

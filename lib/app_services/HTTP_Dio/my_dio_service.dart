@@ -10,14 +10,13 @@ class MyDioService {
   final Box _box = Hive.box('RegistrationBox');
   late Map<String, dynamic> dataMap = {};
 
-
   Future<Map<String, dynamic>> floraAPI({path = '', method = '', data}) async {
     var baseUrl = _box.get("baseUrl");
     if (_box.containsKey("floraAPIStatus") &&
-        _box.get("floraAPIStatus") == 'busy') {
+        _box.get("floraAPIStatus") == 'locked') {
       return dataMap = {"responseStatusCode": '429'};
     }
-    _box.put("floraAPIStatus", 'busy');
+    _box.put("floraAPIStatus", 'locked');
     var dio = Dio();
     // if (baseUrl.isNotEmpty) debugPrint("floraAPI_baseUrl --> $baseUrl");
     dio.options
