@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:megaohm_app/app_settings/for_all_forms.dart';
 
 import 'get_snackbar.dart';
 
 responseWithErrors(dataMap) {
   final MySnackBarGet mySnackBarGet = Get.find();
+  final ForAllForms _forAllForms = Get.find();
   for (var item in dataMap.entries) {
     debugPrint("${item.key} - ${item.value}, ");
   }
@@ -34,10 +36,9 @@ responseWithErrors(dataMap) {
   }
   mySnackBarGet.mySnackBar(
       text: additionalText,
-      icon: const Icon(
-        // Icons.dangerous_outlined,
+      icon:  Icon(
         Icons.warning_amber_rounded,
-        color: Colors.redAccent,
+        color: _forAllForms.colorForSnackBarIcons,
         size: 30.0,
       ),
       duration: 3);

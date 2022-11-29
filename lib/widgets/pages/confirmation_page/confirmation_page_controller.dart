@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 class ConfirmationPageController {
+  final ForAllForms _forAllForms = Get.find();
   final MySnackBarGet _mySnackBarGet = Get.find();
   String codeFieldIsFilled = '';
 
@@ -11,9 +13,9 @@ class ConfirmationPageController {
     if (codeFieldIsFilled.isEmpty) {
       _mySnackBarGet.mySnackBar(
         text: 'emptyField'.tr,
-        icon: const Icon(
+        icon:  Icon(
           Icons.text_fields,
-          color: Colors.redAccent,
+          color: _forAllForms.colorForSnackBarIcons,
           size: 30.0,
         ),
       );
@@ -29,9 +31,9 @@ class ConfirmationPageController {
       if (!result) {
         _mySnackBarGet.mySnackBar(
           text: 'pinIsIncorrect'.tr,
-          icon: const Icon(
+          icon:  Icon(
             Icons.text_fields,
-            color: Colors.redAccent,
+            color: _forAllForms.colorForSnackBarIcons,
             size: 30.0,
           ),
         );

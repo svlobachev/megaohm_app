@@ -4,6 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import '../HTTP_Dio/server_availability_check.dart';
@@ -15,15 +16,16 @@ class ClickInternetCheck {
   final ServerAvailabilityCheck _serverAvailabilityCheck =
       ServerAvailabilityCheck();
   BackgroundInternetCheck backgroundInternetCheck = Get.find();
+  final ForAllForms _forAllForms = Get.find();
 
   Future<bool> initConnectivity() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       _mySnackBarGet.mySnackBar(
         text: 'noInternet'.tr,
-        icon: const Icon(
+        icon:  Icon(
           Icons.dangerous_outlined,
-          color: Colors.redAccent,
+          color: _forAllForms.colorForSnackBarIcons,
           size: 30.0,
         ),
       );

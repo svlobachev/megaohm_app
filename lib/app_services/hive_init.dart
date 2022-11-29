@@ -1,17 +1,18 @@
 import 'package:hive/hive.dart';
+class HiveInit {
+  hiveInit() {
+    var box = Hive.box('FloraAPIBox');
+    box.put('baseUrl', '');
 
-hiveInit() {
-  var box = Hive.box('FloraAPIBox');
-  box.put('baseUrl', '');
+    // box.deleteFromDisk();
 
-  // box.deleteFromDisk();
+    // box.delete('registrationStatus');
+    //
 
-  // box.delete('registrationStatus');
-  //
-
-  // box.put('session', '');
-  //
-  // if (!box.containsKey('serverUserUuid')) {
-  //   box.put('serverUserUuid', '');
-  // }
+    // box.put('session', '');
+    //
+    // if (!box.containsKey('serverUserUuid')) {
+    //   box.put('serverUserUuid', '');
+    // }
+  }
 }

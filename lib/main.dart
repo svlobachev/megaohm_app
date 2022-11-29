@@ -14,14 +14,16 @@ import 'app_services/hive_init.dart';
 import 'app_settings/dependency_injection.dart';
 
 main() async {
+  DependencyInjection dependencyInjection =  DependencyInjection();
+  HiveInit hiveInit = HiveInit();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   HttpOverrides.global = MyHttpOverrides();
   await Hive.initFlutter();
   await Hive.openBox('RegistrationBox');
   await Hive.openBox('FloraAPIBox');
-  hiveInit();
-  dependencyInjectionInit();
+  hiveInit.hiveInit();
+  dependencyInjection.dependencyInjectionInit();
   final BackgroundInternetCheck backgroundInternetCheck = Get.find();
   await backgroundInternetCheck.initConnectivity();
   backgroundInternetCheck.i++;

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 class RegistrationPageController {
   final MySnackBarGet _mySnackBarGet = Get.find();
+  final ForAllForms _forAllForms = Get.find();
   bool _isChecked = false;
   String _nameFieldIsFilled = '';
   String _emailFieldIsFilled = '';
@@ -15,9 +17,10 @@ class RegistrationPageController {
         _phoneFieldIsFilled.isEmpty) {
       _mySnackBarGet.mySnackBar(
           text: 'emptyField'.tr,
-          icon: const Icon(
+          icon:  Icon(
             Icons.text_fields,
-            color: Colors.redAccent,
+            // color: colorForSnackBarErrors,
+            color: _forAllForms.colorForSnackBarIcons,
             size: 30.0,
           ),
           );
@@ -25,9 +28,9 @@ class RegistrationPageController {
     } else if (!_isChecked) {
       _mySnackBarGet.mySnackBar(
         text: 'agreeToTheTerms'.tr,
-        icon: const Icon(
+        icon:  Icon(
           Icons.text_fields,
-          color: Colors.redAccent,
+          color: _forAllForms.colorForSnackBarIcons,
           size: 30.0,
         ),
       );
@@ -43,9 +46,9 @@ class RegistrationPageController {
       if (!result) {
         _mySnackBarGet.mySnackBar(
           text: 'validName'.tr,
-          icon: const Icon(
+          icon:  Icon(
             Icons.text_fields,
-            color: Colors.redAccent,
+            color: _forAllForms.colorForSnackBarIcons,
             size: 30.0,
           ),
         );
@@ -64,9 +67,9 @@ class RegistrationPageController {
       if (!result) {
         _mySnackBarGet.mySnackBar(
           text: 'validEmail'.tr,
-          icon: const Icon(
+          icon:  Icon(
             Icons.text_fields,
-            color: Colors.redAccent,
+            color: _forAllForms.colorForSnackBarIcons,
             size: 30.0,
           ),
         );
@@ -85,9 +88,9 @@ class RegistrationPageController {
       if (!result) {
         _mySnackBarGet.mySnackBar(
           text: 'validPhone'.tr,
-          icon: const Icon(
+          icon:  Icon(
             Icons.text_fields,
-            color: Colors.redAccent,
+            color: _forAllForms.colorForSnackBarIcons,
             size: 30.0,
           ),
         );

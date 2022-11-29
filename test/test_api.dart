@@ -7,7 +7,7 @@ import 'package:megaohm_app/app_settings/dependency_injection.dart';
 import 'package:uuid/uuid.dart';
 
 main() async {
-
+  DependencyInjection dependencyInjection =  DependencyInjection();
   test("ServerAvailabilityCheck", () async {
     ServerAvailabilityCheck serverAvailabilityCheck = ServerAvailabilityCheck();
     await serverAvailabilityCheck.serversCalling();
@@ -18,7 +18,7 @@ main() async {
     () async {
       Uuid uuid = Uuid();
       var gUuid = uuid.v1();
-      dependencyInjectionInit();
+      dependencyInjection.dependencyInjectionInit();
       ServerAvailabilityCheck aPIServersCall = Get.find();
       MyDioService myDioService = Get.find();
       await aPIServersCall.serversCalling();
@@ -43,7 +43,7 @@ main() async {
   test(
     'confirmUserRegistration',
     () async {
-      dependencyInjectionInit();
+      dependencyInjection.dependencyInjectionInit();
       ServerAvailabilityCheck aPIServersCall = Get.find();
       MyDioService myDioService = Get.find();
       await aPIServersCall.serversCalling();

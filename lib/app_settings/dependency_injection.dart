@@ -18,23 +18,24 @@ import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'for_all_forms.dart';
 
-dependencyInjectionInit() {
-  Get.put(MyDioService());
-  Get.put(RegistrationStatusController());
-  Get.put(MySnackBarGet());
-  Get.put(AccessTokenRenew());
-  Get.put(ServerAvailabilityCheck());
-  Get.put(BackgroundInternetCheck());
-  Get.put(RegistrationPageController());
-  Get.put(ClickInternetCheck());
-  Get.put(ForAllForms());
-  Get.put(GetDeviceId());
-  Get.put(RegistrationAPIService());
-  Get.put(ConfirmationPageController());
-  Get.put(ConfirmationAPIService());
-  Get.put(ConfirmationPageModel());
-  Get.put(NavDrawerShowDialogModel());
-  Get.put(ShowDialog());
-  Get.put(NavDrawerShowDialog());
-
+class DependencyInjection {
+  dependencyInjectionInit() {
+    Get.put(ForAllForms());
+    Get.put(MyDioService());
+    Get.put(RegistrationStatusController());
+    Get.put(MySnackBarGet());
+    Get.put(AccessTokenRenew());
+    Get.put(ServerAvailabilityCheck());
+    Get.put(BackgroundInternetCheck());
+    Get.put(RegistrationPageController());
+    Get.put(ClickInternetCheck());
+    Get.put(GetDeviceId());
+    Get.put(RegistrationAPIService());
+    Get.put(ConfirmationPageController());
+    Get.put(ConfirmationAPIService());
+    Get.put(ConfirmationPageModel());
+    Get.put(NavDrawerShowDialogModel());
+    Get.put(ShowDialog());
+    Get.put(NavDrawerShowDialog());
+  }
 }
