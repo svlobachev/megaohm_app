@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 import 'my_dio_service.dart';
 
 class ServerAvailabilityCheck {
-  final Box _box = Hive.box('RegistrationBox');
+  final Box _box = Hive.box('FloraAPIBox');
   MyDioService myDioSettings = MyDioService();
 
   serversCalling() async {

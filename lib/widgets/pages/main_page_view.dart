@@ -5,7 +5,7 @@ import 'package:megaohm_app/app_services/HTTP_Dio/access_token_renew.dart';
 import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 
 import '../navigation/myAppBar.dart';
-import '../navigation/navDrawer.dart';
+import '../navigation/nav_drawer/navDrawer.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);

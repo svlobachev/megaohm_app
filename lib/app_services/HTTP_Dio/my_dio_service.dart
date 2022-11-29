@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class MyDioService {
-  final Box _box = Hive.box('RegistrationBox');
-  late Map<String, dynamic> dataMap = {};
+  final Box _box = Hive.box('FloraAPIBox');
 
   Future<Map<String, dynamic>> floraAPI({path = '', method = '', data}) async {
+    late Map<String, dynamic> dataMap = {};
     var baseUrl = _box.get("baseUrl");
     if (_box.containsKey("floraAPIStatus") &&
         _box.get("floraAPIStatus") == 'locked') {

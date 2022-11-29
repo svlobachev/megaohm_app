@@ -19,6 +19,7 @@ main() async {
   HttpOverrides.global = MyHttpOverrides();
   await Hive.initFlutter();
   await Hive.openBox('RegistrationBox');
+  await Hive.openBox('FloraAPIBox');
   hiveInit();
   dependencyInjectionInit();
   final BackgroundInternetCheck backgroundInternetCheck = Get.find();

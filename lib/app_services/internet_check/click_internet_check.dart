@@ -10,7 +10,7 @@ import '../HTTP_Dio/server_availability_check.dart';
 import 'background_internet_check.dart';
 
 class ClickInternetCheck {
-  final Box _box = Hive.box('RegistrationBox');
+  final Box _box = Hive.box('FloraAPIBox');
   final MySnackBarGet _mySnackBarGet = Get.find();
   final ServerAvailabilityCheck _serverAvailabilityCheck =
       ServerAvailabilityCheck();

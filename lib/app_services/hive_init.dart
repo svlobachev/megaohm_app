@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 
 hiveInit() {
-  var box = Hive.box('RegistrationBox');
+  var box = Hive.box('FloraAPIBox');
   box.put('baseUrl', '');
 
   // box.deleteFromDisk();

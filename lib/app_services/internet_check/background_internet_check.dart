@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 import '../HTTP_Dio/server_availability_check.dart';
 
 class BackgroundInternetCheck {
-  final Box _box = Hive.box('RegistrationBox');
+  final Box _box = Hive.box('FloraAPIBox');
 
   final ServerAvailabilityCheck _serverAvailabilityCheck =
       ServerAvailabilityCheck();

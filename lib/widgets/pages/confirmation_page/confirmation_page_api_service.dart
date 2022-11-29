@@ -11,12 +11,8 @@ class ConfirmationAPIService {
   final ConfirmationPageController confirmationPageController = Get.find();
   final MyDioService _myDioService = Get.find();
 
-  String _tokenRt = '';
-  String _tokenAt = '';
-
-  String get tokenRt => _tokenRt;
-
-  String get tokenAt => _tokenAt;
+  String tokenRt = '';
+  String tokenAt = '';
 
   Future<bool> confirmUserRegistration() async {
     String token = _registrationAPIService.token;
@@ -29,12 +25,12 @@ class ConfirmationAPIService {
       for (var item in dataMap.entries) {
         // debugPrint("${item.key} - ${item.value}");
         if (item.key.trim() == "rt") {
-          _tokenRt = item.value.trim();
+          tokenRt = item.value.trim();
         } else if (item.key.trim() == "at") {
-          _tokenAt = item.value.trim();
+          tokenAt = item.value.trim();
         }
       }
-      if (_tokenRt.isNotEmpty && _tokenRt.isNotEmpty) {
+      if (tokenRt.isNotEmpty && tokenRt.isNotEmpty) {
         return true;
       }
       return false;
@@ -74,6 +70,4 @@ class ConfirmationAPIService {
       return false;
     }
   }
-
-
 }

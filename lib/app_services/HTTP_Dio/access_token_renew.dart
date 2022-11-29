@@ -17,12 +17,12 @@ class AccessTokenRenew {
   String get tokenAt => _tokenAt;
 
   Future<bool> accessTokenRenew() async {
-    if (_box.containsKey('tokenRt')) {
+    if (_box.containsKey('tokenRt')&& _box.get('tokenRt') != '') {
       _tokenRt = _box.get("tokenRt");
     } else {
       return false;
     }
-    if (_box.containsKey('tokenAt') ) {
+    if (_box.containsKey('tokenAt') && _box.get('tokenAt') != '') {
       _tokenAt = _box.get("tokenAt");
     } else {
       return false;

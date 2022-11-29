@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import 'package:hive/hive.dart';
+
+import 'navDrawer_logout_dialog_model.dart';
 
 class NavDrawerShowDialog {
-  final Box _box = Hive.box('RegistrationBox');
-
+  final NavDrawerShowDialogModel _navDrawerShowDialogModel = Get.find();
   Future<void> dialogBuilder(BuildContext context) {
     return showDialog<void>(
       context: context,
@@ -48,7 +48,7 @@ class NavDrawerShowDialog {
                 ),
               ),
               onPressed: () async {
-                  _box.put('registrationStatus', '') ;
+                _navDrawerShowDialogModel.dropRegistrationData();
                   Get.offAllNamed("/");
               },
             ),

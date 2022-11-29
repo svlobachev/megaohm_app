@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
-import 'navDrawer_show_dialog.dart';
+import 'navDrawer_logout_dialog.dart';
 
 class NavDrawer extends StatelessWidget {
    NavDrawer({Key? key}) : super(key: key);
