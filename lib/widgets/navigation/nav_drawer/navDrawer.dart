@@ -26,8 +26,9 @@ class NavDrawer extends StatelessWidget {
           style: TextStyle(
             color: Theme.of(context).colorScheme.onPrimary,
           )),
-      currentAccountPicture: const CircleAvatar(
-        child: FlutterLogo(size: 42.0),
+      currentAccountPicture:  CircleAvatar(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+        child: Image.asset("assets/img/logo_megaohm.png", height: 47, color: Theme.of(context).colorScheme.onPrimary),
       ),
     );
     return Drawer(
