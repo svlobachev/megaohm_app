@@ -3,14 +3,15 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 
 class RegistrationStatusController {
   final _box = Hive.box('RegistrationBox');
-  String _tokenRt = '';
-  bool registrationControl() {
 
-    if (_box.containsKey('tokenRt')){
-       _tokenRt = _box.get("tokenRt");
+  String _tokenRt = '';
+
+  bool registrationControl() {
+    if (_box.containsKey('tokenRt')) {
+      _tokenRt = _box.get("tokenRt");
     }
 
-    if (_box.containsKey('tokenAt')){
+    if (_box.containsKey('tokenAt')) {
       _tokenRt = _box.get("tokenAt");
     }
 

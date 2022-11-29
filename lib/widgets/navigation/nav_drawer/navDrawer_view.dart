@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:megaohm_app/app_settings/theme_scheme.dart';
+
+// import 'package:megaohm_app/app_settings/theme_scheme.dart';
 
 import 'navDrawer_logout_dialog.dart';
 
@@ -36,15 +37,15 @@ class NavDrawer extends StatelessWidget {
       child: ListView(
         children: [
           drawerHeader,
-          ListTile(
-            title: Text('lightDarkModes'.tr),
-            leading: const Icon(Icons.dark_mode),
-            onTap: () {
-              Get.changeTheme(
-                  Get.isDarkMode ? MyFlexThemeDataLight : MyFlexThemeDataDark);
-              Get.back();
-            },
-          ),
+          // ListTile(
+          //   title: Text('lightDarkModes'.tr),
+          //   leading: const Icon(Icons.dark_mode),
+          //   onTap: () {
+          //     Get.changeTheme(
+          //         Get.isDarkMode ? MyFlexThemeDataLight : MyFlexThemeDataDark);
+          //     Get.back();
+          //   },
+          // ),
           ListTile(
             title: Text('myDevices'.tr),
             leading: const Icon(Icons.devices_other),

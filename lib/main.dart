@@ -14,7 +14,7 @@ import 'app_services/hive_init.dart';
 import 'app_settings/dependency_injection.dart';
 
 main() async {
-  DependencyInjection dependencyInjection =  DependencyInjection();
+  final DependencyInjection dependencyInjection =  DependencyInjection();
   HiveInit hiveInit = HiveInit();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
