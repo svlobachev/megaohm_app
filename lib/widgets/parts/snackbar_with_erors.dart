@@ -7,9 +7,6 @@ import 'get_snackbar.dart';
 responseWithErrors(dataMap) {
   final MySnackBarGet mySnackBarGet = Get.find();
   final ForAllForms _forAllForms = Get.find();
-  for (var item in dataMap.entries) {
-    debugPrint("${item.key} - ${item.value}, ");
-  }
   String additionalText = "";
   switch (dataMap['responseStatusCode']) {
     case '400':

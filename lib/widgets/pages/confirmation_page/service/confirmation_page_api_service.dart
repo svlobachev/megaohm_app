@@ -23,7 +23,6 @@ class ConfirmationAPIService {
 
     bool goodResponse(dataMap) {
       for (var item in dataMap.entries) {
-        // debugPrint("${item.key} - ${item.value}");
         if (item.key.trim() == "rt") {
           tokenRt = item.value.trim();
         } else if (item.key.trim() == "at") {

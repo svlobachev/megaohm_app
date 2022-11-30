@@ -12,7 +12,6 @@ class RegistrationAPIService {
 
   Future<bool> userRegistration() async {
     String clientID = _getDeviceId.deviceId;
-    // String nameFieldIsFilled = _registrationPageController.nameFieldIsFilled;
     String emailFieldIsFilled = _registrationPageController.emailFieldIsFilled;
     String phoneFieldIsFilled = _registrationPageController.phoneFieldIsFilled;
     Map<String, dynamic> dataMap =
@@ -34,7 +33,6 @@ class RegistrationAPIService {
 
   bool goodResponse(dataMap) {
     for (var item in dataMap.entries) {
-      // debugPrint("${item.key} - ${item.value}");
       if (item.key.trim() == "token") {
         token = item.value.trim();
         return true;

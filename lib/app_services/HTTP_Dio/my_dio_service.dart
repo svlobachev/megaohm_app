@@ -16,6 +16,7 @@ class MyDioService {
       int timeoutSec = 10}) async {
     Map<String, dynamic> dataMap = {};
     var baseUrl = _box.get("baseUrl");
+    String responseStatusCode = '';
 
     if (_box.containsKey("floraAPIStatus") &&
         _box.get("floraAPIStatus") == 'locked') {
@@ -30,7 +31,7 @@ class MyDioService {
       ..connectTimeout = 3000 //3s
       ..receiveTimeout = timeoutSec * 1000
       ..validateStatus = (int? status) {
-      debugPrint("ServerValidateStatus --> $status");
+        responseStatusCode = status.toString();
         return status != null && status > 0;
       }
       ..headers = {
@@ -48,8 +49,6 @@ class MyDioService {
             contentType: Headers.jsonContentType,
           ),
         );
-        dataMap["responseStatusCode"] = response.statusCode.toString();
-        // debugPrint("responseStatusCode --> ${response.statusCode}");
         response.data.isNotEmpty
             ? dataMap = json.decode(response.toString())
             : null;
@@ -65,8 +64,6 @@ class MyDioService {
             contentType: Headers.jsonContentType,
           ),
         );
-        dataMap["responseStatusCode"] = response.statusCode.toString();
-        // debugPrint("responseStatusCode --> ${response.statusCode}");
         response.data.isNotEmpty
             ? dataMap = json.decode(response.toString())
             : null;
@@ -74,8 +71,9 @@ class MyDioService {
         dataMap["DioError"] = e.message;
       }
     }
+    dataMap["responseStatusCode"] = responseStatusCode;
     for (var item in dataMap.entries) {
-      debugPrint("${item.key}: ${item.value}");
+      debugPrint("${item.key} --> ${item.value}");
     }
     _box.put("floraAPIStatus", 'free');
     return dataMap;
