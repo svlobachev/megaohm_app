@@ -14,7 +14,7 @@ class MyDioService {
       required String method,
       required Map<String, String> data,
       int timeoutSec = 10}) async {
-    late Map<String, dynamic> dataMap = {};
+    Map<String, dynamic> dataMap = {};
     var baseUrl = _box.get("baseUrl");
 
     if (_box.containsKey("floraAPIStatus") &&
@@ -30,6 +30,7 @@ class MyDioService {
       ..connectTimeout = 3000 //3s
       ..receiveTimeout = timeoutSec * 1000
       ..validateStatus = (int? status) {
+      debugPrint("ServerValidateStatus --> $status");
         return status != null && status > 0;
       }
       ..headers = {
