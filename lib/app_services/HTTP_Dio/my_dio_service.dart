@@ -9,7 +9,7 @@ import 'package:hive/hive.dart';
 class MyDioService {
   final Box _box = Hive.box('FloraAPIBox');
 
-  Future<Map<String, dynamic>> floraAPI({path = '', method = '', data}) async {
+  Future<Map<String, dynamic>> floraAPI({required path , required method, required data, timeoutSec = 10}) async {
     late Map<String, dynamic> dataMap = {};
     var baseUrl = _box.get("baseUrl");
     if (_box.containsKey("floraAPIStatus") &&
@@ -22,7 +22,7 @@ class MyDioService {
     dio.options
       ..baseUrl = baseUrl
       ..connectTimeout = 3000 //3s
-      ..receiveTimeout = 10000
+      ..receiveTimeout = timeoutSec * 1000
       ..validateStatus = (int? status) {
         return status != null && status > 0;
       }
