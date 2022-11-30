@@ -77,7 +77,9 @@ class MyDioService {
     for (var item in dataMap.entries) {
       debugPrint("${item.key} --> ${item.value}");
     }
+
     _box.put("floraAPIStatus", 'free');
+
     return dataMap;
   }
 }

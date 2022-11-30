@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:megaohm_app/app_services/registration_status_controller.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/view/confirmation_page_view.dart';
 import 'package:megaohm_app/widgets/pages/main_page_view.dart';
-
+import 'package:megaohm_app/widgets/pages/my_devices/my_divices_page.dart';
 import '../widgets/pages/registration_page/view/registration_page_view.dart';
 
 String myInitialRoute = '/';
@@ -20,6 +20,7 @@ List<GetPage> myGetPages = [
   // GetPage(name: '/', page: () => ConformationPageView()),
 
   GetPage(name: '/mainPage', page: () => MainPage()),
+  GetPage(name: '/myDevices', page: () => MyDevices()),
   GetPage(name: '/registration', page: () => RegistrationPageView()),
   GetPage(name: '/conformation', page: () => ConformationPageView()),
 ];
