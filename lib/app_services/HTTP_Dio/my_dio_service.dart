@@ -71,7 +71,9 @@ class MyDioService {
         dataMap["DioError"] = e.message;
       }
     }
+
     dataMap["responseStatusCode"] = responseStatusCode;
+
     for (var item in dataMap.entries) {
       debugPrint("${item.key} --> ${item.value}");
     }
