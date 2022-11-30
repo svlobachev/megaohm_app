@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import 'navDrawer_logout_dialog_model.dart';
+import '../model/navDrawer_logout_dialog_model.dart';
 
 class NavDrawerShowDialog {
   final NavDrawerShowDialogModel _navDrawerShowDialogModel = Get.find();
