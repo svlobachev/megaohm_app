@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_api_service.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_controller.dart';
-
-import 'confirmation_page_api_service.dart';
-import 'confirmation_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/controller/registration_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/service/registration_page_api_service.dart';
+import '../service/confirmation_page_api_service.dart';
+import '../controller/confirmation_page_controller.dart';
 
 class ConfirmationPageModel {
   final Box _box = Hive.box('RegistrationBox');

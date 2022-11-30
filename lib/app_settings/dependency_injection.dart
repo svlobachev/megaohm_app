@@ -8,12 +8,12 @@ import 'package:megaohm_app/app_services/internet_check/click_internet_check.dar
 import 'package:megaohm_app/app_services/registration_status_controller.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/navDrawer_logout_dialog.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/navDrawer_logout_dialog_model.dart';
-import 'package:megaohm_app/widgets/pages/confirmation_page/confirmation_page_api_service.dart';
-import 'package:megaohm_app/widgets/pages/confirmation_page/confirmation_page_controller.dart';
-import 'package:megaohm_app/widgets/pages/confirmation_page/confirmation_page_model.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_api_service.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_controller.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_show_dialog_view.dart';
+import 'package:megaohm_app/widgets/pages/confirmation_page/service/confirmation_page_api_service.dart';
+import 'package:megaohm_app/widgets/pages/confirmation_page/controller/confirmation_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/confirmation_page/model/confirmation_page_model.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/controller/registration_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/service/registration_page_api_service.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/view/registration_page_show_dialog_view.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
 import 'for_all_forms.dart';

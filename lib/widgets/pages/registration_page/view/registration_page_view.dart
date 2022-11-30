@@ -6,10 +6,10 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_show_dialog_view.dart';
-import 'package:megaohm_app/widgets/pages/user_agreemen_terms_page/bottom_sheet_page_view.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/view/registration_page_show_dialog_view.dart';
+import 'package:megaohm_app/widgets/pages/user_agreemen_terms_page/view/bottom_sheet_page_view.dart';
 
-import 'registration_page_controller.dart';
+import '../controller/registration_page_controller.dart';
 
 class RegistrationPageView extends StatelessWidget {
   RegistrationPageView({Key? key}) : super(key: key);

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 
-import 'confirmation_page_api_service.dart';
+import '../service/confirmation_page_api_service.dart';
 
 class MyCounter extends StatelessWidget {
   final ClickInternetCheck _clickInternetCheck = Get.find();

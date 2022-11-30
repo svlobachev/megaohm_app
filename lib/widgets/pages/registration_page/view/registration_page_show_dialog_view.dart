@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:megaohm_app/widgets/pages/registration_page/registration_page_api_service.dart";
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/controller/registration_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/service/registration_page_api_service.dart';
 
 class ShowDialog {
   final RegistrationAPIService _registrationAPIService = Get.find();

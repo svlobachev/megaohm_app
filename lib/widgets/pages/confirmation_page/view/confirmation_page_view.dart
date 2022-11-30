@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/systemBar.dart';
+import 'package:megaohm_app/widgets/pages/confirmation_page/service/confirmation_page_api_service.dart';
+import 'package:megaohm_app/widgets/pages/confirmation_page/controller/confirmation_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/confirmation_page/model/confirmation_page_model.dart';
+import 'package:megaohm_app/widgets/pages/confirmation_page/view/confirmation_page_counter_view.dart';
 
-import 'confirmation_page_api_service.dart';
-import 'confirmation_page_controller.dart';
-import 'confirmation_page_counter_view.dart';
-import 'confirmation_page_model.dart';
+
 
 class ConformationPageView extends StatelessWidget {
   ConformationPageView({Key? key}) : super(key: key);

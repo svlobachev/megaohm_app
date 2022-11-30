@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_services/HTTP_Dio/my_dio_service.dart';
 import 'package:megaohm_app/app_services/get_device_id.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/controller/registration_page_controller.dart';
 import 'package:megaohm_app/widgets/parts/snackbar_with_erors.dart';
 
 class RegistrationAPIService {

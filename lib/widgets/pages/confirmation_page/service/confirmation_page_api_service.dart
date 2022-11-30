@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_services/HTTP_Dio/my_dio_service.dart';
-import 'package:megaohm_app/widgets/pages/registration_page/registration_page_api_service.dart';
+import 'package:megaohm_app/widgets/pages/registration_page/service/registration_page_api_service.dart';
 import 'package:megaohm_app/widgets/parts/snackbar_with_erors.dart';
 
-import 'confirmation_page_controller.dart';
+import '../controller/confirmation_page_controller.dart';
 
 class ConfirmationAPIService {
   final RegistrationAPIService _registrationAPIService = Get.find();
