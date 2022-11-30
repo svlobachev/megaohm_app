@@ -12,13 +12,12 @@ class AccessTokenRenew {
   String _tokenRt = '';
   String _tokenAt = '';
 
-
   String get tokenRt => _tokenRt;
 
   String get tokenAt => _tokenAt;
 
   Future<bool> accessTokenRenew() async {
-    if (_box.containsKey('tokenRt')&& _box.get('tokenRt') != '') {
+    if (_box.containsKey('tokenRt') && _box.get('tokenRt') != '') {
       _tokenRt = _box.get("tokenRt");
     } else {
       return false;
@@ -40,12 +39,14 @@ class AccessTokenRenew {
         if (item.key.trim() == "rt") {
           _tokenRt = item.value.trim();
           _box.put("tokenRt", _tokenRt);
-            DateTime decodedTokenRtDateTime = JwtDecoder.getExpirationDate(_tokenRt);
-            debugPrint("tokenRtdata --> $decodedTokenRtDateTime");
+          DateTime decodedTokenRtDateTime =
+              JwtDecoder.getExpirationDate(_tokenRt);
+          debugPrint("tokenRtdata --> $decodedTokenRtDateTime");
         } else if (item.key.trim() == "at") {
           _tokenAt = item.value.trim();
           _box.put("tokenAt", _tokenAt);
-          DateTime decodedTokenAtDateTime = JwtDecoder.getExpirationDate(_tokenAt);
+          DateTime decodedTokenAtDateTime =
+              JwtDecoder.getExpirationDate(_tokenAt);
           debugPrint("tokenAtdata --> $decodedTokenAtDateTime");
         }
       }
