@@ -19,7 +19,7 @@ class ConfirmationAPIService {
     String code = confirmationPageController.codeFieldIsFilled;
     debugPrint("confirm_code --> $code");
     Map<String, dynamic> dataMap = await _myDioService
-        .floraAPI(path: "/auth/$token", method: 'put', data: {"code": code});
+        .floraAPI(path: "/auth/$token", method: 'put', data: {"code": code}, timeoutSec: 20);
 
     bool goodResponse(dataMap) {
       for (var item in dataMap.entries) {
@@ -49,7 +49,7 @@ class ConfirmationAPIService {
     String token = _registrationAPIService.token;
     debugPrint("inputResendToken --> $token");
     Map<String, dynamic> dataMap = await _myDioService.floraAPI(
-        path: "/auth/$token/resend", method: 'put', data: null);
+        path: "/auth/$token/resend", method: 'put', data: {});
 
     bool goodResponse(dataMap) {
       for (var item in dataMap.entries) {

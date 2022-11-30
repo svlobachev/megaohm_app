@@ -9,13 +9,19 @@ import 'package:hive/hive.dart';
 class MyDioService {
   final Box _box = Hive.box('FloraAPIBox');
 
-  Future<Map<String, dynamic>> floraAPI({required path , required method, required data, timeoutSec = 10}) async {
+  Future<Map<String, dynamic>> floraAPI(
+      {required String path,
+      required String method,
+      required Map<String, String> data,
+      int timeoutSec = 10}) async {
     late Map<String, dynamic> dataMap = {};
     var baseUrl = _box.get("baseUrl");
+
     if (_box.containsKey("floraAPIStatus") &&
         _box.get("floraAPIStatus") == 'locked') {
       return dataMap = {"responseStatusCode": '429'};
     }
+
     _box.put("floraAPIStatus", 'locked');
     var dio = Dio();
     // if (baseUrl.isNotEmpty) debugPrint("floraAPI_baseUrl --> $baseUrl");
@@ -73,5 +79,4 @@ class MyDioService {
     _box.put("floraAPIStatus", 'free');
     return dataMap;
   }
-
 }
