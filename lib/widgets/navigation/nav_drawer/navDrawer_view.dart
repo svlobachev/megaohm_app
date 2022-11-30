@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 
 // import 'package:megaohm_app/app_settings/theme_scheme.dart';
 
-import 'navDrawer_logout_dialog.dart';
+import 'logout/view/navDrawer_logout_dialog.dart';
 
 class NavDrawer extends StatelessWidget {
    NavDrawer({Key? key}) : super(key: key);

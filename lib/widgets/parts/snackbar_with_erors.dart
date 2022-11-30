@@ -28,15 +28,19 @@ responseWithErrors(dataMap) {
       additionalText = dataMap['responseStatusCode'] + ": " + '500'.tr;
       break;
   }
-  if(dataMap.containsKey("DioError")) {
+
+  if (dataMap.containsKey("DioError")) {
     additionalText = 'serviceNotReady'.tr;
   }
-  mySnackBarGet.mySnackBar(
-      text: additionalText,
-      icon:  Icon(
-        Icons.warning_amber_rounded,
-        color: _forAllForms.colorForSnackBarIcons,
-        size: 30.0,
-      ),
-      duration: 3);
+
+  if (dataMap['responseStatusCode'] != '200') {
+    mySnackBarGet.mySnackBar(
+        text: additionalText,
+        icon: Icon(
+          Icons.warning_amber_rounded,
+          color: _forAllForms.colorForSnackBarIcons,
+          size: 30.0,
+        ),
+        duration: 3);
+  }
 }
