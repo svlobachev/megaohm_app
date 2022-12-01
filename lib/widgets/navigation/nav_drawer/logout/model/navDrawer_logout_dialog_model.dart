@@ -7,6 +7,7 @@ class NavDrawerShowDialogModel {
     _box.put('registrationStatus', '');
     _box.put('tokenAt', '');
     _box.put('tokenRt', '');
+    _box.put('name', '');
     _box.put('phone', '');
     _box.put('email', '');
   }

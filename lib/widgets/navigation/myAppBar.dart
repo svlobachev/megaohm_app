@@ -3,7 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBar({Key? key}) : super(key: key);
+  String appBarTitle;
+
+
+   MyAppBar( {Key? key,
+   required this.appBarTitle}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +21,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         size: 30,
       ),
         backgroundColor: appBarColor,
-      title: Text('AppBarTitle'.tr, style: TextStyle(
+      title: Text(appBarTitle, style: TextStyle(
           color: Theme.of(context).colorScheme.onPrimary,
           fontWeight: FontWeight.w300),),
       // backgroundColor: Theme.of(context).colorScheme.primary,

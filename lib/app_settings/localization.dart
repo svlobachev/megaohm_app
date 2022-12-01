@@ -5,6 +5,7 @@ class Localization extends Translations {
   Map<String, Map<String, String>> get keys =>
       {
         'en_US': {
+          'myDevices': 'My devices',
           'cancel': 'Cancel',
           'logOut': 'Are you sure you want to log out of your account?',
           'goOut': 'Go out',
@@ -56,9 +57,10 @@ class Localization extends Translations {
           'instruction': 'Instruction',
           'contactWithDevelopers': 'Contact with developers',
           'settings': 'Settings',
-          'AppBarTitle': 'Megaohm'
+          'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'myDevices': 'Мои устройства',
           'cancel': 'Отмена',
           'logOut': 'Вы действительно хотите выйти из аккаунта?',
           'goOut': 'Выйти',
@@ -110,7 +112,7 @@ class Localization extends Translations {
           'instruction': 'Инструкция',
           'contactWithDevelopers': 'Связь с разработчиками',
           'settings': 'Настройки',
-          'AppBarTitle': 'Мегаом'
+          'appBarTitle': 'Мегаом'
         }
       };
 }

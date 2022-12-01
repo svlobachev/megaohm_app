@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:megaohm_app/app_settings/theme_scheme.dart';
 
 // import 'package:megaohm_app/app_settings/theme_scheme.dart';
 
@@ -29,7 +30,7 @@ class NavDrawer extends StatelessWidget {
             color: Theme.of(context).colorScheme.onPrimary,
           )),
       currentAccountPicture:  CircleAvatar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
         child: Image.asset("assets/img/logo_megaohm.png", height: 47, color: Theme.of(context).colorScheme.onPrimary),
       ),
     );
@@ -37,27 +38,27 @@ class NavDrawer extends StatelessWidget {
       child: ListView(
         children: [
           drawerHeader,
-          // ListTile(
-          //   title: Text('lightDarkModes'.tr),
-          //   leading: const Icon(Icons.dark_mode),
-          //   onTap: () {
-          //     Get.changeTheme(
-          //         Get.isDarkMode ? MyFlexThemeDataLight : MyFlexThemeDataDark);
-          //     Get.back();
-          //   },
-          // ),
+          ListTile(
+            title: Text('lightDarkModes'.tr),
+            leading: const Icon(Icons.dark_mode),
+            onTap: () {
+              Get.changeTheme(
+                  Get.isDarkMode ? MyFlexThemeDataLight : MyFlexThemeDataDark);
+              Get.back();
+            },
+          ),
           ListTile(
             title: Text('myDevices'.tr),
             leading: const Icon(Icons.devices_other),
             onTap: () {
-              Navigator.pop(context);
+              Get.toNamed('/myDevices');
             },
           ),
           ListTile(
             title: Text('settings'.tr),
             leading: const Icon(Icons.settings),
             onTap: () {
-              Navigator.pop(context);
+              Get.back();
             },
           ),
           ListTile(
