@@ -7,22 +7,18 @@ import 'context_menu_view.dart';
 class MyDevicesView extends StatelessWidget {
   MyDevicesView({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
-      appBar:  MyAppBar(appBarTitle: 'myDevices'.tr),
+      appBar: MyAppBar(appBarTitle: 'myDevices'.tr),
       drawer: NavDrawer(),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
         children: [
           for (int index = 1; index < 26; index++)
             ListTile(
-              leading:  ExcludeSemantics(
-                child:   ImageIcon(
+              leading: ExcludeSemantics(
+                child: ImageIcon(
                   const AssetImage('assets/img/device_connected.png'),
                   size: 22,
                   color: Theme.of(context).colorScheme.secondary,
@@ -31,7 +27,7 @@ class MyDevicesView extends StatelessWidget {
               ),
               title: Text("Устройство $index"),
               subtitle: Text(index.toString()),
-                trailing: const ContextMenuDemo(),
+              trailing: const ContextMenu(),
             ),
         ],
       ),
