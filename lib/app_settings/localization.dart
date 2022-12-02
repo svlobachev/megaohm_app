@@ -2,9 +2,14 @@ import 'package:get/get.dart';
 
 class Localization extends Translations {
   @override
-  Map<String, Map<String, String>> get keys =>
-      {
+  Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'addingADevice': 'Adding a device',
+          'enterSSIDAndPSWRDFromLabel': 'Enter the SSID and PSWRD from the label:',
+          'youNeedToEnterYourDetails': 'you need to enter your details!',
+          'toConnectToFlora': 'To connect to Flora',
+          'connect': 'СONNECT',
+          'deviceNotAdded': 'You have not added any devices yet.',
           'myDevices': 'My devices',
           'cancel': 'Cancel',
           'logOut': 'Are you sure you want to log out of your account?',
@@ -41,7 +46,7 @@ class Localization extends Translations {
           'get': 'Get the code again',
           'PhoneNumber': 'Your phone Number',
           'enterСodeText':
-          'Enter the last 4 digits of the number from which we will call you. For example:\n +1_123_456_XXXX ⬅',
+              'Enter the last 4 digits of the number from which we will call you. For example:\n +1_123_456_XXXX ⬅',
           "pinIsIncorrect": "Incorrect code, please try again",
           'welcome': 'Welcome',
           'Email': 'Your email',
@@ -60,6 +65,12 @@ class Localization extends Translations {
           'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'addingADevice': 'Добавление устройства',
+          'enterSSIDAndPSWRDFromLabel': 'Введите SSID и PSWRD с этикетки:',
+          'youNeedToEnterYourDetails': 'необходимо ввести её данные!',
+          'toConnectToFlora': 'Для подключения к Флоре',
+          'connect': 'ПОДКЛЮЧИТЬСЯ',
+          'deviceNotAdded': 'Вы ещё не добавили ни одного устройства.',
           'myDevices': 'Мои устройства',
           'cancel': 'Отмена',
           'logOut': 'Вы действительно хотите выйти из аккаунта?',
@@ -86,7 +97,8 @@ class Localization extends Translations {
           'validEmail': 'Пожалуйста, введите корректный e-mail',
           'validName': 'Пожалуйста, введите корректное имя',
           'yourName': 'Имя',
-          'agreeToTheTerms': 'Пожалуйста, согласитесь с условиями пользовательского соглашения',
+          'agreeToTheTerms':
+              'Пожалуйста, согласитесь с условиями пользовательского соглашения',
           'userAgreementTerms': 'Условия пользовательского соглашения',
           'iHaveReadAndAccept': 'Я ознакомлен(а) и принимаю ',
           'emptyField': 'Пожалуйста, заполните пустое поле(я)',
@@ -97,7 +109,7 @@ class Localization extends Translations {
           'welcome': 'Добро пожаловать!',
           'PhoneNumber': 'Номер телефона',
           'enterСodeText':
-          'Введите последние 4 цифры номера с которого мы вам позвоним. Например:\n +7_123_456_XXXX ⬅',
+              'Введите последние 4 цифры номера с которого мы вам позвоним. Например:\n +7_123_456_XXXX ⬅',
           "pinIsIncorrect": "Некорректный код, попробуйте ещё раз.",
           'Email': 'Почта',
           'password': 'Ваш пароль',

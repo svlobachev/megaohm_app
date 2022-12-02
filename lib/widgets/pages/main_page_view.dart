@@ -20,7 +20,7 @@ class MainPage extends StatelessWidget {
     var tokenRt = _tokenRt.obs;
     var tokenAt = _tokenAt.obs;
     return Scaffold(
-      appBar: MyAppBar(appBarTitle: "appBarTitle".tr,),
+      appBar: MyAppBar(appBarTitle: "appBarTitle".tr, actions: null,),
       drawer: NavDrawer(),
       body: Scaffold(
         body: Container(

@@ -8,6 +8,7 @@ import 'package:megaohm_app/app_services/internet_check/click_internet_check.dar
 import 'package:megaohm_app/app_services/registration_status_controller.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/model/navDrawer_logout_dialog_model.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/view/navDrawer_logout_dialog.dart';
+import 'package:megaohm_app/widgets/pages/add_device/controller/add_device_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/service/confirmation_page_api_service.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/controller/confirmation_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/model/confirmation_page_model.dart';
@@ -37,5 +38,6 @@ class DependencyInjection {
     Get.put(NavDrawerShowDialogModel());
     Get.put(ShowDialog());
     Get.put(NavDrawerShowDialog());
+    Get.put(AddDeviceController());
   }
 }

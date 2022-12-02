@@ -3,20 +3,13 @@ import 'package:get/get.dart';
 import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/myAppBar.dart';
-import 'package:megaohm_app/widgets/navigation/nav_drawer/navDrawer_view.dart';
-import 'package:megaohm_app/widgets/pages/confirmation_page/service/confirmation_page_api_service.dart';
-import 'package:megaohm_app/widgets/pages/confirmation_page/controller/confirmation_page_controller.dart';
-import 'package:megaohm_app/widgets/pages/confirmation_page/model/confirmation_page_model.dart';
-import 'package:megaohm_app/widgets/pages/confirmation_page/view/confirmation_page_counter_view.dart';
+import 'package:megaohm_app/widgets/pages/add_device/controller/add_device_page_controller.dart';
 
-
-
-class NewDeviceView extends StatelessWidget {
-  NewDeviceView({Key? key}) : super(key: key);
+class AddDeviceView extends StatelessWidget {
+  AddDeviceView({Key? key}) : super(key: key);
   final ClickInternetCheck _clickInternetCheck = Get.find();
-  final ConfirmationAPIService _confirmationAPIService = Get.find();
-  final ConfirmationPageController _confirmationPageController = Get.find();
-  final ConfirmationPageModel _confirmationPageModel = Get.find();
+  final AddDeviceController _addDeviceController = Get.find();
+
   final ForAllForms _forAllForms = Get.find();
 
   @override
@@ -27,8 +20,11 @@ class NewDeviceView extends StatelessWidget {
     final double bottomSizedBox = _forAllForms.bottomSizedBoxHeight;
 
     return Scaffold(
-      appBar:  MyAppBar(appBarTitle: "null",),
-      drawer:  NavDrawer(),
+      appBar: MyAppBar(
+        appBarTitle: "addingADevice".tr,
+        actions: null,
+      ),
+      // drawer:  NavDrawer(),
       body: Center(
         child: Wrap(
           children: [
@@ -38,28 +34,29 @@ class NewDeviceView extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        // Image.asset(
-                        //   'assets/img/back_arrow.png',
-                        //   height: 16,
-                        // ),
-                        Text(
-                          'registration'.tr,
-                          style: const TextStyle(
-                            // color: Get.isDarkMode ? Colors.white : Colors.black,
-                            fontSize: 32,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'Roboto',
-                          ),
-                        ),
-                      ],
+                    Text(
+                      'toConnectToFlora'.tr,
+                      style: const TextStyle(
+                        // color: Get.isDarkMode ? Colors.white : Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Roboto',
+                      ),
+                    ),
+                    Text(
+                      'youNeedToEnterYourDetails'.tr,
+                      style: const TextStyle(
+                        // color: Get.isDarkMode ? Colors.white : Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Roboto',
+                      ),
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(
                           vertical: vertical, horizontal: horizontal),
                       child: Text(
-                        'EnterCode'.tr,
+                        'enterSSIDAndPSWRDFromLabel'.tr,
                         style: const TextStyle(
                           // color: Get.isDarkMode ? Colors.white : Colors.black,
                           // fontSize: 32,
@@ -74,20 +71,39 @@ class NewDeviceView extends StatelessWidget {
             ),
             Container(
               key: UniqueKey(),
-              height: height + 15,
+              height: height,
               padding: EdgeInsets.symmetric(
                   vertical: vertical, horizontal: horizontal),
               child: TextFormField(
                 textAlignVertical: TextAlignVertical.top,
-                maxLength: 6,
+                // maxLength: 6,
                 onChanged: (value) {
-                  _confirmationPageController.codeFieldIsFilled = value;
+                  _addDeviceController.SSIDFieldIsFilled = value;
                 },
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(
                       vertical: vertical, horizontal: horizontal),
-                  labelText: 'code'.tr,
+                  labelText: 'SSID',
+                ),
+              ),
+            ),
+            Container(
+              key: UniqueKey(),
+              height: height,
+              padding: EdgeInsets.symmetric(
+                  vertical: vertical, horizontal: horizontal),
+              child: TextFormField(
+                textAlignVertical: TextAlignVertical.top,
+                // maxLength: 6,
+                onChanged: (value) {
+                  _addDeviceController.PSWRDFieldIsFilled = value;
+                },
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                      vertical: vertical, horizontal: horizontal),
+                  labelText: 'PSWRD',
                 ),
               ),
             ),
@@ -106,28 +122,17 @@ class NewDeviceView extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () async {
                           if (await _clickInternetCheck.initConnectivity() &&
-                              _confirmationPageController.fieldValidation() &&
-                              await _confirmationAPIService
-                                  .confirmUserRegistration()) {
-                            _confirmationPageModel.registrationCompleted();
+                              _addDeviceController.fieldValidation()) {
                             Get.offAllNamed('/mainPage');
                           }
                         },
-                        child: Text('confirm'.tr),
+                        child: Text('connect'.tr),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            Container(
-                padding: EdgeInsets.symmetric(horizontal: horizontal),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MyCounter(),
-                  ],
-                )),
             SizedBox(
               height: bottomSizedBox,
             ),

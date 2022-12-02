@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ContextMenu extends StatelessWidget {
-  const ContextMenu({
+class PopupMenu extends StatelessWidget {
+  const PopupMenu({
     Key? key,
   }) : super(key: key);
 
