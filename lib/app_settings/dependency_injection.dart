@@ -12,6 +12,7 @@ import 'package:megaohm_app/widgets/pages/add_device/controller/add_device_page_
 import 'package:megaohm_app/widgets/pages/confirmation_page/service/confirmation_page_api_service.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/controller/confirmation_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/model/confirmation_page_model.dart';
+import 'package:megaohm_app/widgets/pages/my_devices/service/web_socket.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/controller/registration_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/service/registration_page_api_service.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/view/registration_page_show_dialog_view.dart';
@@ -39,5 +40,6 @@ class DependencyInjection {
     Get.put(ShowDialog());
     Get.put(NavDrawerShowDialog());
     Get.put(AddDeviceController());
+    Get.put(AddDeviceWebSocket());
   }
 }
