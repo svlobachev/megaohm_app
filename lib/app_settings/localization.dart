@@ -4,6 +4,7 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'toRemoveTheDevice': 'Are you sure you want to remove the device?',
           'addingADevice': 'Adding a device',
           'enterSSIDAndPSWRDFromLabel': 'Enter the SSID and PSWRD from the label:',
           'youNeedToEnterYourDetails': 'you need to enter your details!',
@@ -65,6 +66,7 @@ class Localization extends Translations {
           'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'toRemoveTheDevice': 'Вы действительно хотите удалить устройство?',
           'addingADevice': 'Добавление устройства',
           'enterSSIDAndPSWRDFromLabel': 'Введите SSID и PSWRD с этикетки:',
           'youNeedToEnterYourDetails': 'необходимо ввести её данные!',

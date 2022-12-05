@@ -5,7 +5,7 @@ class MySnackBarGet {
 
   SnackbarStatus? _snackBarStatus = SnackbarStatus.CLOSED;
 
-  mySnackBar({required String text, required Icon icon, int duration = 3}) {
+   mySnackBar ({required String text, required Icon icon, int duration = 3}) {
     if (_snackBarStatus == SnackbarStatus.CLOSED) {
       Get.snackbar(
         '',

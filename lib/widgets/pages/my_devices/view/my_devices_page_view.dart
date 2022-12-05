@@ -1,35 +1,31 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/myAppBar.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/navDrawer_view.dart';
+import 'package:megaohm_app/widgets/pages/my_devices/model/my_devices_box.dart';
 import 'package:megaohm_app/widgets/pages/my_devices/service/web_socket.dart';
-import 'popup_menu_view.dart';
+import 'package:megaohm_app/widgets/pages/my_devices/view/popup_menu_view.dart';
+
+
 
 class MyDevicesView extends StatelessWidget {
   MyDevicesView({Key? key}) : super(key: key);
-  ForAllForms _forAllForms = Get.find();
-  AddDeviceWebSocket _addDeviceWebSocket = Get.find();
-  final Box _box = Hive.box('MyDevicesBox');
 
-  // RxMap myDevices = {'Устройство1': '1', 'Устройство2': '2', 'Устройство3': '3'}.obs;
-  RxMap myDevices = {}.obs;
+  final ForAllForms _forAllForms = Get.find();
+  final AddDeviceWebSocket _addDeviceWebSocket = Get.find();
+  final MyDevicesBoxModel _myDevicesBoxModel = Get.find();
+  final MyPopupMenu _myPopupMenu = Get.find();
+  // final Box _box = Hive.box('MyDevicesBox');
+  // RxMap<String, String> _myDevices = {}.obs;
+
+  RxMap<String, String> myDevices = {'Устройство1': '1', 'Устройство2': '2', 'Устройство3': '3'}.obs;
 
   @override
   Widget build(BuildContext context) {
-    _addDeviceWebSocket.webSocketState();
-    if (_box.keys.isNotEmpty) {
-      for (var item in _box.keys) {
-        myDevices.value[item]= _box.get(item);
-      }
-    }
-    // if (_box.containsKey('did') && _box.get('did') != '') {
-    //   myDevices.value[_box.get('did')]= 'offline';
-    //
-    // }
-    // _WebSocketState();
+    _myDevicesBoxModel.cleanMyDevicesBox();
+    // _myDevices.addAll(_myDevicesBoxModel.getMyDevices());
 
     return Scaffold(
       appBar: MyAppBar(
@@ -38,8 +34,12 @@ class MyDevicesView extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.add_box,
                 color: Theme.of(context).colorScheme.onPrimary),
-            onPressed: () {
-              Get.toNamed('/addDevice');
+            onPressed: () async {
+              await _addDeviceWebSocket.connectToSocket();
+              Future.delayed(const Duration(milliseconds: 2000), () {
+                myDevices.addAll(_myDevicesBoxModel.getMyDevices());
+              });
+
             },
           ),
         ],
@@ -95,7 +95,7 @@ class MyDevicesView extends StatelessWidget {
                       ),
                       title: Text(item.key, overflow: TextOverflow.ellipsis),
                       subtitle: Text(item.value),
-                      trailing: const PopupMenu(),
+                        trailing: _myPopupMenu.popupMenu( context: context, did: item.key, myDevices: myDevices),
                     ),
                 ],
               ),

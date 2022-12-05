@@ -22,7 +22,6 @@ List<GetPage> myGetPages = [
 
   GetPage(name: '/mainPage', page: () => MainPage()),
   GetPage(name: '/myDevices', page: () => MyDevicesView()),
-  GetPage(name: '/newDevice', page: () => AddDeviceView()),
   GetPage(name: '/registration', page: () => RegistrationPageView()),
   GetPage(name: '/conformation', page: () => ConformationPageView()),
   GetPage(name: '/addDevice', page: () => AddDeviceView()),
