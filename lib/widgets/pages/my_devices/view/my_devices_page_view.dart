@@ -18,9 +18,9 @@ class MyDevicesView extends StatelessWidget {
   final MyDevicesBoxModel _myDevicesBoxModel = Get.find();
   final MyPopupMenu _myPopupMenu = Get.find();
   // final Box _box = Hive.box('MyDevicesBox');
-  // RxMap<String, String> _myDevices = {}.obs;
+  // RxMap myDevices = {}.obs;
 
-  RxMap<String, String> myDevices = {'Устройство1': '1', 'Устройство2': '2', 'Устройство3': '3'}.obs;
+  RxMap myDevices = {'Устройство1': '1', 'Устройство2': '2', 'Устройство3': '3'}.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class MyDevicesView extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onPrimary),
             onPressed: () async {
               await _addDeviceWebSocket.connectToSocket();
-              Future.delayed(const Duration(milliseconds: 2000), () {
+              Future.delayed(const Duration(milliseconds: 1000), () {
                 myDevices.addAll(_myDevicesBoxModel.getMyDevices());
               });
 

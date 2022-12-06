@@ -25,7 +25,7 @@ class AddDeviceWebSocket {
       await _listenToMessage();
       _isConnected = true;
       _mySnackBarGet.mySnackBar(
-        text: 'Устройство найдено!'.tr,
+        text: 'deviceFound'.tr,
         icon: Icon(
           Icons.devices_other,
           // color: colorForSnackBarErrors,

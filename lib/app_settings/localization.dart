@@ -4,6 +4,9 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'deviceNotNound': 'Device not found.',
+          'deviceFound': 'Device found! Now you can go to settings.',
+          'delete': 'Delete',
           'toRemoveTheDevice': 'Are you sure you want to remove the device?',
           'addingADevice': 'Adding a device',
           'enterSSIDAndPSWRDFromLabel': 'Enter the SSID and PSWRD from the label:',
@@ -66,6 +69,9 @@ class Localization extends Translations {
           'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'deviceNotNound': 'Устройство не найдено.',
+          'deviceFound': 'Устройство найдено! Теперь вы можете перейти к настройкам.',
+          'delete': 'Удалить',
           'toRemoveTheDevice': 'Вы действительно хотите удалить устройство?',
           'addingADevice': 'Добавление устройства',
           'enterSSIDAndPSWRDFromLabel': 'Введите SSID и PSWRD с этикетки:',

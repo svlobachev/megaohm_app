@@ -51,6 +51,7 @@ class NavDrawer extends StatelessWidget {
             title: Text('myDevices'.tr),
             leading: const Icon(Icons.devices_other),
             onTap: () {
+              Get.back();
               Get.toNamed('/myDevices');
             },
           ),

@@ -7,7 +7,7 @@ import 'package:megaohm_app/widgets/pages/my_devices/model/my_devices_box.dart';
 class MyPopupMenu {
   final MyDevicesBoxModel _myDevicesBoxModel = Get.find();
   NavDrawerShowDialog navDrawerShowDialog = Get.find();
-  RxBool _deleteIcon = true.obs;
+  var _deleteIcon = false.obs;
 
   popupMenu({
     required context,
@@ -81,18 +81,20 @@ class MyPopupMenu {
                     onPressed: () {
                       if (_deleteIcon.value) {
                         Get.back();
-                        _myDevicesBoxModel.deleteDevice(did);
-                        try {
-                          myDevices = myDevices.remove(did);
-                        } catch (e) {
-                          debugPrint(e.toString());
-                        }
-                        _deleteIcon.value
-                            ? _deleteIcon.value = false
-                            : _deleteIcon.value = true;
+                        Future.delayed(const Duration(milliseconds: 500), () {
+                          _myDevicesBoxModel.deleteDevice(did);
+                          try {
+                            myDevices = myDevices.remove(did);
+                          } catch (e) {
+                            debugPrint(e.toString());
+                          }
+                          _deleteIcon.value
+                              ? _deleteIcon.value = false
+                              : _deleteIcon.value = true;
+                        });
                       }
                     },
-                    child: Text('Удалить',
+                    child: Text('delete'.tr,
                         style: TextStyle(
                           color: Get.isDarkMode
                               ? Colors.white
@@ -103,23 +105,25 @@ class MyPopupMenu {
                 ],
               ),
               // Obx( () =>
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Obx(
-                    () => IconButton(
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
                       onPressed: () {
                         _deleteIcon.value
                             ? _deleteIcon.value = false
                             : _deleteIcon.value = true;
                       },
-                      icon: Icon(
-                          _deleteIcon.value ? Icons.lock_open : Icons.lock,
-                          size: 16,
-                          color: Theme.of(context).colorScheme.secondary),
+                      icon: Obx(
+                        () => Icon(
+                            _deleteIcon.value ? Icons.lock_open : Icons.lock,
+                            size: 18,
+                            color: Theme.of(context).colorScheme.secondary),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
