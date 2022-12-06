@@ -24,6 +24,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         appBarTitle,
         style: TextStyle(
             color: Theme.of(context).colorScheme.onPrimary,
+            fontSize: 20,
             fontWeight: FontWeight.w300),
       ),
       // backgroundColor: Theme.of(context).colorScheme.primary,

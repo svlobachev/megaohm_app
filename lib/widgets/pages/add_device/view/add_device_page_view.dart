@@ -25,12 +25,6 @@ class AddDeviceView extends StatelessWidget {
       _PSWRD.value = _backMap['PSWRD'];
     }
 
-      // _backMap = _stringParser.parseString('');
-      // _SSID.value = _backMap['SSID'];
-      // _PSWRD.value = _backMap['PSWRD'];
-
-
-
     final double vertical = _forAllForms.vertical;
     final double horizontal = _forAllForms.horizontal;
     final double height = _forAllForms.height;
