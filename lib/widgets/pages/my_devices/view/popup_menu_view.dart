@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/view/navDrawer_logout_dialog.dart';
-// import 'package:megaohm_app/widgets/pages/my_devices/model/my_devices_box.dart';
+import 'package:megaohm_app/widgets/pages/my_devices/model/my_devices_box.dart';
 
 class MyPopupMenu {
-  // final MyDevicesBoxModel _myDevicesBoxModel = Get.find();
+  final MyDevicesBoxModel _myDevicesBoxModel = Get.find();
   NavDrawerShowDialog navDrawerShowDialog = Get.find();
+  RxBool _deleteIcon = true.obs;
 
   popupMenu({
     required context,
@@ -14,13 +15,17 @@ class MyPopupMenu {
     required RxMap myDevices,
   }) {
     return PopupMenuButton(
+      // constraints: const BoxConstraints(
+      //   minWidth: 190,
+      //   maxWidth: 200,
+      // ),
       iconSize: 22,
       color: Theme.of(context).colorScheme.onPrimary,
       padding: EdgeInsets.zero,
       onSelected: (value) => value,
       itemBuilder: (context) => <PopupMenuItem>[
         PopupMenuItem(
-          value: 'demoMenu',
+          value: 'Menu0',
           child: Row(
             children: [
               Icon(Icons.library_books_outlined,
@@ -32,7 +37,7 @@ class MyPopupMenu {
           ),
         ),
         PopupMenuItem(
-          value: 'demoMenu1',
+          value: 'Menu1',
           child: Row(
             children: [
               Icon(Icons.settings_applications_outlined,
@@ -44,7 +49,7 @@ class MyPopupMenu {
           ),
         ),
         PopupMenuItem(
-          value: 'demoMenu2',
+          value: 'Menu2',
           child: Row(
             children: [
               Icon(Icons.tips_and_updates_outlined,
@@ -56,38 +61,62 @@ class MyPopupMenu {
           ),
         ),
         PopupMenuItem(
-          onTap: () {
-            // _myDevicesBoxModel.deleteDevice(did);
-            // try {
-            //   myDevices = myDevices.remove(did);
-            // } catch (e) {
-            //   debugPrint(e.toString());
-            // }
-          },
-          value: 'demoMenu3',
-          child: Wrap(
+          value: 'Menu3',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 children: [
-                  Row(
-                    children: [
-                      Icon(Icons.delete_forever_outlined,
+                  Icon(Icons.delete_forever_outlined,
+                      size: 16, color: Theme.of(context).colorScheme.secondary),
+                  TextButton(
+                    // style: TextButton.styleFrom(
+                    //   textStyle: TextStyle(
+                    //     fontSize: 20,
+                    //     // color: Theme.of(context).colorScheme.onPrimary,
+                    //     color: Get.isDarkMode ? Colors.white : Colors.black,
+                    //   ),
+                    // ),
+                    onPressed: () {
+                      if (_deleteIcon.value) {
+                        Get.back();
+                        _myDevicesBoxModel.deleteDevice(did);
+                        try {
+                          myDevices = myDevices.remove(did);
+                        } catch (e) {
+                          debugPrint(e.toString());
+                        }
+                        _deleteIcon.value
+                            ? _deleteIcon.value = false
+                            : _deleteIcon.value = true;
+                      }
+                    },
+                    child: Text('Удалить',
+                        style: TextStyle(
+                          color: Get.isDarkMode
+                              ? Colors.white
+                              : Colors.black, // зеленый цвет текста
+                          fontSize: 16,
+                        )),
+                  ),
+                ],
+              ),
+              // Obx( () =>
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Obx(
+                    () => IconButton(
+                      onPressed: () {
+                        _deleteIcon.value
+                            ? _deleteIcon.value = false
+                            : _deleteIcon.value = true;
+                      },
+                      icon: Icon(
+                          _deleteIcon.value ? Icons.lock_open : Icons.lock,
                           size: 16,
                           color: Theme.of(context).colorScheme.secondary),
-                      Text(
-                        ' Удалить',
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(onPressed: () {}, icon: Icon(Icons.lock,
-                            size: 16,
-                            color: Theme.of(context).colorScheme.secondary)),
-
-                      ],
                     ),
                   ),
                 ],
