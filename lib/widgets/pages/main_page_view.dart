@@ -12,7 +12,6 @@ class MainPage extends StatelessWidget {
   final AccessTokenRenew _accessTokenRenew = Get.find();
   final Box _box = Hive.box('RegistrationBox');
 
-
   @override
   Widget build(BuildContext context) {
     String _tokenRt = _box.get("tokenRt");

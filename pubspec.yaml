@@ -30,6 +30,9 @@ dependencies:
   intl_phone_field: ^3.1.0
   jwt_decoder: ^2.0.1
   web_socket_channel: ^2.2.0
+  ai_barcode: ^3.2.4
+  permission_handler: ^8.0.0+2
+#  mobile_scanner: ^2.1.0
 
 
 

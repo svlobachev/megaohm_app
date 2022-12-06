@@ -24,7 +24,7 @@ class MyDevicesBoxModel {
     if (_box.keys.isNotEmpty && _box.containsKey(did)) {
          _box.delete(did);
     } else {
-      debugPrint("--> _box.keys.isEmpty");
+      debugPrint("--> _box.isEmpty");
     }
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/view/navDrawer_logout_dialog.dart';
-import 'package:megaohm_app/widgets/pages/my_devices/model/my_devices_box.dart';
+import 'package:megaohm_app/widgets/pages/my_devices_page/model/my_devices_box.dart';
 
 class MyPopupMenu {
   final MyDevicesBoxModel _myDevicesBoxModel = Get.find();
@@ -42,11 +42,34 @@ class MyPopupMenu {
             children: [
               Icon(Icons.settings_applications_outlined,
                   size: 16, color: Theme.of(context).colorScheme.secondary),
-              Text(
-                ' Настройки',
+              TextButton(
+                // style: TextButton.styleFrom(
+                //   textStyle: TextStyle(
+                //     fontSize: 20,
+                //     // color: Theme.of(context).colorScheme.onPrimary,
+                //     color: Get.isDarkMode ? Colors.white : Colors.black,
+                //   ),
+                // ),
+                onPressed: () {
+                  Get.back();
+                  Get.toNamed('/stepperView');
+                },
+                child: Text(
+                  'settings'.tr,
+                  style: TextStyle(
+                    color: Get.isDarkMode
+                        ? Colors.white
+                        : Colors.black, // зеленый цвет текста
+                    fontSize: 16,
+                  ),
+                ),
               ),
             ],
           ),
+          // onTap: () {
+          //   Get.back();
+          //   Get.toNamed('/registration');
+          // },
         ),
         PopupMenuItem(
           value: 'Menu2',

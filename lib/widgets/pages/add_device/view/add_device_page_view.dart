@@ -4,16 +4,33 @@ import 'package:megaohm_app/app_services/internet_check/click_internet_check.dar
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/myAppBar.dart';
 import 'package:megaohm_app/widgets/pages/add_device/controller/add_device_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/add_device/service/string_parser.dart';
 
 class AddDeviceView extends StatelessWidget {
   AddDeviceView({Key? key}) : super(key: key);
+  StringParser _stringParser = Get.find();
   final ClickInternetCheck _clickInternetCheck = Get.find();
   final AddDeviceController _addDeviceController = Get.find();
-
   final ForAllForms _forAllForms = Get.find();
+   Map _backMap = {};
+    RxString _SSID = ''.obs;
+    RxString _PSWRD = ''.obs;
 
   @override
   Widget build(BuildContext context) {
+
+    if(Get.arguments != null){
+      _backMap = _stringParser.parseString(Get.arguments);
+      _SSID.value = _backMap['SSID'];
+      _PSWRD.value = _backMap['PSWRD'];
+    }
+
+      // _backMap = _stringParser.parseString('');
+      // _SSID.value = _backMap['SSID'];
+      // _PSWRD.value = _backMap['PSWRD'];
+
+
+
     final double vertical = _forAllForms.vertical;
     final double horizontal = _forAllForms.horizontal;
     final double height = _forAllForms.height;
@@ -38,7 +55,7 @@ class AddDeviceView extends StatelessWidget {
                       'toConnectToFlora'.tr,
                       style: const TextStyle(
                         // color: Get.isDarkMode ? Colors.white : Colors.black,
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.w500,
                         fontFamily: 'Roboto',
                       ),
@@ -47,7 +64,7 @@ class AddDeviceView extends StatelessWidget {
                       'youNeedToEnterYourDetails'.tr,
                       style: const TextStyle(
                         // color: Get.isDarkMode ? Colors.white : Colors.black,
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.w500,
                         fontFamily: 'Roboto',
                       ),
@@ -55,14 +72,32 @@ class AddDeviceView extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.symmetric(
                           vertical: vertical, horizontal: horizontal),
-                      child: Text(
-                        'enterSSIDAndPSWRDFromLabel'.tr,
-                        style: const TextStyle(
-                          // color: Get.isDarkMode ? Colors.white : Colors.black,
-                          // fontSize: 32,
-                          // fontWeight: FontWeight.w500,
-                          fontFamily: 'Roboto',
-                        ),
+                      child: Row(
+                        children: [
+                          Text(
+                            'enterSSIDAndPSWRDFromLabel'.tr,
+                            style: const TextStyle(
+                              // color: Get.isDarkMode ? Colors.white : Colors.black,
+                              // fontSize: 32,
+                              // fontWeight: FontWeight.w500,
+                              fontFamily: 'Roboto',
+                            ),
+                          ),
+                          IconButton(
+                            icon: Image.asset(
+                              ("assets/img/icons8-qr-3.gif"),
+                            ),
+                            iconSize: 45,
+                            onPressed: () async {
+                              // _backData.value = await Get.to(FullScreenScannerPage());
+                              Get.toNamed('/screenScannerPage');
+
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //   builder: (context) =>  FullScreenScannerPage(),
+                              // ));
+                            },
+                          )
+                        ],
                       ),
                     ),
                   ],
@@ -74,17 +109,20 @@ class AddDeviceView extends StatelessWidget {
               height: height,
               padding: EdgeInsets.symmetric(
                   vertical: vertical, horizontal: horizontal),
-              child: TextFormField(
-                textAlignVertical: TextAlignVertical.top,
-                // maxLength: 6,
-                onChanged: (value) {
-                  _addDeviceController.SSIDFieldIsFilled = value;
-                },
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(
-                      vertical: vertical, horizontal: horizontal),
-                  labelText: 'SSID',
+              child: Obx(
+                () => TextFormField(
+                initialValue: _SSID.value,
+                  textAlignVertical: TextAlignVertical.top,
+                  // maxLength: 6,
+                  onChanged: (value) {
+                    _addDeviceController.SSIDFieldIsFilled = value;
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(
+                        vertical: vertical, horizontal: horizontal),
+                    labelText: 'SSID',
+                  ),
                 ),
               ),
             ),
@@ -93,7 +131,9 @@ class AddDeviceView extends StatelessWidget {
               height: height,
               padding: EdgeInsets.symmetric(
                   vertical: vertical, horizontal: horizontal),
-              child: TextFormField(
+              child: Obx(
+                    () => TextFormField(
+                initialValue: _PSWRD.value,
                 textAlignVertical: TextAlignVertical.top,
                 // maxLength: 6,
                 onChanged: (value) {
@@ -105,7 +145,7 @@ class AddDeviceView extends StatelessWidget {
                       vertical: vertical, horizontal: horizontal),
                   labelText: 'PSWRD',
                 ),
-              ),
+              ),),
             ),
             Container(
               padding: EdgeInsets.symmetric(

@@ -6,20 +6,20 @@ import 'package:megaohm_app/app_services/get_device_id.dart';
 import 'package:megaohm_app/app_services/internet_check/background_internet_check.dart';
 import 'package:megaohm_app/app_services/internet_check/click_internet_check.dart';
 import 'package:megaohm_app/app_services/registration_status_controller.dart';
+import 'package:megaohm_app/app_services/web_socket.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/model/navDrawer_logout_dialog_model.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/view/navDrawer_logout_dialog.dart';
 import 'package:megaohm_app/widgets/pages/add_device/controller/add_device_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/add_device/service/string_parser.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/service/confirmation_page_api_service.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/controller/confirmation_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/model/confirmation_page_model.dart';
-import 'package:megaohm_app/widgets/pages/my_devices/model/my_devices_box.dart';
-import 'package:megaohm_app/widgets/pages/my_devices/service/web_socket.dart';
+import 'package:megaohm_app/widgets/pages/my_devices_page/model/my_devices_box.dart';
+import 'package:megaohm_app/widgets/pages/my_devices_page/view/popup_menu_view.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/controller/registration_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/service/registration_page_api_service.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/view/registration_page_show_dialog_view.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
-
-import '../widgets/pages/my_devices/view/popup_menu_view.dart';
 import 'for_all_forms.dart';
 
 class DependencyInjection {
@@ -45,6 +45,7 @@ class DependencyInjection {
     Get.put(AddDeviceController());
     Get.put(MyDevicesBoxModel());
     Get.put(MyPopupMenu());
+    Get.put(StringParser());
 
 
   }
