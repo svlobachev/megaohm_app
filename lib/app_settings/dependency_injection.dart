@@ -9,8 +9,8 @@ import 'package:megaohm_app/app_services/registration_status_controller.dart';
 import 'package:megaohm_app/app_services/web_socket.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/model/navDrawer_logout_dialog_model.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/view/navDrawer_logout_dialog.dart';
-import 'package:megaohm_app/widgets/pages/add_device/controller/add_device_page_controller.dart';
-import 'package:megaohm_app/widgets/pages/add_device/service/string_parser.dart';
+import 'package:megaohm_app/widgets/pages/add_device_page/controller/add_device_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/add_device_page/service/string_parser_from_qr_code.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/service/confirmation_page_api_service.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/controller/confirmation_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/model/confirmation_page_model.dart';
@@ -45,7 +45,7 @@ class DependencyInjection {
     Get.put(AddDeviceController());
     Get.put(MyDevicesBoxModel());
     Get.put(MyPopupMenu());
-    Get.put(StringParser());
+    Get.put(StringParserFromQRCode());
 
 
   }

@@ -1,10 +1,10 @@
 
 
-class  StringParser{
+class  StringParserFromQRCode{
 
 
   Map<String, String> parseString(String myString){
-    // myString = 'WIFI:T:WPA;S:1234;P:4321;H:;;';
+    // myString = 'WIFI:T:WPA;S:Xiaomi_521F;P:4321;H:;;';
     Map<String, String> _dataMap = {};
 
     List<String> list = myString.split(";");
