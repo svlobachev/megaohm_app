@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class MyDioService {
-  final Box _box = Hive.box('FloraAPIBox');
+  final Box _floraAPIBox = Hive.box('FloraAPIBox');
 
   Future<Map<String, dynamic>> floraAPI(
       {required String path,
@@ -15,15 +15,15 @@ class MyDioService {
       required Map<String, String> data,
       int timeoutSec = 10}) async {
     Map<String, dynamic> dataMap = {};
-    var baseUrl = _box.get("baseUrl");
+    var baseUrl = _floraAPIBox.get("baseUrl");
     String responseStatusCode = '';
 
-    if (_box.containsKey("floraAPIStatus") &&
-        _box.get("floraAPIStatus") == 'locked') {
+    if (_floraAPIBox.containsKey("floraAPIStatus") &&
+        _floraAPIBox.get("floraAPIStatus") == 'locked') {
       return dataMap = {"responseStatusCode": '429'};
     }
 
-    _box.put("floraAPIStatus", 'locked');
+    _floraAPIBox.put("floraAPIStatus", 'locked');
     var dio = Dio();
     // if (baseUrl.isNotEmpty) debugPrint("floraAPI_baseUrl --> $baseUrl");
     dio.options
@@ -78,7 +78,7 @@ class MyDioService {
       debugPrint("${item.key} --> ${item.value}");
     }
 
-    _box.put("floraAPIStatus", 'free');
+    _floraAPIBox.put("floraAPIStatus", 'free');
 
     return dataMap;
   }

@@ -43,16 +43,8 @@ class MyPopupMenu {
               Icon(Icons.settings_applications_outlined,
                   size: 16, color: Theme.of(context).colorScheme.secondary),
               TextButton(
-                // style: TextButton.styleFrom(
-                //   textStyle: TextStyle(
-                //     fontSize: 20,
-                //     // color: Theme.of(context).colorScheme.onPrimary,
-                //     color: Get.isDarkMode ? Colors.white : Colors.black,
-                //   ),
-                // ),
                 onPressed: () {
                   Get.back();
-                  Get.toNamed('/stepperView');
                 },
                 child: Text(
                   'settings'.tr,
@@ -141,7 +133,7 @@ class MyPopupMenu {
                       icon: Obx(
                         () => Icon(
                             _deleteIcon.value ? Icons.lock_open : Icons.lock,
-                            size: 18,
+                            size: 20,
                             color: Theme.of(context).colorScheme.secondary),
                       ),
                     ),

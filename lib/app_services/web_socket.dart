@@ -12,17 +12,22 @@ import 'package:web_socket_channel/io.dart';
 class AddDeviceWebSocket {
   final MySnackBarGet _mySnackBarGet = Get.find();
   final ForAllForms _forAllForms = Get.find();
-  final Box _box = Hive.box('MyDevicesBox');
+  final Box _devicesBox = Hive.box('MyDevicesBox');
+  final Box _floraAPIBox = Hive.box('FloraAPIBox');
   Map<String, dynamic> _dataMap = {};
   late IOWebSocketChannel _client;
   bool _isConnected = false;
 
-  connectToSocket() async {
+  bool get isConnected => _isConnected;
 
-       await WebSocket.connect('ws://192.168.31.81:44300/ws').then((ws)  async {
+  connectToSocket() async {
+    if (_isConnected) {
+      disconnect();
+    }
+    await WebSocket.connect('ws://192.168.31.81:44300/ws').then((ws) async {
       _client = IOWebSocketChannel(ws);
-      debugPrint("--> Socket added");
-      await _listenToMessage();
+      debugPrint("--> WSocket added");
+      _listenToMessage();
       _isConnected = true;
       _mySnackBarGet.mySnackBar(
         text: 'deviceFound'.tr,
@@ -36,13 +41,13 @@ class AddDeviceWebSocket {
     }).onError((error, stackTrace) {
       if (error.toString() != '') {
         debugPrint(error.toString());
-        debugPrint("--> Socket not added");
+        debugPrint("--> WSocket not added");
         _isConnected = false;
         // Timer.periodic(Duration(seconds: _heartbeatInterval), (Timer timer){
         //   connectToSocket();
         // });
         _mySnackBarGet.mySnackBar(
-          text: 'Устройство не найдено!'.tr,
+          text: 'deviceNotNound'.tr,
           icon: Icon(
             Icons.devices,
             // color: colorForSnackBarErrors,
@@ -55,31 +60,41 @@ class AddDeviceWebSocket {
     return _isConnected;
   }
 
-  _listenToMessage() async {
-    // if (await _client.stream.isEmpty) {
-    await _client.stream.listen((message) {
+  _listenToMessage() {
+    _client.stream.listen((message) {
       if (message != null) {
         _dataMap = json.decode(message);
-        for (var item in _dataMap.entries) {
-          if (!_box.containsKey(item.value) && item.key == 'did') {
-            _box.put(item.value, 'offline');
-          }
+        if (_dataMap.containsKey('did') &&
+            !_devicesBox.containsKey(_dataMap['did'])) {
+          _devicesBox.put(_dataMap['did'], 'locally');
+        }
+        if (_dataMap.containsKey('cmd')) {
+          _floraAPIBox.put('cmd', _dataMap['cmd']);
+          // debugPrint("WS cmd --> ${_floraAPIBox.get('cmd')}");
+        }
+        if (_dataMap.containsKey('state')) {
+          _floraAPIBox.put('state', _dataMap['state']);
+          // debugPrint("WS state --> ${_floraAPIBox.get('state')}");
         }
       }
       debugPrint("status.goingAway --> ${status.goingAway}");
-      disconnect();
+      // disconnect();
     }, onError: (error, StackTrace stackTrace) {
       if (error.toString() != '') {
         debugPrint(error.toString());
         disconnect();
       }
     }, onDone: () {
-      debugPrint('--> ws channel closed');
+      debugPrint('--> WSocket closed');
       disconnect();
     }, cancelOnError: true);
-    // }
   }
 
+  sendMessageToDevice(String message) {
+    if (_isConnected) {
+      _client.sink.add(message);
+    }
+  }
 
   disconnect() {
     _client.sink.close(status.goingAway);

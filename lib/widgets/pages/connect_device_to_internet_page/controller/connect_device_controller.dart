@@ -1,27 +1,19 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
-class AddDeviceController {
+class ConnectDeviceController {
   final ForAllForms _forAllForms = Get.find();
   final MySnackBarGet _mySnackBarGet = Get.find();
 
-  String _SSIDFieldIsFilled = '';
-  String _PSWRDFieldIsFilled = '';
-
-
-  set SSIDFieldIsFilled(String value) {
-    _SSIDFieldIsFilled = value;
-  }
-
-  set PSWRDFieldIsFilled(String value) {
-    _PSWRDFieldIsFilled = value;
-  }
+  String SSIDFieldIsFilled = '';
+  String PSWRDFieldIsFilled = '';
 
   bool fieldValidation() {
-    if (_SSIDFieldIsFilled.isEmpty || _PSWRDFieldIsFilled.isEmpty) {
+    if (SSIDFieldIsFilled.isEmpty || PSWRDFieldIsFilled.isEmpty) {
       _mySnackBarGet.mySnackBar(
         text: 'emptyField'.tr,
         icon: Icon(
@@ -32,9 +24,9 @@ class AddDeviceController {
       );
       return false;
     }
-    if (_SSIDFieldIsFilled.isNotEmpty) {
+    if (SSIDFieldIsFilled.isNotEmpty) {
       final bool result =
-          RegExp(r"^[0-9A-F]{24}$").hasMatch(_SSIDFieldIsFilled.trim());
+          RegExp(r"^[0-9A-Za-z-_]{1,250}$").hasMatch(SSIDFieldIsFilled.trim());
       if (!result) {
         _mySnackBarGet.mySnackBar(
           text: 'SSID ${'404'.tr}',
@@ -48,9 +40,9 @@ class AddDeviceController {
       }
       // debugPrint("SSIDFieldIsFilled --> $result");
     }
-    if (_PSWRDFieldIsFilled.isNotEmpty) {
+    if (PSWRDFieldIsFilled.isNotEmpty) {
       final bool result =
-          RegExp(r"^[0-9]\.[0-9]\.[0-9]$").hasMatch(_PSWRDFieldIsFilled.trim());
+          RegExp(r"^[0-9A-Za-z-,._!@#$%^&*]{1,250}$").hasMatch(PSWRDFieldIsFilled.trim());
       if (!result) {
         _mySnackBarGet.mySnackBar(
           text: 'PSWRD ${'404'.tr}',

@@ -3,53 +3,38 @@ import 'package:get/get.dart';
 import 'package:megaohm_app/app_services/web_socket.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/myAppBar.dart';
-import 'package:megaohm_app/widgets/pages/add_device_page/controller/add_device_page_controller.dart';
-import 'package:megaohm_app/widgets/pages/add_device_page/service/iot_wifi_access_point.dart';
-import 'package:megaohm_app/widgets/pages/add_device_page/service/string_parser_from_qr_code.dart';
+import 'package:megaohm_app/widgets/pages/connect_device_to_internet_page/controller/connect_device_controller.dart';
+import 'package:megaohm_app/widgets/pages/connect_device_to_internet_page/controller/web_socket_controller.dart';
 
-class AddDeviceView extends StatelessWidget {
-  AddDeviceView({Key? key}) : super(key: key);
-  final StringParserFromQRCode _stringParserFromQRCode = Get.find();
-  final AddDeviceController _addDeviceController = Get.find();
+class ConnectDeviceToTheInternet extends StatelessWidget {
+  ConnectDeviceToTheInternet({Key? key}) : super(key: key);
+  final ConnectDeviceController _connectDeviceController = Get.find();
+  final AddDeviceWebSocket _addDeviceWebSocket = Get.find();
+  final WebSocketController _webSocketController = Get.find();
   final ForAllForms _forAllForms = Get.find();
-  final IotWiFiAccessPoint _iotWiFiAccessPoint = Get.find();
-  AddDeviceWebSocket _addDeviceWebSocket = Get.find();
-  Map _backMap = {};
-  RxString _SSID = ''.obs;
-  RxString _PSWRD = ''.obs;
 
   @override
   Widget build(BuildContext context) {
-    dataFromCamera() async {
-      if (Get.arguments != null) {
-        _backMap = _stringParserFromQRCode.parseString(Get.arguments);
-        _SSID.value = _backMap['SSID'];
-        _PSWRD.value = _backMap['PSWRD'];
-        _addDeviceController.SSIDFieldIsFilled = _SSID.value;
-        _addDeviceController.PSWRDFieldIsFilled = _PSWRD.value;
-        _iotWiFiAccessPoint.ssid = _SSID.value;
-        _iotWiFiAccessPoint.password = _PSWRD.value;
-        await _iotWiFiAccessPoint.connect();
-        Get.toNamed('/connectDeviceToTheInternet');
-      }
-    }
-
-    dataFromCamera();
-
     final double vertical = _forAllForms.vertical;
     final double horizontal = _forAllForms.horizontal;
     final double height = _forAllForms.height;
     final double bottomSizedBox = _forAllForms.bottomSizedBoxHeight;
+
+    connectToWebSocket() async {
+        await _addDeviceWebSocket.connectToSocket();
+    }
+
+    connectToWebSocket();
 
     return Scaffold(
       appBar: MyAppBar(
         appBarTitle: "addingADevice".tr,
         actions: [
           IconButton(
-            icon: Icon(Icons.qr_code_scanner,
+            icon: Icon(Icons.repeat,
                 color: Theme.of(context).colorScheme.onPrimary),
             onPressed: () async {
-              Get.toNamed('/screenScannerPage');
+              connectToWebSocket();
             },
           ),
         ],
@@ -65,7 +50,7 @@ class AddDeviceView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'ШАГ 1:',
+                      'ШАГ 2:',
                       style: const TextStyle(
                         // color: Get.isDarkMode ? Colors.white : Colors.black,
                         fontSize: 18,
@@ -74,7 +59,7 @@ class AddDeviceView extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'toConnectToFlora'.tr,
+                      'Ваша Флора умеет',
                       style: const TextStyle(
                         // color: Get.isDarkMode ? Colors.white : Colors.black,
                         fontSize: 18,
@@ -83,7 +68,7 @@ class AddDeviceView extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'youNeedToEnterDetails'.tr,
+                      'подключаться к Интернету',
                       style: const TextStyle(
                         // color: Get.isDarkMode ? Colors.white : Colors.black,
                         fontSize: 18,
@@ -99,16 +84,7 @@ class AddDeviceView extends StatelessWidget {
                           Column(
                             children: [
                               Text(
-                                'enterSSIDFromLabel'.tr,
-                                style: const TextStyle(
-                                  // color: Get.isDarkMode ? Colors.white : Colors.black,
-                                  // fontSize: 32,
-                                  // fontWeight: FontWeight.w500,
-                                  fontFamily: 'Roboto',
-                                ),
-                              ),
-                              Text(
-                                'enterPSWRDFromLabel'.tr,
+                                'Введите название и пароль точки\nдоступа WI-FI, к которой можно\nподключить контроллер:',
                                 style: const TextStyle(
                                   // color: Get.isDarkMode ? Colors.white : Colors.black,
                                   // fontSize: 32,
@@ -118,18 +94,6 @@ class AddDeviceView extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(width:20),
-                          IconButton(
-                            // icon: Image.asset(
-                            //   ("assets/img/icons8-qr-3.gif"),
-                            // ),
-                            icon: const Icon(Icons.qr_code_scanner),
-                            color: Theme.of(context).colorScheme.secondary,
-                            iconSize: 45,
-                            onPressed: () async {
-                              Get.toNamed('/screenScannerPage');
-                            },
-                          )
                         ],
                       ),
                     ),
@@ -142,20 +106,17 @@ class AddDeviceView extends StatelessWidget {
               height: height,
               padding: EdgeInsets.symmetric(
                   vertical: vertical, horizontal: horizontal),
-              child: Obx(
-                () => TextFormField(
-                  initialValue: _SSID.value,
-                  textAlignVertical: TextAlignVertical.top,
-                  // maxLength: 6,
-                  onChanged: (value) {
-                    _addDeviceController.SSIDFieldIsFilled = value;
-                  },
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                        vertical: vertical, horizontal: horizontal),
-                    labelText: 'SSID',
-                  ),
+              child: TextFormField(
+                textAlignVertical: TextAlignVertical.top,
+                // maxLength: 6,
+                onChanged: (value) {
+                  _connectDeviceController.SSIDFieldIsFilled = value;
+                },
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                      vertical: vertical, horizontal: horizontal),
+                  labelText: 'Название Wi-Fi',
                 ),
               ),
             ),
@@ -164,20 +125,17 @@ class AddDeviceView extends StatelessWidget {
               height: height,
               padding: EdgeInsets.symmetric(
                   vertical: vertical, horizontal: horizontal),
-              child: Obx(
-                () => TextFormField(
-                  initialValue: _PSWRD.value,
-                  textAlignVertical: TextAlignVertical.top,
-                  // maxLength: 6,
-                  onChanged: (value) {
-                    _addDeviceController.PSWRDFieldIsFilled = value;
-                  },
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                        vertical: vertical, horizontal: horizontal),
-                    labelText: 'PSWRD',
-                  ),
+              child: TextFormField(
+                textAlignVertical: TextAlignVertical.top,
+                // maxLength: 6,
+                onChanged: (value) {
+                  _connectDeviceController.PSWRDFieldIsFilled = value;
+                },
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                      vertical: vertical, horizontal: horizontal),
+                  labelText: 'Пароль',
                 ),
               ),
             ),
@@ -195,12 +153,11 @@ class AddDeviceView extends StatelessWidget {
                           vertical: vertical, horizontal: 0),
                       child: ElevatedButton(
                         onPressed: () async {
-                          if (_addDeviceController.fieldValidation()) {
-                            _iotWiFiAccessPoint.ssid = _SSID.value;
-                            _iotWiFiAccessPoint.password = _PSWRD.value;
-                            await _iotWiFiAccessPoint.connect();
-                            _addDeviceWebSocket.connectToSocket();
-                            Get.toNamed('/connectDeviceToTheInternet');
+                          if (_connectDeviceController.fieldValidation() &&
+                              await _webSocketController.sendMessage('inet') &&
+                              await _webSocketController.sendMessage('reset')) {
+
+                             Get.offAllNamed('/myDevices');
                           }
                         },
                         child: Text('connect'.tr),
