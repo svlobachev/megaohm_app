@@ -59,7 +59,7 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Ваша Флора умеет',
+                      'yourFloraCan'.tr,
                       style: const TextStyle(
                         // color: Get.isDarkMode ? Colors.white : Colors.black,
                         fontSize: 18,
@@ -68,7 +68,7 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'подключаться к Интернету',
+                      'connectToTheInternet'.tr,
                       style: const TextStyle(
                         // color: Get.isDarkMode ? Colors.white : Colors.black,
                         fontSize: 18,
@@ -84,7 +84,7 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
                           Column(
                             children: [
                               Text(
-                                'Введите название и пароль точки\nдоступа WI-FI, к которой можно\nподключить контроллер:',
+                                'enterTheNameAndPasswordOfTheWIFIHotspot'.tr,
                                 style: const TextStyle(
                                   // color: Get.isDarkMode ? Colors.white : Colors.black,
                                   // fontSize: 32,

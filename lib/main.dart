@@ -18,6 +18,7 @@ main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   HttpOverrides.global = MyHttpOverrides();
   await Hive.initFlutter();
+  await Hive.openBox('TestBox');
   await Hive.openBox('RegistrationBox');
   await Hive.openBox('FloraAPIBox');
   await Hive.openBox('MyDevicesBox');

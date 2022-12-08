@@ -14,6 +14,7 @@ class AddDeviceWebSocket {
   final ForAllForms _forAllForms = Get.find();
   final Box _devicesBox = Hive.box('MyDevicesBox');
   final Box _floraAPIBox = Hive.box('FloraAPIBox');
+  final Box _testBox = Hive.box('TestBox');
   Map<String, dynamic> _dataMap = {};
   late IOWebSocketChannel _client;
   bool _isConnected = false;
@@ -24,7 +25,8 @@ class AddDeviceWebSocket {
     if (_isConnected) {
       disconnect();
     }
-    await WebSocket.connect('ws://192.168.31.81:44300/ws').then((ws) async {
+    // await WebSocket.connect("ws://192.168.31.81/ws").then((ws) async {
+    await WebSocket.connect("ws://${_testBox.get('ip')}:44300/ws").then((ws) async {
       _client = IOWebSocketChannel(ws);
       debugPrint("--> WSocket added");
       _listenToMessage();
