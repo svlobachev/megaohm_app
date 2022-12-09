@@ -21,7 +21,7 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
     final double bottomSizedBox = _forAllForms.bottomSizedBoxHeight;
 
     connectToWebSocket() async {
-        await _addDeviceWebSocket.connectToSocket();
+      await _addDeviceWebSocket.connectToSocket();
     }
 
     connectToWebSocket();
@@ -50,7 +50,7 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'ШАГ 2:',
+                      'step_2'.tr,
                       style: const TextStyle(
                         // color: Get.isDarkMode ? Colors.white : Colors.black,
                         fontSize: 18,
@@ -156,8 +156,7 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
                           if (_connectDeviceController.fieldValidation() &&
                               await _webSocketController.sendMessage('inet') &&
                               await _webSocketController.sendMessage('reset')) {
-
-                             Get.offAllNamed('/myDevices');
+                            Get.offAllNamed('/myDevices');
                           }
                         },
                         child: Text('connect'.tr),

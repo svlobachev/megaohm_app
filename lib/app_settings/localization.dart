@@ -4,6 +4,9 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'mainPage': 'Main page',
+          'step_1': 'Step 1:',
+          'step_2': 'Step 2:',
           'enterTheNameAndPasswordOfTheWIFIHotspot':'Enter the name and password of the WI-FI\n hotspot access point to which you can \nconnect the controller:',
           'connectToTheInternet': 'connect to the internet',
           'yourFloraCan': 'Your Flora can',
@@ -71,6 +74,9 @@ class Localization extends Translations {
           'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'mainPage': 'Главная страница',
+          'step_1': 'ШАГ 1:',
+          'step_2': 'ШАГ 2:',
           'enterTheNameAndPasswordOfTheWIFIHotspot':'Введите название и пароль точки\nдоступа WI-FI, к которой можно\nподключить контроллер:',
           'connectToTheInternet': 'подключаться к Интернету',
           'yourFloraCan': 'Ваша Флора умеет',

@@ -39,6 +39,14 @@ class NavDrawer extends StatelessWidget {
         children: [
           drawerHeader,
           ListTile(
+            title: Text('mainPage'.tr),
+            leading: const Icon(Icons.pages),
+            onTap: () {
+              Get.back();
+              Get.toNamed('/');
+            },
+          ),
+          ListTile(
             title: Text('lightDarkModes'.tr),
             leading: const Icon(Icons.dark_mode),
             onTap: () {

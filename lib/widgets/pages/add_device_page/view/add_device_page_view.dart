@@ -65,7 +65,7 @@ class AddDeviceView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'ШАГ 1:',
+                      'step_1'.tr,
                       style: const TextStyle(
                         // color: Get.isDarkMode ? Colors.white : Colors.black,
                         fontSize: 18,
