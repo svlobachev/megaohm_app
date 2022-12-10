@@ -52,8 +52,5 @@ class DependencyInjection {
     Get.put(StringParserFromQRCode());
     Get.put(ConnectDeviceController());
     Get.put(WebSocketController());
-
-
-
   }
 }
