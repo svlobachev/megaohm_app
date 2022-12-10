@@ -4,6 +4,8 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'forwardButtonText': 'NEXT',
+          'backButtonText': 'BACK ',
           'next': 'Next',
           'mainPage': 'Main page',
           'step_1': 'Step 1:',
@@ -75,6 +77,8 @@ class Localization extends Translations {
           'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'forwardButtonText': 'ВПЕРЁД',
+          'backButtonText': 'НАЗАД ',
           'next': 'Далее',
           'mainPage': 'Главная страница',
           'step_1': 'ШАГ 1:',
