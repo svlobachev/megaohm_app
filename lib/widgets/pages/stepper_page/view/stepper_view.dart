@@ -68,12 +68,8 @@ class _MyStepperState extends State<MyStepper> {
 
   List<Widget> slides() {
     slideList = [
-      Container(
-        child: AddDeviceView(),
-      ),
-      Container(
-        child: ConnectDeviceToTheInternet(),
-      ),
+      AddDeviceView(),
+      ConnectDeviceToTheInternet(),
     ];
     return slideList;
   }
