@@ -77,7 +77,7 @@ class Localization extends Translations {
           'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
-          'forwardButtonText': 'ВПЕРЁД',
+          'forwardButtonText': 'ДАЛЕЕ',
           'backButtonText': 'НАЗАД ',
           'next': 'Далее',
           'mainPage': 'Главная страница',

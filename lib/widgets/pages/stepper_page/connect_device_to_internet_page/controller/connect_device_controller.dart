@@ -29,23 +29,7 @@ class ConnectDeviceController {
           RegExp(r"^[0-9A-Za-z-_]{1,250}$").hasMatch(SSIDFieldIsFilled.trim());
       if (!result) {
         _mySnackBarGet.mySnackBar(
-          text: 'SSID ${'404'.tr}',
-          icon: Icon(
-            Icons.text_fields,
-            color: _forAllForms.colorForSnackBarIcons,
-            size: 30.0,
-          ),
-        );
-        return false;
-      }
-      // debugPrint("SSIDFieldIsFilled --> $result");
-    }
-    if (PSWRDFieldIsFilled.isNotEmpty) {
-      final bool result =
-          RegExp(r"^[0-9A-Za-z-,._!@#$%^&*]{1,250}$").hasMatch(PSWRDFieldIsFilled.trim());
-      if (!result) {
-        _mySnackBarGet.mySnackBar(
-          text: 'PSWRD ${'404'.tr}',
+          text: 'SSID: ${'404'.tr}',
           icon: Icon(
             Icons.text_fields,
             color: _forAllForms.colorForSnackBarIcons,
