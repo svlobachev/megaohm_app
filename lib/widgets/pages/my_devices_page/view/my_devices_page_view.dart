@@ -8,30 +8,30 @@ import 'package:megaohm_app/widgets/pages/my_devices_page/model/my_devices_box.d
 
 import 'package:megaohm_app/widgets/pages/my_devices_page/view/popup_menu_view.dart';
 
-
-
 class MyDevicesView extends StatelessWidget {
   MyDevicesView({Key? key}) : super(key: key);
 
   final ForAllForms _forAllForms = Get.find();
   final MyDevicesBoxModel _myDevicesBoxModel = Get.find();
   final MyPopupMenu _myPopupMenu = Get.find();
+
   // final Box _box = Hive.box('MyDevicesBox');
   RxMap myDevices = {}.obs;
+
   // RxMap myDevices = {'Устройство1': '1', 'Устройство2': '2', 'Устройство3': '3'}.obs;
 
   @override
   Widget build(BuildContext context) {
     // _myDevicesBoxModel.cleanMyDevicesBox();
-    myDevices.value =_myDevicesBoxModel.getMyDevices();
+    myDevices.value = _myDevicesBoxModel.getMyDevices();
 
     return Scaffold(
       appBar: MyAppBar(
         appBarTitle: 'myDevices'.tr,
         actions: [
           IconButton(
-            icon: Icon(Icons.add,
-                color: Theme.of(context).colorScheme.onPrimary),
+            icon:
+                Icon(Icons.add, color: Theme.of(context).colorScheme.onPrimary),
             onPressed: () async {
               Get.toNamed('/myStepper');
             },
@@ -51,14 +51,18 @@ class MyDevicesView extends StatelessWidget {
                       //   ("assets/img/icons8-arrow-up.gif"),
                       // ),
                       Icon(Icons.arrow_upward_rounded,
+                          size: 32,
                           color: Theme.of(context).colorScheme.secondary),
-                      SizedBox(width: 12),
+                      SizedBox(width: 8),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('deviceNotAdded'.tr, style: TextStyle(fontSize: 18 ),),
+                      Text(
+                        'deviceNotAdded'.tr,
+                        style: TextStyle(fontSize: 18),
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -80,7 +84,10 @@ class MyDevicesView extends StatelessWidget {
                       ),
                       title: Text(item.key, overflow: TextOverflow.ellipsis),
                       subtitle: Text(item.value),
-                        trailing: _myPopupMenu.popupMenu( context: context, did: item.key, myDevices: myDevices),
+                      trailing: _myPopupMenu.popupMenu(
+                          context: context,
+                          did: item.key,
+                          myDevices: myDevices),
                     ),
                 ],
               ),

@@ -76,7 +76,7 @@ class AddDeviceWebSocket {
         _dataMap = json.decode(message);
         if (_dataMap.containsKey('did') &&
             !_devicesBox.containsKey(_dataMap['did'])) {
-          _devicesBox.put(_dataMap['did'], 'locally');
+          _devicesBox.put(_dataMap['did'], 'offline');
         }
         if (_dataMap.containsKey('cmd')) {
           _floraAPIBox.put('cmd', _dataMap['cmd']);
