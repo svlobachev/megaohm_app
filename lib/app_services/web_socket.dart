@@ -51,9 +51,6 @@ class AddDeviceWebSocket {
         debugPrint(error.toString());
         debugPrint("--> WSocket not added");
         _isConnected = false;
-        // Timer.periodic(Duration(seconds: _heartbeatInterval), (Timer timer){
-        //   connectToSocket();
-        // });
         if (showAllSnackBar || onlyShowsFailedSnackBar) {
           _mySnackBarGet.mySnackBar(
             text: 'deviceNotNound'.tr,
