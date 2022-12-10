@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:megaohm_app/app_services/web_socket.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/myAppBar.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/controller/add_device_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/connect_device_controller.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/web_socket_controller.dart';
 
 class ConnectDeviceToTheInternet extends StatelessWidget {
   ConnectDeviceToTheInternet({Key? key}) : super(key: key);
   final ConnectDeviceController _connectDeviceController = Get.find();
+  final AddDeviceController _addDeviceController = Get.find();
   final AddDeviceWebSocket _addDeviceWebSocket = Get.find();
   final WebSocketController _webSocketController = Get.find();
   final ForAllForms _forAllForms = Get.find();
@@ -31,7 +33,7 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
     // }
     // connectToWebSocket();
 
-    _addDeviceWebSocket.connectToSocket(showAllSnackBar: true);
+    _addDeviceWebSocket.connectToSocket(onlyShowsFailedSnackBar: true);
 
     return Scaffold(
       appBar: MyAppBar(
@@ -166,6 +168,10 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
                               _addDeviceWebSocket.isConnected &&
                               await _webSocketController.sendMessage('inet') &&
                               await _webSocketController.sendMessage('reset')) {
+                            _connectDeviceController.SSIDFieldIsFilled ='';
+                            _connectDeviceController.PSWRDFieldIsFilled ='';
+                            _addDeviceController.SSIDFieldIsFilled ='';
+                            _addDeviceController.PSWRDFieldIsFilled ='';
                             Get.offAllNamed('/myDevices');
                           }
                         },

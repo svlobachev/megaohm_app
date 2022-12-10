@@ -4,15 +4,12 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 
-
-
 class AddDeviceController {
   final ForAllForms _forAllForms = Get.find();
   final MySnackBarGet _mySnackBarGet = Get.find();
 
   String SSIDFieldIsFilled = '';
   String PSWRDFieldIsFilled = '';
-
 
   bool fieldValidation() {
     if (SSIDFieldIsFilled.isEmpty || PSWRDFieldIsFilled.isEmpty) {

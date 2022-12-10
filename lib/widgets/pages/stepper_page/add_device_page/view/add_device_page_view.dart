@@ -118,7 +118,7 @@ class AddDeviceView extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           IconButton(
                             // icon: Image.asset(
                             //   ("assets/img/icons8-qr-3.gif"),

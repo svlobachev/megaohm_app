@@ -22,7 +22,7 @@ class AddDeviceWebSocket {
   bool get isConnected => _isConnected;
 
   connectToSocket(
-      {showAllSnackBar = true,
+      {showAllSnackBar = false,
       showOnlySuccessfulSnackBar = false,
       onlyShowsFailedSnackBar = false}) async {
     if (_isConnected) {
