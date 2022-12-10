@@ -21,7 +21,7 @@ import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/controlle
 import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/iot_wifi_access_point.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/string_parser_from_qr_code.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/connect_device_controller.dart';
-import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/web_socket_controller.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/service/web_socket_service.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 import 'for_all_forms.dart';
 
@@ -51,6 +51,6 @@ class DependencyInjection {
     Get.put(MyPopupMenu());
     Get.put(StringParserFromQRCode());
     Get.put(ConnectDeviceController());
-    Get.put(WebSocketController());
+    Get.put(WebSocketService());
   }
 }

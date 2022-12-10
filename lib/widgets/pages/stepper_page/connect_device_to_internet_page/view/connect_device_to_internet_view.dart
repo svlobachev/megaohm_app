@@ -5,14 +5,14 @@ import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/myAppBar.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/controller/add_device_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/connect_device_controller.dart';
-import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/web_socket_controller.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/service/web_socket_service.dart';
 
 class ConnectDeviceToTheInternet extends StatelessWidget {
   ConnectDeviceToTheInternet({Key? key}) : super(key: key);
   final ConnectDeviceController _connectDeviceController = Get.find();
   final AddDeviceController _addDeviceController = Get.find();
   final AddDeviceWebSocket _addDeviceWebSocket = Get.find();
-  final WebSocketController _webSocketController = Get.find();
+  final WebSocketService _webSocketService = Get.find();
   final ForAllForms _forAllForms = Get.find();
 
   @override
@@ -166,8 +166,8 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
                         onPressed: () async {
                           if (_connectDeviceController.fieldValidation() &&
                               _addDeviceWebSocket.isConnected &&
-                              await _webSocketController.sendMessage('inet') &&
-                              await _webSocketController.sendMessage('reset')) {
+                              await _webSocketService.sendMessage('inet') &&
+                              await _webSocketService.sendMessage('reset')) {
                             _connectDeviceController.SSIDFieldIsFilled ='';
                             _connectDeviceController.PSWRDFieldIsFilled ='';
                             _addDeviceController.SSIDFieldIsFilled ='';
