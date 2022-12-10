@@ -46,17 +46,19 @@ class MyDevicesView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Image.asset(
-                        height: 32,
-                        ("assets/img/icons8-arrow-up.gif"),
-                      ),
-                      SizedBox(width: 9),
+                      // Image.asset(
+                      //   height: 32,
+                      //   ("assets/img/icons8-arrow-up.gif"),
+                      // ),
+                      Icon(Icons.arrow_upward_rounded,
+                          color: Theme.of(context).colorScheme.secondary),
+                      SizedBox(width: 12),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('deviceNotAdded'.tr),
+                      Text('deviceNotAdded'.tr, style: TextStyle(fontSize: 18 ),),
                     ],
                   ),
                   SizedBox(
