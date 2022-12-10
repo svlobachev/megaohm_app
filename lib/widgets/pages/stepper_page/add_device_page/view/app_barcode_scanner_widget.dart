@@ -96,35 +96,35 @@ class _AppBarcodeState extends State<AppBarcodeScannerWidget> {
                   ),
                 ),
         ),
-        _openManual
-            ? _useCameraScan
-                ? OutlinedButton(
-                    onPressed: () {
-                      setState(() {
-                        _useCameraScan = false;
-                      });
-                    },
-                    child: Text("手动输入$_label"),
-                  )
-                : Row(
-                    children: [
-                      OutlinedButton(
-                        onPressed: () {
-                          setState(() {
-                            _useCameraScan = true;
-                          });
-                        },
-                        child: Text("扫描$_label"),
-                      ),
-                      OutlinedButton(
-                        onPressed: () {
-                          _resultCallback(_inputValue);
-                        },
-                        child: Text("确定"),
-                      ),
-                    ],
-                  )
-            : Container(),
+        // _openManual
+        //     ? _useCameraScan
+        //         ? OutlinedButton(
+        //             onPressed: () {
+        //               setState(() {
+        //                 _useCameraScan = false;
+        //               });
+        //             },
+        //             child: Text("手动输入$_label"),
+        //           )
+        //         : Row(
+        //             children: [
+        //               OutlinedButton(
+        //                 onPressed: () {
+        //                   setState(() {
+        //                     _useCameraScan = true;
+        //                   });
+        //                 },
+        //                 child: Text("扫描$_label"),
+        //               ),
+        //               OutlinedButton(
+        //                 onPressed: () {
+        //                   _resultCallback(_inputValue);
+        //                 },
+        //                 child: Text("确定"),
+        //               ),
+        //             ],
+        //           )
+        //     : Container(),
       ],
     );
   }
