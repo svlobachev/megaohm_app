@@ -9,19 +9,19 @@ import 'package:megaohm_app/app_services/registration_status_controller.dart';
 import 'package:megaohm_app/app_services/web_socket.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/model/navDrawer_logout_dialog_model.dart';
 import 'package:megaohm_app/widgets/navigation/nav_drawer/logout/view/navDrawer_logout_dialog.dart';
-import 'package:megaohm_app/widgets/pages/add_device_page/controller/add_device_page_controller.dart';
-import 'package:megaohm_app/widgets/pages/add_device_page/service/iot_wifi_access_point.dart';
-import 'package:megaohm_app/widgets/pages/add_device_page/service/string_parser_from_qr_code.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/service/confirmation_page_api_service.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/controller/confirmation_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/confirmation_page/model/confirmation_page_model.dart';
-import 'package:megaohm_app/widgets/pages/connect_device_to_internet_page/controller/connect_device_controller.dart';
-import 'package:megaohm_app/widgets/pages/connect_device_to_internet_page/controller/web_socket_controller.dart';
 import 'package:megaohm_app/widgets/pages/my_devices_page/model/my_devices_box.dart';
 import 'package:megaohm_app/widgets/pages/my_devices_page/view/popup_menu_view.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/controller/registration_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/service/registration_page_api_service.dart';
 import 'package:megaohm_app/widgets/pages/registration_page/view/registration_page_show_dialog_view.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/controller/add_device_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/iot_wifi_access_point.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/string_parser_from_qr_code.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/connect_device_controller.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/web_socket_controller.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 import 'for_all_forms.dart';
 
@@ -45,11 +45,11 @@ class DependencyInjection {
     Get.put(NavDrawerShowDialogModel());
     Get.put(ShowDialog());
     Get.put(NavDrawerShowDialog());
+    Get.put(IotWiFiAccessPoint());
     Get.put(AddDeviceController());
     Get.put(MyDevicesBoxModel());
     Get.put(MyPopupMenu());
     Get.put(StringParserFromQRCode());
-    Get.put(IotWiFiAccessPoint());
     Get.put(ConnectDeviceController());
     Get.put(WebSocketController());
 

@@ -25,9 +25,9 @@ class _FullScreenScannerPageState extends State<FullScreenScannerPage> {
               resultCallback: (String code) {
                   _code.value = code;
                   // Get.back(result: code);
-                  Get.offNamed('/addDevice', arguments: code);
+                  Get.offNamed('/myStepper', arguments: code);
               },
-              openManual: false,
+              openManual: true,
             ),
           ),
         ],

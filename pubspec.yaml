@@ -34,6 +34,8 @@ dependencies:
   ai_barcode: ^3.2.4
   permission_handler: ^8.0.0+2
   flutter_iot_wifi: ^0.0.3
+#  network_info_plus: ^3.0.1
+  im_stepper: ^1.0.1+1
 
 
 

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_iot_wifi/flutter_iot_wifi.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -8,6 +7,8 @@ class IotWiFiAccessPoint {
   String _ssid = '';
   String _password = '';
   String _currentSsid = '';
+  bool _statusOfConnection = false;
+
 
 
   String get currentSsid => _currentSsid;
@@ -28,12 +29,17 @@ class IotWiFiAccessPoint {
   }
 
   Future<bool> connect() async {
+    if(_statusOfConnection){
+      await disconnect();
+    }
     if (await _checkPermissions()) {
-      FlutterIotWifi.connect(_ssid, _password, prefix: true).then(
+      await disconnect();
+      await FlutterIotWifi.connect(_ssid, _password, prefix: true).then(
         (value) {
           if (value == true) {
             _currentSsid = _ssid;
-            debugPrint("--> connect initiated: $value");
+            _statusOfConnection = true;
+            debugPrint("--> : connect initiated: $value");
             return true;
           }
         },
@@ -49,7 +55,8 @@ class IotWiFiAccessPoint {
       FlutterIotWifi.disconnect().then(
         (value) {
           if (value == true) {
-            debugPrint("--> connect initiated: $value");
+            _statusOfConnection = false;
+            debugPrint("--> disconnect initiated: $value");
             return true;
           }
         },
@@ -63,7 +70,7 @@ class IotWiFiAccessPoint {
   Future<String> current() async {
     if (await _checkPermissions()) {
       FlutterIotWifi.current().then((value) {
-        if(value != '') {
+        if (value != '') {
           debugPrint("--> current ssid: $value");
           return value;
         }
@@ -74,22 +81,22 @@ class IotWiFiAccessPoint {
     return '';
   }
 
-  // void _scan() async {
-  //   if (await _checkPermissions()) {
-  //     FlutterIotWifi.scan()
-  //         .then((value) => debugPrint("--> scan started: $value"));
-  //   } else {
-  //     debugPrint("--> don't have permission");
-  //   }
-  // }
-  //
-  // void _list() async {
-  //   if (await _checkPermissions()) {
-  //     FlutterIotWifi.list().then((value) => debugPrint("--> ssids: $value"));
-  //   } else {
-  //     debugPrint("--> don't have permission");
-  //   }
-  // }
+// void _scan() async {
+//   if (await _checkPermissions()) {
+//     FlutterIotWifi.scan()
+//         .then((value) => debugPrint("--> scan started: $value"));
+//   } else {
+//     debugPrint("--> don't have permission");
+//   }
+// }
+//
+// void _list() async {
+//   if (await _checkPermissions()) {
+//     FlutterIotWifi.list().then((value) => debugPrint("--> ssids: $value"));
+//   } else {
+//     debugPrint("--> don't have permission");
+//   }
+// }
 
 // _CustomButton(onPressed: _connect, child: const Text("Connect")),
 // _CustomButton(onPressed: _disconnect, child: const Text("Disconnect")),

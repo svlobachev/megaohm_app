@@ -33,7 +33,7 @@ class MyDevicesView extends StatelessWidget {
             icon: Icon(Icons.add,
                 color: Theme.of(context).colorScheme.onPrimary),
             onPressed: () async {
-              Get.toNamed('/addDevice');
+              Get.toNamed('/myStepper');
             },
           ),
         ],

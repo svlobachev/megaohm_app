@@ -21,25 +21,31 @@ class AddDeviceWebSocket {
 
   bool get isConnected => _isConnected;
 
-  connectToSocket() async {
+  connectToSocket(
+      {showAllSnackBar = true,
+      showOnlySuccessfulSnackBar = false,
+      onlyShowsFailedSnackBar = false}) async {
     if (_isConnected) {
       disconnect();
     }
     // await WebSocket.connect("ws://192.168.31.81/ws").then((ws) async {
-    await WebSocket.connect("ws://${_testBox.get('ip')}:44300/ws").then((ws) async {
+    await WebSocket.connect("ws://${_testBox.get('ip')}:44300/ws")
+        .then((ws) async {
       _client = IOWebSocketChannel(ws);
       debugPrint("--> WSocket added");
       _listenToMessage();
       _isConnected = true;
-      _mySnackBarGet.mySnackBar(
-        text: 'deviceFound'.tr,
-        icon: Icon(
-          Icons.devices_other,
-          // color: colorForSnackBarErrors,
-          color: _forAllForms.colorForSnackBarIcons,
-          size: 30.0,
-        ),
-      );
+      if (showAllSnackBar || showOnlySuccessfulSnackBar) {
+        _mySnackBarGet.mySnackBar(
+          text: 'deviceFound'.tr,
+          icon: Icon(
+            Icons.devices_other,
+            // color: colorForSnackBarErrors,
+            color: _forAllForms.colorForSnackBarIcons,
+            size: 30.0,
+          ),
+        );
+      }
     }).onError((error, stackTrace) {
       if (error.toString() != '') {
         debugPrint(error.toString());
@@ -48,15 +54,17 @@ class AddDeviceWebSocket {
         // Timer.periodic(Duration(seconds: _heartbeatInterval), (Timer timer){
         //   connectToSocket();
         // });
-        _mySnackBarGet.mySnackBar(
-          text: 'deviceNotNound'.tr,
-          icon: Icon(
-            Icons.devices,
-            // color: colorForSnackBarErrors,
-            color: _forAllForms.colorForSnackBarIcons,
-            size: 30.0,
-          ),
-        );
+        if (showAllSnackBar || onlyShowsFailedSnackBar) {
+          _mySnackBarGet.mySnackBar(
+            text: 'deviceNotNound'.tr,
+            icon: Icon(
+              Icons.devices,
+              // color: colorForSnackBarErrors,
+              color: _forAllForms.colorForSnackBarIcons,
+              size: 30.0,
+            ),
+          );
+        }
       }
     });
     return _isConnected;

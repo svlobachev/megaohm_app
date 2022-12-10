@@ -4,6 +4,7 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'next': 'Next',
           'mainPage': 'Main page',
           'step_1': 'Step 1:',
           'step_2': 'Step 2:',
@@ -74,6 +75,7 @@ class Localization extends Translations {
           'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'next': 'Далее',
           'mainPage': 'Главная страница',
           'step_1': 'ШАГ 1:',
           'step_2': 'ШАГ 2:',
@@ -81,7 +83,7 @@ class Localization extends Translations {
           'connectToTheInternet': 'подключаться к Интернету',
           'yourFloraCan': 'Ваша Флора умеет',
           'deviceNotNound': 'Устройство не найдено.',
-          'deviceFound': 'Устройство найдено! Теперь вы можете перейти к настройкам.',
+          'deviceFound': 'Устройство найдено!',
           'delete': 'Удалить',
           'toRemoveTheDevice': 'Вы действительно хотите удалить устройство?',
           'addingADevice': 'Добавление устройства',

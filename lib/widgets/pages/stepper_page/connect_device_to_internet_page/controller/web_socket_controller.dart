@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:megaohm_app/app_services/web_socket.dart';
-import 'package:megaohm_app/widgets/pages/add_device_page/service/iot_wifi_access_point.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/iot_wifi_access_point.dart';
 
 import 'connect_device_controller.dart';
 
@@ -14,7 +14,6 @@ class WebSocketController{
   final IotWiFiAccessPoint _lotWiFiAccessPoint = Get.find();
 
   final Box _floraAPIBox = Hive.box('FloraAPIBox');
-
 
 
   Future<bool> sendMessage(String command)  async {
