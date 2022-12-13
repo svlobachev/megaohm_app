@@ -4,8 +4,10 @@ import 'package:megaohm_app/app_services/web_socket.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/myAppBar.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/controller/add_device_page_controller.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/wifi_iot.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/connect_device_controller.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/service/web_socket_service.dart';
+// import '../../add_device_page/service/iot_wifi_access_point.dart';
 
 class ConnectDeviceToTheInternet extends StatelessWidget {
   ConnectDeviceToTheInternet({Key? key}) : super(key: key);
@@ -14,6 +16,8 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
   final AddDeviceWebSocket _addDeviceWebSocket = Get.find();
   final WebSocketService _webSocketService = Get.find();
   final ForAllForms _forAllForms = Get.find();
+  final WiFiIoT _wiFiIoT = WiFiIoT();
+  // IotWiFiAccessPoint _iotWiFiAccessPoint = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +25,7 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
     final double horizontal = _forAllForms.horizontal;
     final double height = _forAllForms.height;
     final double bottomSizedBox = _forAllForms.bottomSizedBoxHeight;
+
 
     // connectToWebSocket() async {
     //   if (await _addDeviceWebSocket.connectToSocket(showAllSnackBar: false, showOnlySuccessfulSnackBar: true)) {
@@ -172,6 +177,8 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
                             _connectDeviceController.PSWRDFieldIsFilled ='';
                             _addDeviceController.SSIDFieldIsFilled ='';
                             _addDeviceController.PSWRDFieldIsFilled ='';
+                            await _wiFiIoT.removeWifiNetwork();
+                            // await _iotWiFiAccessPoint.disconnect();
                             Get.offAllNamed('/myDevices');
                           }
                         },

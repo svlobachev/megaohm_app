@@ -20,14 +20,16 @@ import 'package:megaohm_app/widgets/pages/registration_page/view/registration_pa
 import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/controller/add_device_page_controller.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/iot_wifi_access_point.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/string_parser_from_qr_code.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/wifi_iot.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/controller/connect_device_controller.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/service/web_socket_service.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/connect_device_to_internet_page/view/connect_device_to_internet_view.dart';
 import 'package:megaohm_app/widgets/parts/get_snackbar.dart';
 import 'for_all_forms.dart';
 
 class DependencyInjection {
   dependencyInjectionInit() {
-    Get.put(ForAllForms());
+    Get.lazyPut<ForAllForms>(() => ForAllForms());
     Get.put(MyDioService());
     Get.put(RegistrationStatusController());
     Get.put(MySnackBarGet());
@@ -44,6 +46,8 @@ class DependencyInjection {
     Get.put(AddDeviceWebSocket());
     Get.put(NavDrawerShowDialogModel());
     Get.put(ShowDialog());
+    // Get.lazyPut<NavDrawerShowDialogModel>(() => NavDrawerShowDialogModel());
+    // Get.lazyPut<ShowDialog>(() => ShowDialog());
     Get.put(NavDrawerShowDialog());
     Get.put(IotWiFiAccessPoint());
     Get.put(AddDeviceController());
@@ -52,5 +56,7 @@ class DependencyInjection {
     Get.put(StringParserFromQRCode());
     Get.put(ConnectDeviceController());
     Get.put(WebSocketService());
+    Get.put(ConnectDeviceToTheInternet());
+    Get.put(WiFiIoT());
   }
 }

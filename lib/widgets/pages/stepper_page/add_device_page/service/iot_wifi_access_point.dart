@@ -21,6 +21,8 @@ class IotWiFiAccessPoint {
     _password = value;
   }
 
+
+
   Future<bool> _checkPermissions() async {
     if (Platform.isIOS || await Permission.location.request().isGranted) {
       return true;

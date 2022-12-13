@@ -28,7 +28,9 @@ class AddDeviceWebSocket {
     if (_isConnected) {
       disconnect();
     }
-    // await WebSocket.connect("ws://192.168.31.81/ws").then((ws) async {
+    // await WebSocket.connect("ws://192.168.31.81:44300/ws")
+    // await WebSocket.connect("ws://10.0.2.2:44300/ws")
+    // await WebSocket.connect("ws://127.0.0.1:44300/ws")
     await WebSocket.connect("ws://${_testBox.get('ip')}:44300/ws")
         .then((ws) async {
       _client = IOWebSocketChannel(ws);

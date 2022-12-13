@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
 import 'package:megaohm_app/widgets/navigation/myAppBar.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/controller/add_device_page_controller.dart';
-import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/iot_wifi_access_point.dart';
+// import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/iot_wifi_access_point.dart';
 import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/string_parser_from_qr_code.dart';
+import 'package:megaohm_app/widgets/pages/stepper_page/add_device_page/service/wifi_iot.dart';
 
 class AddDeviceView extends StatelessWidget {
-  AddDeviceView({Key? key}) : super(key: key);
-  final IotWiFiAccessPoint _iotWiFiAccessPoint = Get.find();
+  AddDeviceView( {Key? key}) : super(key: key);
+  // final IotWiFiAccessPoint _iotWiFiAccessPoint = Get.find();
+  final WiFiIoT _wiFiIoT = Get.find();
   final StringParserFromQRCode _stringParserFromQRCode = Get.find();
   final AddDeviceController _addDeviceController = Get.find();
   final ForAllForms _forAllForms = Get.find();
@@ -25,13 +27,14 @@ class AddDeviceView extends StatelessWidget {
         _PSWRD.value = _backMap['PSWRD'];
         _addDeviceController.SSIDFieldIsFilled = _SSID.value;
         _addDeviceController.PSWRDFieldIsFilled = _PSWRD.value;
-        _iotWiFiAccessPoint.ssid = _SSID.value;
-        _iotWiFiAccessPoint.password = _PSWRD.value;
-
-        // if (_floraAPIBox.get('IotWiFiConnection') == true) {
-        //
-        // }
-      }
+        // _iotWiFiAccessPoint.ssid = _SSID.value;
+        // _iotWiFiAccessPoint.password = _PSWRD.value;
+        _wiFiIoT.ssid = _SSID.value;
+        _wiFiIoT.password = _PSWRD.value;
+      }else{
+        _SSID.value = _addDeviceController.SSIDFieldIsFilled;
+        _PSWRD.value = _addDeviceController.PSWRDFieldIsFilled;
+      };
     }
 
     dataFromCamera();
@@ -195,15 +198,20 @@ class AddDeviceView extends StatelessWidget {
                           vertical: vertical, horizontal: 0),
                       child: ElevatedButton(
                         onPressed: () async {
+
                           if (_addDeviceController.fieldValidation()) {
-                            _iotWiFiAccessPoint.ssid =
+                            _wiFiIoT.ssid =
                                 _addDeviceController.SSIDFieldIsFilled;
-                            _iotWiFiAccessPoint.password =
+                            _wiFiIoT.password =
                                 _addDeviceController.PSWRDFieldIsFilled;
-                            await _iotWiFiAccessPoint.connect();
-                            // Get.toNamed('/connectDeviceToTheInternet');
+                            await _wiFiIoT.connectWifiNetwork();
+                            // _iotWiFiAccessPoint.connect();
+                            if(_wiFiIoT.isConnected) {
+                              Get.toNamed('/myStepper?page=2');
+                            }
                           }
                         },
+
                         child: Text('connect'.tr),
                       ),
                     ),

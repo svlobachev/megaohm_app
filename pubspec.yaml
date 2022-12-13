@@ -32,9 +32,9 @@ dependencies:
   web_socket_channel: ^2.2.0
   #  mobile_scanner: ^2.1.0
   ai_barcode: ^3.2.4
-  permission_handler: ^8.0.0+2
+  permission_handler: ^10.2.0
   flutter_iot_wifi: ^0.0.3
-#  network_info_plus: ^3.0.1
+  wifi_iot: 0.3.18
 
 
 

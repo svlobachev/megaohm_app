@@ -11,11 +11,13 @@ import 'app_services/get_device_id.dart';
 import 'app_services/hive_init.dart';
 import 'app_settings/dependency_injection.dart';
 
+
 main() async {
-  final DependencyInjection dependencyInjection = DependencyInjection();
-  HiveInit hiveInit = HiveInit();
+
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  final DependencyInjection dependencyInjection = DependencyInjection();
+  HiveInit hiveInit = HiveInit();
   HttpOverrides.global = MyHttpOverrides();
   await Hive.initFlutter();
   await Hive.openBox('TestBox');
