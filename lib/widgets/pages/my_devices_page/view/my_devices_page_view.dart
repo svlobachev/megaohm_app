@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:megaohm_app/app_settings/for_all_forms.dart';
@@ -16,11 +14,7 @@ class MyDevicesView extends StatelessWidget {
   final ForAllForms _forAllForms = Get.find();
   final MyDevicesBoxModel _myDevicesBoxModel = Get.find();
   final MyPopupMenu _myPopupMenu = Get.find();
-
-  // final Box _box = Hive.box('MyDevicesBox');
   RxMap myDevices = {}.obs;
-
-  // RxMap myDevices = {'Устройство1': '1', 'Устройство2': '2', 'Устройство3': '3'}.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +42,10 @@ class MyDevicesView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      // Image.asset(
-                      //   height: 32,
-                      //   ("assets/img/icons8-arrow-up.gif"),
-                      // ),
                       Icon(Icons.arrow_upward_rounded,
                           size: 32,
                           color: Theme.of(context).colorScheme.secondary),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                     ],
                   ),
                   Row(
@@ -63,7 +53,7 @@ class MyDevicesView extends StatelessWidget {
                     children: [
                       Text(
                         'deviceNotAdded'.tr,
-                        style: TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 18),
                       ),
                     ],
                   ),
@@ -85,10 +75,8 @@ class MyDevicesView extends StatelessWidget {
                         ),
                       ),
                       title: Text(
-                        json.decode(item.value)['name'],
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      subtitle: Text(json.decode(item.value)['state']),
+                          "${'device'.tr} ${json.decode(item.value)['num']}"),
+                      subtitle: Text("${json.decode(item.value)['state']}".tr),
                       trailing: _myPopupMenu.popupMenu(
                           context: context,
                           did: item.key,

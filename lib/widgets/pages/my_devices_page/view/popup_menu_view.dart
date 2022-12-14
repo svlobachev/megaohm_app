@@ -51,7 +51,7 @@ class MyPopupMenu {
           value: 'Menu1',
           child: Row(
             children: [
-              Icon(Icons.settings_applications_outlined,
+              Icon(Icons.handyman_outlined,
                   size: 16, color: Theme.of(context).colorScheme.secondary),
               TextButton(
                 onPressed: () {
@@ -78,14 +78,15 @@ class MyPopupMenu {
           value: 'Menu2',
           child: Row(
             children: [
-              Icon(Icons.tips_and_updates_outlined,
+              // Icon(Icons.tips_and_updates_outlined,
+              Icon(Icons.align_vertical_bottom,
                   size: 16, color: Theme.of(context).colorScheme.secondary),
               TextButton(
                 onPressed: () {
                   Get.back();
                 },
                 child: Text(
-                  'Тестирование'.tr,
+                  'testing'.tr,
                   style: TextStyle(
                     color: Get.isDarkMode
                         ? Colors.white

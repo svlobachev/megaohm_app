@@ -4,9 +4,11 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'online': 'online',
+          'offline': 'offline',
           'device': 'Device',
-          'testing':'Testing',
-          'theEventLog':'The event log',
+          'testing': 'Testing',
+          'theEventLog': 'The event log',
           'getPermission': 'Get permission',
           'forwardButtonText': 'NEXT',
           'backButtonText': 'BACK ',
@@ -14,7 +16,8 @@ class Localization extends Translations {
           'mainPage': 'Main page',
           'step_1': 'Step 1:',
           'step_2': 'Step 2:',
-          'enterTheNameAndPasswordOfTheWIFIHotspot':'Enter the name and password of the WI-FI\n hotspot access point to which you can \nconnect the controller:',
+          'enterTheNameAndPasswordOfTheWIFIHotspot':
+              'Enter the name and password of the WI-FI\n hotspot access point to which you can \nconnect the controller:',
           'connectToTheInternet': 'connect to the internet',
           'yourFloraCan': 'Your Flora can',
           'deviceNotNound': 'Device not found.',
@@ -22,7 +25,8 @@ class Localization extends Translations {
           'delete': 'Delete',
           'toRemoveTheDevice': 'Are you sure you want to remove the device?',
           'addingADevice': 'Adding a device',
-          'enterSSIDAndPSWRDFromLabel': 'Enter the SSID and PSWRD from the label:',
+          'enterSSIDAndPSWRDFromLabel':
+              'Enter the SSID and PSWRD from the label:',
           'youNeedToEnterDetails': 'you need to enter details!',
           'toConnectToFlora': 'To connect to Flora',
           'connect': 'СONNECT',
@@ -81,9 +85,11 @@ class Localization extends Translations {
           'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'online': 'онлайн',
+          'offline': 'оффлайн',
           'device': 'Устройство',
-          'testing':'Тестирование',
-          'theEventLog':'Журнал событий',
+          'testing': 'Тестирование',
+          'theEventLog': 'Журнал событий',
           'getPermission': 'Получить разрешение',
           'forwardButtonText': 'ДАЛЕЕ',
           'backButtonText': 'НАЗАД ',
@@ -91,7 +97,8 @@ class Localization extends Translations {
           'mainPage': 'Главная страница',
           'step_1': 'ШАГ 1:',
           'step_2': 'ШАГ 2:',
-          'enterTheNameAndPasswordOfTheWIFIHotspot':'Введите название и пароль точки\nдоступа WI-FI, к которой можно\nподключить контроллер:',
+          'enterTheNameAndPasswordOfTheWIFIHotspot':
+              'Введите название и пароль точки\nдоступа WI-FI, к которой можно\nподключить контроллер:',
           'connectToTheInternet': 'подключаться к Интернету',
           'yourFloraCan': 'Ваша Флора умеет',
           'deviceNotNound': 'Устройство не найдено.',

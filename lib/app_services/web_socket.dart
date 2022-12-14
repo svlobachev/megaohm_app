@@ -75,7 +75,17 @@ class AddDeviceWebSocket {
         _dataMap = json.decode(message);
         if (_dataMap.containsKey('did') &&
             !_devicesBox.containsKey(_dataMap['did'])) {
-          Map myMap = {'name': _dataMap['did'], 'state': 'offline'};
+          int lastNum = 0;
+          if (_devicesBox.keys.isNotEmpty) {
+            for (var item in _devicesBox.keys) {
+              var lastNumStr = json.decode(_devicesBox.get(item))['num'];
+              var tempLastNum = int.parse(lastNumStr);
+              if (lastNum < tempLastNum) {
+                lastNum = int.parse(lastNumStr);
+              }
+            }
+          }
+          Map myMap = {'num': "${lastNum + 1}", 'state': 'offline'};
           _devicesBox.put(_dataMap['did'], json.encode(myMap));
         }
         if (_dataMap.containsKey('cmd')) {
