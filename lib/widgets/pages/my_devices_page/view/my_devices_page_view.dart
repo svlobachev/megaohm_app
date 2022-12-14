@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -82,8 +84,11 @@ class MyDevicesView extends StatelessWidget {
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
-                      title: Text(item.key, overflow: TextOverflow.ellipsis),
-                      subtitle: Text(item.value),
+                      title: Text(
+                        json.decode(item.value)['name'],
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      subtitle: Text(json.decode(item.value)['state']),
                       trailing: _myPopupMenu.popupMenu(
                           context: context,
                           did: item.key,

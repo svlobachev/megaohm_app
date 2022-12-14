@@ -30,8 +30,19 @@ class MyPopupMenu {
             children: [
               Icon(Icons.library_books_outlined,
                   size: 16, color: Theme.of(context).colorScheme.secondary),
-              Text(
-                ' Журнал событий',
+              TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: Text(
+                  'theEventLog'.tr,
+                  style: TextStyle(
+                    color: Get.isDarkMode
+                        ? Colors.white
+                        : Colors.black, // зеленый цвет текста
+                    fontSize: 16,
+                  ),
+                ),
               ),
             ],
           ),
@@ -69,8 +80,19 @@ class MyPopupMenu {
             children: [
               Icon(Icons.tips_and_updates_outlined,
                   size: 16, color: Theme.of(context).colorScheme.secondary),
-              Text(
-                ' Тестирование',
+              TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: Text(
+                  'Тестирование'.tr,
+                  style: TextStyle(
+                    color: Get.isDarkMode
+                        ? Colors.white
+                        : Colors.black, // зеленый цвет текста
+                    fontSize: 16,
+                  ),
+                ),
               ),
             ],
           ),

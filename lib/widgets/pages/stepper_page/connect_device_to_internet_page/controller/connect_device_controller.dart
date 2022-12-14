@@ -38,7 +38,6 @@ class ConnectDeviceController {
         );
         return false;
       }
-      // debugPrint("PSWRDFieldIsFilled --> $result");
     }
     return true;
   }

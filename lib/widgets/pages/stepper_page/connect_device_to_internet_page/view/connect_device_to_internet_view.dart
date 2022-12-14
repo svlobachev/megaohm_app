@@ -178,7 +178,6 @@ class ConnectDeviceToTheInternet extends StatelessWidget {
                             _addDeviceController.SSIDFieldIsFilled ='';
                             _addDeviceController.PSWRDFieldIsFilled ='';
                             await _wiFiIoT.removeWifiNetwork();
-                            // await _iotWiFiAccessPoint.disconnect();
                             Get.offAllNamed('/myDevices');
                           }
                         },

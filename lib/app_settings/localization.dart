@@ -4,6 +4,10 @@ class Localization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'device': 'Device',
+          'testing':'Testing',
+          'theEventLog':'The event log',
+          'getPermission': 'Get permission',
           'forwardButtonText': 'NEXT',
           'backButtonText': 'BACK ',
           'next': 'Next',
@@ -77,6 +81,10 @@ class Localization extends Translations {
           'appBarTitle': 'Megaohm'
         },
         'ru_RU': {
+          'device': 'Устройство',
+          'testing':'Тестирование',
+          'theEventLog':'Журнал событий',
+          'getPermission': 'Получить разрешение',
           'forwardButtonText': 'ДАЛЕЕ',
           'backButtonText': 'НАЗАД ',
           'next': 'Далее',

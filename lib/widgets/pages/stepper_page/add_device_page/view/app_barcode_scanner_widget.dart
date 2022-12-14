@@ -1,6 +1,7 @@
 import 'package:ai_barcode/ai_barcode.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 late String _label;
@@ -92,7 +93,7 @@ class _AppBarcodeState extends State<AppBarcodeScannerWidget> {
                     onPressed: () {
                       _requestMobilePermission();
                     },
-                    child: Text("请求权限"),
+                    child: Text("getPermission".tr),
                   ),
                 ),
         ),
