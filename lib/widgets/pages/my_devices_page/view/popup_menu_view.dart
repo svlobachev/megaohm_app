@@ -51,7 +51,7 @@ class MyPopupMenu {
           value: 'Menu1',
           child: Row(
             children: [
-              Icon(Icons.handyman_outlined,
+              Icon(Icons.settings,
                   size: 16, color: Theme.of(context).colorScheme.secondary),
               TextButton(
                 onPressed: () {

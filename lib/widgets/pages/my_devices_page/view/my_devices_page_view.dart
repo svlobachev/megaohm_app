@@ -14,6 +14,7 @@ class MyDevicesView extends StatelessWidget {
   final ForAllForms _forAllForms = Get.find();
   final MyDevicesBoxModel _myDevicesBoxModel = Get.find();
   final MyPopupMenu _myPopupMenu = Get.find();
+
   RxMap myDevices = {}.obs;
 
   @override
@@ -74,8 +75,7 @@ class MyDevicesView extends StatelessWidget {
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
-                      title: Text(
-                          "${'device'.tr} ${json.decode(item.value)['num']}"),
+                      title: Text("${'device'.tr} ${json.decode(item.value)['num']}"),
                       subtitle: Text("${json.decode(item.value)['state']}".tr),
                       trailing: _myPopupMenu.popupMenu(
                           context: context,

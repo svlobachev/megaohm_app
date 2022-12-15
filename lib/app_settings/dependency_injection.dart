@@ -32,7 +32,7 @@ class DependencyInjection {
     Get.lazyPut<ForAllForms>(() => ForAllForms());
     Get.put(MyDioService());
     Get.put(RegistrationStatusController());
-    Get.put(MySnackBarGet());
+    Get.lazyPut<MySnackBarGet>(() => MySnackBarGet());
     Get.put(AccessTokenRenew());
     Get.put(ServerAvailabilityCheck());
     Get.put(BackgroundInternetCheck());
@@ -46,8 +46,6 @@ class DependencyInjection {
     Get.put(AddDeviceWebSocket());
     Get.put(NavDrawerShowDialogModel());
     Get.put(ShowDialog());
-    // Get.lazyPut<NavDrawerShowDialogModel>(() => NavDrawerShowDialogModel());
-    // Get.lazyPut<ShowDialog>(() => ShowDialog());
     Get.put(NavDrawerShowDialog());
     Get.put(IotWiFiAccessPoint());
     Get.put(AddDeviceController());
